@@ -6,3 +6,10 @@
 //
 
 import Foundation
+import SwiftUI
+
+final class MainScreenViewModel: ObservableObject {
+    func openSettingsEventTimer() {
+        
+    }
+}
