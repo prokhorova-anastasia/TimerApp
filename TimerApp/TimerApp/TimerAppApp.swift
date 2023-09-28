@@ -18,8 +18,8 @@ struct TimerAppApp: App {
                 MainScreenView()
                     .navigationDestination(for: Router.Destination.self) { destination in
                         switch destination {
-                        case .settings:
-                            SettingsEventTimerView()
+                        case .settings(let type, let eventTimer):
+                            SettingsEventTimerView(type: type, eventTimer: eventTimer)
                         }
                     }
             }

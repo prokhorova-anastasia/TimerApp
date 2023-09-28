@@ -9,7 +9,19 @@ import Foundation
 import SwiftUI
 
 final class MainScreenViewModel: ObservableObject {
-    func openSettingsEventTimer() {
-        
+    
+    @Published var eventTimers: [EventTimer] = []
+    
+    init() {
+        getEventTimers()
+    }
+    
+    func getEventTimers() {
+        eventTimers = UserDefaultsConfigurator.shared.getObjects(EventTimer.self, forKey: UserDefaultsKeys.eventTimer.rawValue) ?? []
+    }
+    
+    func removeAllEventTimers() {
+        UserDefaultsConfigurator.shared.removeObject(forKey: UserDefaultsKeys.eventTimer.rawValue)
+        eventTimers = []
     }
 }
