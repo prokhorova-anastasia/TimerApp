@@ -16,6 +16,7 @@ struct SettingsEventTimerView: View {
         static let cornerRaduis: CGFloat = 8
         static let itemPadding: EdgeInsets = EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         static let baseColor = Color.black
+        static let buttonPadding: EdgeInsets = EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16)
     }
     
     @EnvironmentObject var router: Router
@@ -28,16 +29,19 @@ struct SettingsEventTimerView: View {
     @State var viewModel = SettingsEventTimerViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: Constants.contentSpacing) {
-                titleView
-                descriptionView
-                chooseDateView
-                createButtonView
+        VStack {
+            ScrollView {
+                VStack(spacing: Constants.contentSpacing) {
+                    titleView
+                    descriptionView
+                    chooseDateView
+                }
+                .padding(Constants.itemPadding)
             }
-            .padding(Constants.itemPadding)
+            .scrollIndicators(.hidden)
+            createButtonView
+                .padding(Constants.buttonPadding)
         }
-        .scrollIndicators(.hidden)
         .padding(Constants.contentPadding)
         .navigationTitle(Text(type == .create ? "Create" : "Update"))
         .toolbar(.visible, for: .navigationBar)

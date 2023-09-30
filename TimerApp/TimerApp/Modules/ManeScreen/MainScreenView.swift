@@ -80,7 +80,7 @@ struct MainScreenView: View {
             ForEach($viewModel.eventTimers, id: \.id) { event in
                 EventTimerCellView(eventTimer: event)
                     .background(RoundedRectangle(cornerRadius: Constants.cornerRaduis)
-                        .fill(Color.mint.opacity(0.1))
+                        .fill(Color.black.opacity(0.1))
                                 )
                     .padding(.bottom, Constants.cellBottomPaddong)
                     .onTapGesture {
