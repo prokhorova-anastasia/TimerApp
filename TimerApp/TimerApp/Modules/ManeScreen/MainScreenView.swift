@@ -15,7 +15,7 @@ struct MainScreenView: View {
         static let contentPadding: EdgeInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         static let trashButtonTrailingButton: CGFloat = 8
         static let buttonWidth: CGFloat = 64
-        static let cellBottomPaddong: CGFloat = 8
+        static let cellBottomPaddong: CGFloat = 0
         static let listPadding: EdgeInsets = EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
     }
     
@@ -80,12 +80,52 @@ struct MainScreenView: View {
             ForEach($viewModel.eventTimers, id: \.id) { event in
                 EventTimerCellView(eventTimer: event)
                     .background(RoundedRectangle(cornerRadius: Constants.cornerRaduis)
-                        .fill(Color.white)
-                        .shadow(color: Constants.baseColor.opacity(0.3), radius: 5, x: 0, y: 5))
+                        .fill(Color.mint.opacity(0.1))
+                                )
                     .padding(.bottom, Constants.cellBottomPaddong)
                     .onTapGesture {
                         router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))
                     }
+                    .contextMenu(menuItems: {
+                        Button(action: {
+                            router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))
+                        }, label: {
+                            HStack {
+                                Image(systemName: "pencil")
+                                Text("Edit")
+                            }
+                        })
+                        Button(role: .destructive) {
+                            viewModel.removeEventTimer(event: event.wrappedValue)
+                        } label: {
+                            HStack {
+                                Image(systemName: "trash")
+                                    .foregroundStyle(Color.red)
+                                Text("Delete")
+                                    .foregroundStyle(Color.red)
+                            }
+                        }
+                    })
+//                    .contextMenu(ContextMenu(menuItems: {
+//                        Button(action: {
+//                            router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))
+//                        }, label: {
+//                            HStack {
+//                                Image(systemName: "pencil")
+//                                Text("Edit")
+//                            }
+//                        })
+//                        Button(action: {
+//                            viewModel.removeEventTimer(event: event.wrappedValue)
+//                        }, label: {
+//                            HStack {
+//                                Image(systemName: "trash")
+//                                    .foregroundStyle(Color.red)
+//                                Text("Delete")
+//                                    .foregroundStyle(Color.red)
+//                            }
+//                        })
+//                    }))
             }
         }
         .padding(Constants.listPadding)
