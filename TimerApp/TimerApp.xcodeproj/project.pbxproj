@@ -20,6 +20,7 @@
 		F6212FE72AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FE62AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift */; };
 		F6212FE92AC6092E00BA2600 /* EventTimerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FE82AC6092E00BA2600 /* EventTimerCellView.swift */; };
 		F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FEC2AC6279A00BA2600 /* GeneralTimer.swift */; };
+		F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FEE2AC8A2A600BA2600 /* WarningView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		F6212FE62AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyedDecodingContainer+Extension.swift"; sourceTree = "<group>"; };
 		F6212FE82AC6092E00BA2600 /* EventTimerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimerCellView.swift; sourceTree = "<group>"; };
 		F6212FEC2AC6279A00BA2600 /* GeneralTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTimer.swift; sourceTree = "<group>"; };
+		F6212FEE2AC8A2A600BA2600 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				F6212FE82AC6092E00BA2600 /* EventTimerCellView.swift */,
+				F6212FEE2AC8A2A600BA2600 /* WarningView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */,
 				F6212FE12AC5F33600BA2600 /* UserDefaultsConfigurator.swift in Sources */,
 				F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */,
+				F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */,
 				F6212FE92AC6092E00BA2600 /* EventTimerCellView.swift in Sources */,
 				F6212FDF2AC5E7D000BA2600 /* Router.swift in Sources */,
 				F6212FE72AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift in Sources */,

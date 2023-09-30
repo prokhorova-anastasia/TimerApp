@@ -14,7 +14,7 @@ struct MainScreenView: View {
         static let cornerRaduis: CGFloat = 8
         static let contentPadding: EdgeInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         static let trashButtonTrailingButton: CGFloat = 8
-        static let buttonWidth: CGFloat = 64
+        static let buttonWidth: CGFloat = 44
         static let cellBottomPaddong: CGFloat = 0
         static let listPadding: EdgeInsets = EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
     }
@@ -30,13 +30,28 @@ struct MainScreenView: View {
    }
     
     var body: some View {
-        ZStack(alignment: .bottom) {
-            ScrollView {
-                eventTimersListView
+        VStack {
+            if viewModel.eventTimers.isEmpty {
+                Spacer()
+                WarningView()
+                    .frame(maxWidth: .infinity, minHeight: 300, maxHeight: 300)
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(Color.black.opacity(0.1))
+                            .shadow(color: .black, radius: 3)
+                    )
+                    .padding(.leading, 16)
+                    .padding(.trailing, 16)
+            } else {
+                ScrollView {
+                    eventTimersListView
+                }
+                .padding(Constants.contentPadding)
+                .scrollIndicators(.hidden)
             }
-            .padding(Constants.contentPadding)
-            .scrollIndicators(.hidden)
+            Spacer()
             createNewTimerEventButton
+                .padding(EdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16))
         }
         .navigationTitle(Text("Timers"))
         .toolbar(.visible, for: .navigationBar)
@@ -63,11 +78,12 @@ struct MainScreenView: View {
         Button(action: {
             router.navigate(to: .settings(.create, eventTimer: nil))
         }, label: {
-            Image(systemName: "plus")
+            Text("Add timer")
+                .font(Font.system(size: 17, weight: .semibold))
                 .tint(Constants.baseColor)
-                .frame(width: Constants.buttonWidth, height: Constants.buttonWidth)
+                .frame(maxWidth: .infinity, minHeight: Constants.buttonWidth)
                 .background(
-                    RoundedRectangle(cornerRadius: Constants.buttonWidth / 2)
+                    RoundedRectangle(cornerRadius: 8)
                         .fill(Color.white)
                         .shadow(color: .black, radius: 3)
                 )

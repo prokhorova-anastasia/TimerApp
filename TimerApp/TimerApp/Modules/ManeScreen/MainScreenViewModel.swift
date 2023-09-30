@@ -10,10 +10,6 @@ import SwiftUI
 
 final class MainScreenViewModel: ObservableObject {
     
-    private enum Constants {
-        static let userDefaultsKeyEventTimers = UserDefaultsKeys.eventTimer.rawValue
-    }
-    
     @Published var eventTimers: [EventTimer] = []
     
     init() {
@@ -21,11 +17,11 @@ final class MainScreenViewModel: ObservableObject {
     }
     
     func getEventTimers() {
-        eventTimers = UserDefaultsConfigurator.shared.getObjects(EventTimer.self, forKey: Constants.userDefaultsKeyEventTimers) ?? []
+        eventTimers = UserDefaultsConfigurator.shared.getObjects(EventTimer.self, forKey: .eventTimer) ?? []
     }
     
     func removeAllEventTimers() {
-        UserDefaultsConfigurator.shared.removeObject(forKey: Constants.userDefaultsKeyEventTimers)
+        UserDefaultsConfigurator.shared.removeObject(forKey: .eventTimer)
         eventTimers = []
     }
     
@@ -33,7 +29,7 @@ final class MainScreenViewModel: ObservableObject {
         eventTimers.removeAll { eventTimer in
             eventTimer.id == event.id
         }
-        UserDefaultsConfigurator.shared.removeObject(forKey: Constants.userDefaultsKeyEventTimers)
-        UserDefaultsConfigurator.shared.saveObjects(eventTimers, forKey: Constants.userDefaultsKeyEventTimers)
+        UserDefaultsConfigurator.shared.removeObject(forKey: .eventTimer)
+        UserDefaultsConfigurator.shared.saveObjects(eventTimers, forKey: .eventTimer)
     }
 }
