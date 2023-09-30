@@ -106,26 +106,6 @@ struct MainScreenView: View {
                             }
                         }
                     })
-//                    .contextMenu(ContextMenu(menuItems: {
-//                        Button(action: {
-//                            router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))
-//                        }, label: {
-//                            HStack {
-//                                Image(systemName: "pencil")
-//                                Text("Edit")
-//                            }
-//                        })
-//                        Button(action: {
-//                            viewModel.removeEventTimer(event: event.wrappedValue)
-//                        }, label: {
-//                            HStack {
-//                                Image(systemName: "trash")
-//                                    .foregroundStyle(Color.red)
-//                                Text("Delete")
-//                                    .foregroundStyle(Color.red)
-//                            }
-//                        })
-//                    }))
             }
         }
         .padding(Constants.listPadding)

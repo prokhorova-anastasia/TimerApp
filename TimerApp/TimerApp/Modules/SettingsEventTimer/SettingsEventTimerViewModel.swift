@@ -25,8 +25,6 @@ final class SettingsEventTimerViewModel: ObservableObject {
             array.remove(at: index)
             array.append(eventTimer)
             UserDefaultsConfigurator.shared.saveObjects(array, forKey: UserDefaultsKeys.eventTimer.rawValue)
-        }// else {
-//            UserDefaultsConfigurator.shared.saveObjects([newEventTimer], forKey: UserDefaultsKeys.eventTimer.rawValue)
-//        }
+        }
     }
 }
