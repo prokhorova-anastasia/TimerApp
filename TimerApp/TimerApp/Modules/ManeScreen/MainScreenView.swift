@@ -55,7 +55,7 @@ struct MainScreenView: View {
             createNewTimerEventButton
                 .padding(Constants.createButtonPadding)
         }
-        .navigationTitle(Text("Timers"))
+        .navigationTitle(Text("timers"))
         .foregroundStyle(DSColor.mainColor)
         .toolbar(.visible, for: .navigationBar)
         .navigationBarTitleDisplayMode(.inline)
@@ -81,7 +81,7 @@ struct MainScreenView: View {
         Button(action: {
             router.navigate(to: .settings(.create, eventTimer: nil))
         }, label: {
-            Text("Add timer")
+            Text("addTimer")
                 .font(DSFont.bodySemibold1)
                 .foregroundStyle(DSColor.buttonTextColor)
                 .frame(maxWidth: .infinity, minHeight: Constants.buttonWidth)
@@ -110,7 +110,7 @@ struct MainScreenView: View {
                         }, label: {
                             HStack {
                                 Image(systemName: "pencil")
-                                Text("Edit")
+                                Text("edit")
                                     .font(DSFont.body2)
                             }
                         })
@@ -119,7 +119,7 @@ struct MainScreenView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "trash")
-                                Text("Delete")
+                                Text("delete")
                                     .font(DSFont.body2)
                             }
                         }

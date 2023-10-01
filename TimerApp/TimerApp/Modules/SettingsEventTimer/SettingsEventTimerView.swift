@@ -46,7 +46,7 @@ struct SettingsEventTimerView: View {
                 .padding(Constants.buttonPadding)
         }
         .padding(Constants.contentPadding)
-        .navigationTitle(Text(type == .create ? "Create" : "Update"))
+        .navigationTitle(Text(type == .create ? "create" : "update"))
         .foregroundColor(DSColor.mainColor)
         .toolbar(.visible, for: .navigationBar)
         .toolbar(content: {
@@ -54,7 +54,7 @@ struct SettingsEventTimerView: View {
                 Button(action: {
                     router.navigateToBack()
                 }, label: {
-                    Text("Back")
+                    Text("back")
                         .font(DSFont.body1)
                         .foregroundStyle(DSColor.mainColor)
                 })
@@ -75,12 +75,12 @@ struct SettingsEventTimerView: View {
     private var titleView: some View {
         VStack(spacing: Constants.itemSpacing) {
             HStack {
-                Text("Title")
+                Text("title")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Spacer()
             }
-            TextField("", text: $titleString, prompt: Text("Type title...")
+            TextField("", text: $titleString, prompt: Text("typeTitle")
                 .foregroundColor(DSColor.mainColor.opacity(Constants.middleOpacity)))
             .foregroundStyle(DSColor.mainColor.opacity(Constants.highOpacity))
             .font(DSFont.body1)
@@ -95,12 +95,12 @@ struct SettingsEventTimerView: View {
     private var descriptionView: some View {
         VStack(spacing: Constants.itemSpacing) {
             HStack {
-                Text("Description")
+                Text("description")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Spacer()
             }
-            TextField("", text: $descriptionString, prompt: Text("Type description...")
+            TextField("", text: $descriptionString, prompt: Text("typeDescription")
                 .foregroundColor(DSColor.mainColor.opacity(Constants.middleOpacity)))
             .foregroundStyle(DSColor.mainColor.opacity(Constants.highOpacity))
             .font(DSFont.body1)
@@ -116,7 +116,7 @@ struct SettingsEventTimerView: View {
     private var chooseDateView: some View {
         VStack(spacing: Constants.itemSpacing) {
             HStack {
-                Text("Choose date")
+                Text("chooseDate")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Spacer()
@@ -151,7 +151,7 @@ struct SettingsEventTimerView: View {
                 
                 router.navigateToBack()
             }, label: {
-                Text(type == .create ? "Create" : "Update")
+                Text(type == .create ? "create" : "update")
                     .foregroundStyle(DSColor.buttonTextColor)
                     .frame(maxWidth: .infinity, minHeight: Constants.heightCreateButton, maxHeight: Constants.heightCreateButton)
                     .background(

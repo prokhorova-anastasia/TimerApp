@@ -25,6 +25,7 @@
 		F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FF32AC95C2E00BA2600 /* Design+Color.swift */; };
 		F6212FF72AC95E8100BA2600 /* Design+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FF62AC95E8100BA2600 /* Design+Layout.swift */; };
 		F6212FF92AC9688F00BA2600 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */; };
+		F6212FFD2AC9B70200BA2600 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		F6212FF32AC95C2E00BA2600 /* Design+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Color.swift"; sourceTree = "<group>"; };
 		F6212FF62AC95E8100BA2600 /* Design+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Layout.swift"; sourceTree = "<group>"; };
 		F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAsset.xcassets; sourceTree = "<group>"; };
+		F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */,
 				F6212FC22AC4C07E00BA2600 /* Assets.xcassets */,
 				F6212FF52AC95E5F00BA2600 /* DesignSystem */,
+				F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = F6212FB22AC4C07B00BA2600;
 			productRefGroup = F6212FBC2AC4C07B00BA2600 /* Products */;
@@ -241,6 +245,7 @@
 			files = (
 				F6212FF92AC9688F00BA2600 /* ColorAsset.xcassets in Resources */,
 				F6212FC62AC4C07E00BA2600 /* Preview Assets.xcassets in Resources */,
+				F6212FFD2AC9B70200BA2600 /* Localizable.xcstrings in Resources */,
 				F6212FC32AC4C07E00BA2600 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

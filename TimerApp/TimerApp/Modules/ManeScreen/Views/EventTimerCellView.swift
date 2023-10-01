@@ -48,7 +48,7 @@ struct EventTimerCellView: View {
     private var timerView: some View {
         HStack {
             VStack(spacing: Constants.timesSpacing) {
-                Text("Days")
+                Text("days")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Text("\(days)")
@@ -57,7 +57,7 @@ struct EventTimerCellView: View {
             }
             Spacer()
             VStack(spacing: Constants.timesSpacing) {
-                Text("Hours")
+                Text("hours")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Text("\(hours)")
@@ -67,7 +67,7 @@ struct EventTimerCellView: View {
             Spacer()
 
             VStack(spacing: Constants.timesSpacing) {
-                Text("Minutes")
+                Text("minutes")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Text("\(minutes)")
@@ -77,7 +77,7 @@ struct EventTimerCellView: View {
             Spacer()
 
             VStack(spacing: Constants.timesSpacing) {
-                Text("Seconds")
+                Text("seconds")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Text("\(seconds)")

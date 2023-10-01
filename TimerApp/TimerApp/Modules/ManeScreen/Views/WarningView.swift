@@ -14,13 +14,13 @@ struct WarningView: View {
     var body: some View {
         VStack {
             if UserDefaultsConfigurator.shared.getBoolData(forKey: .wasTimerCreated) {
-                Text("Hello! It seems all your timers have already expired. Would you like to create a new one?")
+                Text("timersExpiredModalMessage")
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
                     .font(DSFont.bodySemibold1)
                     .foregroundStyle(DSColor.mainColor)
             } else {
-                Text("Hello! Create your first timer by pressing 'Add timer'!")
+                Text("firstOpeningModalMessage")
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
                     .font(DSFont.bodySemibold1)
