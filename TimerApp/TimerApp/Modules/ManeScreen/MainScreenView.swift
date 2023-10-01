@@ -98,10 +98,6 @@ struct MainScreenView: View {
         VStack {
             ForEach($viewModel.eventTimers, id: \.id) { event in
                 EventTimerCellView(eventTimer: event)
-                    .background(
-                        RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-                            .stroke(DSColor.mainColor, lineWidth: 1)
-                    )
                     .padding(.bottom, Constants.cellBottomPaddong)
                     .onTapGesture {
                         router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))

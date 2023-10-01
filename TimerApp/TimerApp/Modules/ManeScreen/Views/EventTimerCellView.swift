@@ -14,6 +14,7 @@ struct EventTimerCellView: View {
         static let contentSpacing: CGFloat = 8
         static let middleOpacity: CGFloat = 0.5
         static let contentPadding: EdgeInsets = EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
+        static let externalContentPadding: EdgeInsets = EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4)
     }
     
     @State var viewModel = MainScreenViewModel()
@@ -25,24 +26,31 @@ struct EventTimerCellView: View {
     @State var seconds = 0
     
     var body: some View {
-        VStack(spacing: Constants.contentSpacing) {
-            Text(eventTimer.title)
-                .foregroundStyle(DSColor.mainColor)
-                .font(DSFont.bodySemibold1)
-            if let description = eventTimer.description {
-                Text(description)
-                    .foregroundStyle(DSColor.mainColor).opacity(Constants.middleOpacity)
-                    .font(DSFont.body3)
+        ZStack {
+            VStack(spacing: Constants.contentSpacing) {
+                Text(eventTimer.title)
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.bodySemibold1)
+                if let description = eventTimer.description {
+                    Text(description)
+                        .foregroundStyle(DSColor.mainColor).opacity(Constants.middleOpacity)
+                        .font(DSFont.body3)
+                }
+                timerView
             }
-            timerView
+            .onAppear {
+                days = eventTimer.getLeftDays()
+                hours = eventTimer.getLeftHours()
+                minutes = eventTimer.getLeftMinutes()
+                seconds = eventTimer.getLeftSeconds()
+            }
+            .padding(Constants.contentPadding)
         }
-        .onAppear {
-            days = eventTimer.getLeftDays()
-            hours = eventTimer.getLeftHours()
-            minutes = eventTimer.getLeftMinutes()
-            seconds = eventTimer.getLeftSeconds()
-        }
-        .padding(Constants.contentPadding)
+        .background(
+            RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+                .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
+        )
+        .padding(Constants.externalContentPadding)
     }
     
     private var timerView: some View {

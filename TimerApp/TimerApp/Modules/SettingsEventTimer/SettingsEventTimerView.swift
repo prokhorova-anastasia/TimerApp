@@ -88,7 +88,7 @@ struct SettingsEventTimerView: View {
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-            .stroke(DSColor.mainColor, lineWidth: 1)
+            .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
             )
     }
     
@@ -108,7 +108,7 @@ struct SettingsEventTimerView: View {
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-            .stroke(DSColor.mainColor, lineWidth: 1)
+            .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
         )
     }
     
@@ -127,7 +127,7 @@ struct SettingsEventTimerView: View {
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-            .stroke(DSColor.mainColor, lineWidth: 1)
+            .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
             )
     }
     
