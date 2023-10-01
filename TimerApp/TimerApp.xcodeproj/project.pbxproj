@@ -23,6 +23,8 @@
 		F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FEE2AC8A2A600BA2600 /* WarningView.swift */; };
 		F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FF12AC8AD5A00BA2600 /* Design+Font.swift */; };
 		F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FF32AC95C2E00BA2600 /* Design+Color.swift */; };
+		F6212FF72AC95E8100BA2600 /* Design+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FF62AC95E8100BA2600 /* Design+Layout.swift */; };
+		F6212FF92AC9688F00BA2600 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,8 @@
 		F6212FEE2AC8A2A600BA2600 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		F6212FF12AC8AD5A00BA2600 /* Design+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Font.swift"; sourceTree = "<group>"; };
 		F6212FF32AC95C2E00BA2600 /* Design+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Color.swift"; sourceTree = "<group>"; };
+		F6212FF62AC95E8100BA2600 /* Design+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Layout.swift"; sourceTree = "<group>"; };
+		F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAsset.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +84,6 @@
 				F6212FE22AC5F3EB00BA2600 /* Models */,
 				F6212FCC2AC4C29000BA2600 /* Modules */,
 				F6212FBE2AC4C07B00BA2600 /* TimerAppApp.swift */,
-				F6212FC22AC4C07E00BA2600 /* Assets.xcassets */,
 				F6212FC42AC4C07E00BA2600 /* Preview Content */,
 				F6212FEC2AC6279A00BA2600 /* GeneralTimer.swift */,
 			);
@@ -161,10 +164,21 @@
 		F6212FF02AC8AD4900BA2600 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				F6212FF12AC8AD5A00BA2600 /* Design+Font.swift */,
-				F6212FF32AC95C2E00BA2600 /* Design+Color.swift */,
+				F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */,
+				F6212FC22AC4C07E00BA2600 /* Assets.xcassets */,
+				F6212FF52AC95E5F00BA2600 /* DesignSystem */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		F6212FF52AC95E5F00BA2600 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				F6212FF12AC8AD5A00BA2600 /* Design+Font.swift */,
+				F6212FF32AC95C2E00BA2600 /* Design+Color.swift */,
+				F6212FF62AC95E8100BA2600 /* Design+Layout.swift */,
+			);
+			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -225,6 +239,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6212FF92AC9688F00BA2600 /* ColorAsset.xcassets in Resources */,
 				F6212FC62AC4C07E00BA2600 /* Preview Assets.xcassets in Resources */,
 				F6212FC32AC4C07E00BA2600 /* Assets.xcassets in Resources */,
 			);
@@ -240,6 +255,7 @@
 				F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */,
 				F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */,
 				F6212FDB2AC4CC5600BA2600 /* SettingsEventTimerView.swift in Sources */,
+				F6212FF72AC95E8100BA2600 /* Design+Layout.swift in Sources */,
 				F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */,
 				F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */,
 				F6212FE12AC5F33600BA2600 /* UserDefaultsConfigurator.swift in Sources */,
@@ -390,6 +406,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -420,6 +437,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;

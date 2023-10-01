@@ -13,9 +13,13 @@ struct SettingsEventTimerView: View {
         static let contentPadding: EdgeInsets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
         static let contentSpacing: CGFloat = 24
         static let itemSpacing: CGFloat = 8
-        static let cornerRaduis: CGFloat = 8
         static let itemPadding: EdgeInsets = EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
         static let buttonPadding: EdgeInsets = EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16)
+        static let oneSidePadding: CGFloat = 8
+        static let lowOpacity: CGFloat = 0.3
+        static let middleOpacity: CGFloat = 0.4
+        static let highOpacity: CGFloat = 0.8
+        static let heightCreateButton: CGFloat = 44
     }
     
     @EnvironmentObject var router: Router
@@ -43,6 +47,7 @@ struct SettingsEventTimerView: View {
         }
         .padding(Constants.contentPadding)
         .navigationTitle(Text(type == .create ? "Create" : "Update"))
+        .foregroundColor(DSColor.mainColor)
         .toolbar(.visible, for: .navigationBar)
         .toolbar(content: {
             ToolbarItem(placement: .topBarLeading) {
@@ -51,12 +56,12 @@ struct SettingsEventTimerView: View {
                 }, label: {
                     Text("Back")
                         .font(DSFont.body1)
+                        .foregroundStyle(DSColor.mainColor)
                 })
-                .padding(.leading, 8)
+                .padding(.leading, Constants.oneSidePadding)
             }
         })
         .navigationBarBackButtonHidden()
-        .foregroundColor(DSColor.mainColor)
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
             if type == .updateType {
@@ -76,14 +81,15 @@ struct SettingsEventTimerView: View {
                 Spacer()
             }
             TextField("", text: $titleString, prompt: Text("Type title...")
-                .foregroundColor(DSColor.mainColor.opacity(0.4)))
-                .foregroundStyle(DSColor.mainColor.opacity(0.8))
-                .font(DSFont.body1)
+                .foregroundColor(DSColor.mainColor.opacity(Constants.middleOpacity)))
+            .foregroundStyle(DSColor.mainColor.opacity(Constants.highOpacity))
+            .font(DSFont.body1)
         }
         .padding(Constants.itemPadding)
-        .background(RoundedRectangle(cornerRadius: Constants.cornerRaduis)
-            .fill(Color.white)
-            .shadow(color: DSColor.mainColor.opacity(0.3), radius: 5, x: 0, y: 5))
+        .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+//            .fill(Color.white)
+            .stroke(DSColor.mainColor, lineWidth: 1)
+            )
     }
     
     private var descriptionView: some View {
@@ -94,15 +100,17 @@ struct SettingsEventTimerView: View {
                     .font(DSFont.body2)
                 Spacer()
             }
-            TextField("", text: $descriptionString, prompt: Text("Type description...").foregroundColor(DSColor.mainColor.opacity(0.4)))
-                .foregroundStyle(DSColor.mainColor.opacity(0.8))
-                .font(DSFont.body1)
-
+            TextField("", text: $descriptionString, prompt: Text("Type description...")
+                .foregroundColor(DSColor.mainColor.opacity(Constants.middleOpacity)))
+            .foregroundStyle(DSColor.mainColor.opacity(Constants.highOpacity))
+            .font(DSFont.body1)
+            
         }
         .padding(Constants.itemPadding)
-        .background(RoundedRectangle(cornerRadius: Constants.cornerRaduis)
-            .fill(Color.white)
-            .shadow(color: DSColor.mainColor.opacity(0.3), radius: 5, x: 0, y: 5))
+        .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+                    //            .fill(Color.white)
+            .stroke(DSColor.mainColor, lineWidth: 1)
+        )
     }
     
     private var chooseDateView: some View {
@@ -119,9 +127,10 @@ struct SettingsEventTimerView: View {
                 .datePickerStyle(.graphical)
         }
         .padding(Constants.itemPadding)
-        .background(RoundedRectangle(cornerRadius: Constants.cornerRaduis)
-            .fill(Color.white)
-            .shadow(color: DSColor.mainColor.opacity(0.3), radius: 5, x: 0, y: 5))
+        .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+//            .fill(Color.white)
+            .stroke(DSColor.mainColor, lineWidth: 1)
+            )
     }
     
     private var createButtonView: some View {
@@ -131,7 +140,7 @@ struct SettingsEventTimerView: View {
                 case .create:
                     viewModel.saveEventTimer(title: titleString, description: descriptionString, targetDate: choosedDate)
                 case .updateType:
-                    #warning("Поменять обработку нила для eventTimer. Например: если еventTimer = nil и type == .update, то показывать ошибку")
+#warning("Поменять обработку нила для eventTimer. Например: если еventTimer = nil и type == .update, то показывать ошибку")
                     guard let event = eventTimer else { return}
                     var newEvent  = event
                     newEvent.title = titleString
@@ -143,12 +152,12 @@ struct SettingsEventTimerView: View {
                 router.navigateToBack()
             }, label: {
                 Text(type == .create ? "Create" : "Update")
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity, minHeight: 44)
+                    .foregroundStyle(DSColor.buttonTextColor)
+                    .frame(maxWidth: .infinity, minHeight: Constants.heightCreateButton, maxHeight: Constants.heightCreateButton)
                     .background(
-                        RoundedRectangle(cornerRadius: Constants.cornerRaduis)
-                            .fill(Color.black)
-                            .shadow(color: DSColor.mainColor.opacity(0.3), radius: 10))
+                        RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+                            .fill(DSColor.buttonColor)
+                            )
                     .font(DSFont.bodySemibold1)
             })
         }
