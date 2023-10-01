@@ -12,9 +12,9 @@ enum UserDefaultsKeys: String {
     case wasTimerCreated = "wasTimerCreated" 
 }
 
-final class UserDefaultsConfigurator {
+final class UserDefaultsManager {
     
-    static let shared = UserDefaultsConfigurator()
+    static let shared = UserDefaultsManager()
     
     private let defaults = UserDefaults.standard
     

@@ -61,11 +61,13 @@ struct MainScreenView: View {
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    viewModel.removeAllEventTimers()
-                    generalTimer.endTimer()
+                    if !$viewModel.eventTimers.wrappedValue.isEmpty {
+                        viewModel.removeAllEventTimers()
+                        generalTimer.endTimer()
+                    }
                 }, label: {
                     Image(systemName: "trash")
-                        .foregroundStyle(DSColor.mainColor)
+                        .foregroundStyle($viewModel.eventTimers.wrappedValue.isEmpty ? DSColor.disableColor : DSColor.mainColor)
 
                 })
                 .padding(.trailing, Constants.trashButtonTrailingButton)

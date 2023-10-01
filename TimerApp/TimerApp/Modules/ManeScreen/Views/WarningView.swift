@@ -13,7 +13,7 @@ struct WarningView: View {
     }
     var body: some View {
         VStack {
-            if UserDefaultsConfigurator.shared.getBoolData(forKey: .wasTimerCreated) {
+            if UserDefaultsManager.shared.getBoolData(forKey: .wasTimerCreated) {
                 Text("Hello! It seems all your timers have already expired. Would you like to create a new one?")
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
