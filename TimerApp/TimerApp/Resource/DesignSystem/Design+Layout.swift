@@ -15,4 +15,6 @@ public struct DSLayout {
     static let smallShadowRadius: CGFloat = 3
     static let largeShadowRadius: CGFloat = 5
     static let extraLargeShadowRadius: CGFloat = 10
+    
+    static let borderWidth: CGFloat = 1
 }

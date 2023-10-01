@@ -10,7 +10,6 @@ import SwiftUI
 struct MainScreenView: View {
     
     private enum Constants {
-        static let baseColor = Color.black
         static let contentPadding: EdgeInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         static let trashButtonTrailingButton: CGFloat = 8
         static let buttonWidth: CGFloat = 44
@@ -40,7 +39,7 @@ struct MainScreenView: View {
                     .frame(maxWidth: .infinity, minHeight: Constants.heightWarningView, maxHeight: Constants.heightWarningView)
                     .background(
                         RoundedRectangle(cornerRadius: DSLayout.largeCornerRadius)
-                            .fill(Color.black.opacity(Constants.lowOpacity))
+                            .fill(DSColor.modalColor)
                     )
                     .padding(.leading, Constants.oneSidePadding)
                     .padding(.trailing, Constants.oneSidePadding)
@@ -62,16 +61,19 @@ struct MainScreenView: View {
         .toolbar(content: {
             ToolbarItem(placement: .topBarTrailing) {
                 Button(action: {
-                    viewModel.removeAllEventTimers()
-                    generalTimer.endTimer()
+                    if !$viewModel.eventTimers.wrappedValue.isEmpty {
+                        viewModel.removeAllEventTimers()
+                        generalTimer.endTimer()
+                    }
                 }, label: {
                     Image(systemName: "trash")
-                        .foregroundStyle(DSColor.mainColor)
+                        .foregroundStyle($viewModel.eventTimers.wrappedValue.isEmpty ? DSColor.disableColor : DSColor.mainColor)
 
                 })
                 .padding(.trailing, Constants.trashButtonTrailingButton)
             }
         })
+        .background(DSColor.backgroundColor)
         .onAppear {
             viewModel.getEventTimers()
         }
@@ -96,10 +98,6 @@ struct MainScreenView: View {
         VStack {
             ForEach($viewModel.eventTimers, id: \.id) { event in
                 EventTimerCellView(eventTimer: event)
-                    .background(
-                        RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-                            .stroke(DSColor.mainColor, lineWidth: 1)
-                    )
                     .padding(.bottom, Constants.cellBottomPaddong)
                     .onTapGesture {
                         router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))

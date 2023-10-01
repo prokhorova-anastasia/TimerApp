@@ -63,6 +63,7 @@ struct SettingsEventTimerView: View {
         })
         .navigationBarBackButtonHidden()
         .navigationBarTitleDisplayMode(.automatic)
+        .background(DSColor.backgroundColor)
         .onAppear{
             if type == .updateType {
                 titleString = eventTimer?.title ?? ""
@@ -87,8 +88,7 @@ struct SettingsEventTimerView: View {
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-//            .fill(Color.white)
-            .stroke(DSColor.mainColor, lineWidth: 1)
+            .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
             )
     }
     
@@ -108,8 +108,7 @@ struct SettingsEventTimerView: View {
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-                    //            .fill(Color.white)
-            .stroke(DSColor.mainColor, lineWidth: 1)
+            .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
         )
     }
     
@@ -122,14 +121,13 @@ struct SettingsEventTimerView: View {
                 Spacer()
             }
             DatePicker("", selection: $choosedDate)
-                .tint(.black)
+                .tint(DSColor.mainColor)
                 .foregroundStyle(DSColor.mainColor)
                 .datePickerStyle(.graphical)
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-//            .fill(Color.white)
-            .stroke(DSColor.mainColor, lineWidth: 1)
+            .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
             )
     }
     

@@ -17,11 +17,11 @@ final class MainScreenViewModel: ObservableObject {
     }
     
     func getEventTimers() {
-        eventTimers = UserDefaultsConfigurator.shared.getObjects(EventTimer.self, forKey: .eventTimer) ?? []
+        eventTimers = UserDefaultsManager.shared.getObjects(EventTimer.self, forKey: .eventTimer) ?? []
     }
     
     func removeAllEventTimers() {
-        UserDefaultsConfigurator.shared.removeObject(forKey: .eventTimer)
+        UserDefaultsManager.shared.removeObject(forKey: .eventTimer)
         eventTimers = []
     }
     
@@ -29,7 +29,7 @@ final class MainScreenViewModel: ObservableObject {
         eventTimers.removeAll { eventTimer in
             eventTimer.id == event.id
         }
-        UserDefaultsConfigurator.shared.removeObject(forKey: .eventTimer)
-        UserDefaultsConfigurator.shared.saveObjects(eventTimers, forKey: .eventTimer)
+        UserDefaultsManager.shared.removeObject(forKey: .eventTimer)
+        UserDefaultsManager.shared.saveObjects(eventTimers, forKey: .eventTimer)
     }
 }
