@@ -18,13 +18,13 @@ struct WarningView: View {
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
                     .font(DSFont.bodySemibold1)
-                    .foregroundStyle(DSColor.mainColor)
+                    .foregroundStyle(DSColor.modalColorText)
             } else {
                 Text("Hello! Create your first timer by pressing 'Add timer'!")
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
                     .font(DSFont.bodySemibold1)
-                    .foregroundColor(DSColor.mainColor)
+                    .foregroundColor(DSColor.modalColorText)
             }
         }
     }

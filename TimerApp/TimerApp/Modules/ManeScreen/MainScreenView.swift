@@ -10,7 +10,6 @@ import SwiftUI
 struct MainScreenView: View {
     
     private enum Constants {
-        static let baseColor = Color.black
         static let contentPadding: EdgeInsets = EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
         static let trashButtonTrailingButton: CGFloat = 8
         static let buttonWidth: CGFloat = 44
@@ -40,7 +39,7 @@ struct MainScreenView: View {
                     .frame(maxWidth: .infinity, minHeight: Constants.heightWarningView, maxHeight: Constants.heightWarningView)
                     .background(
                         RoundedRectangle(cornerRadius: DSLayout.largeCornerRadius)
-                            .fill(Color.black.opacity(Constants.lowOpacity))
+                            .fill(DSColor.modalColor)
                     )
                     .padding(.leading, Constants.oneSidePadding)
                     .padding(.trailing, Constants.oneSidePadding)
@@ -72,6 +71,7 @@ struct MainScreenView: View {
                 .padding(.trailing, Constants.trashButtonTrailingButton)
             }
         })
+        .background(DSColor.backgroundColor)
         .onAppear {
             viewModel.getEventTimers()
         }
