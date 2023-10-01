@@ -15,7 +15,6 @@ struct SettingsEventTimerView: View {
         static let itemSpacing: CGFloat = 8
         static let cornerRaduis: CGFloat = 8
         static let itemPadding: EdgeInsets = EdgeInsets(top: 16, leading: 16, bottom: 16, trailing: 16)
-        static let baseColor = Color.black
         static let buttonPadding: EdgeInsets = EdgeInsets(top: 4, leading: 16, bottom: 8, trailing: 16)
     }
     
@@ -51,12 +50,13 @@ struct SettingsEventTimerView: View {
                     router.navigateToBack()
                 }, label: {
                     Text("Back")
+                        .font(DSFont.body1)
                 })
                 .padding(.leading, 8)
             }
         })
         .navigationBarBackButtonHidden()
-        .foregroundColor(Constants.baseColor)
+        .foregroundColor(DSColor.mainColor)
         .navigationBarTitleDisplayMode(.automatic)
         .onAppear{
             if type == .updateType {
@@ -71,50 +71,57 @@ struct SettingsEventTimerView: View {
         VStack(spacing: Constants.itemSpacing) {
             HStack {
                 Text("Title")
-                    .foregroundStyle(Constants.baseColor)
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.body2)
                 Spacer()
             }
-            TextField("", text: $titleString, prompt: Text("Type title...").foregroundColor(Constants.baseColor.opacity(0.4)))
-                .foregroundStyle(Constants.baseColor.opacity(0.8))
+            TextField("", text: $titleString, prompt: Text("Type title...")
+                .foregroundColor(DSColor.mainColor.opacity(0.4)))
+                .foregroundStyle(DSColor.mainColor.opacity(0.8))
+                .font(DSFont.body1)
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: Constants.cornerRaduis)
             .fill(Color.white)
-            .shadow(color: Constants.baseColor.opacity(0.3), radius: 5, x: 0, y: 5))
+            .shadow(color: DSColor.mainColor.opacity(0.3), radius: 5, x: 0, y: 5))
     }
     
     private var descriptionView: some View {
         VStack(spacing: Constants.itemSpacing) {
             HStack {
                 Text("Description")
-                    .foregroundStyle(Constants.baseColor)
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.body2)
                 Spacer()
             }
-            TextField("", text: $descriptionString, prompt: Text("Type description...").foregroundColor(Constants.baseColor.opacity(0.4)))
-                .foregroundStyle(Constants.baseColor.opacity(0.8))
+            TextField("", text: $descriptionString, prompt: Text("Type description...").foregroundColor(DSColor.mainColor.opacity(0.4)))
+                .foregroundStyle(DSColor.mainColor.opacity(0.8))
+                .font(DSFont.body1)
+
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: Constants.cornerRaduis)
             .fill(Color.white)
-            .shadow(color: Constants.baseColor.opacity(0.3), radius: 5, x: 0, y: 5))
+            .shadow(color: DSColor.mainColor.opacity(0.3), radius: 5, x: 0, y: 5))
     }
     
     private var chooseDateView: some View {
         VStack(spacing: Constants.itemSpacing) {
             HStack {
                 Text("Choose date")
-                    .foregroundStyle(Constants.baseColor)
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.body2)
                 Spacer()
             }
-            DatePicker("Choose date", selection: $choosedDate)
+            DatePicker("", selection: $choosedDate)
                 .tint(.black)
-                .foregroundStyle(Constants.baseColor)
+                .foregroundStyle(DSColor.mainColor)
                 .datePickerStyle(.graphical)
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: Constants.cornerRaduis)
             .fill(Color.white)
-            .shadow(color: Constants.baseColor.opacity(0.3), radius: 5, x: 0, y: 5))
+            .shadow(color: DSColor.mainColor.opacity(0.3), radius: 5, x: 0, y: 5))
     }
     
     private var createButtonView: some View {
@@ -141,9 +148,8 @@ struct SettingsEventTimerView: View {
                     .background(
                         RoundedRectangle(cornerRadius: Constants.cornerRaduis)
                             .fill(Color.black)
-                            .shadow(color: Constants.baseColor.opacity(0.3), radius: 10))
-                            
-                
+                            .shadow(color: DSColor.mainColor.opacity(0.3), radius: 10))
+                    .font(DSFont.bodySemibold1)
             })
         }
         .padding(Constants.contentPadding)

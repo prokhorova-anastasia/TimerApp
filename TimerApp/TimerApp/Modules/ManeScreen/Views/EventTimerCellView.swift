@@ -10,7 +10,6 @@ import SwiftUI
 struct EventTimerCellView: View {
     
     private enum Constants {
-        static let baseColor = Color.black
     }
     
     @State var viewModel = MainScreenViewModel()
@@ -24,12 +23,12 @@ struct EventTimerCellView: View {
     var body: some View {
         VStack(spacing: 8) {
             Text(eventTimer.title)
-                .foregroundStyle(Constants.baseColor)
-                .font(Font.system(size: 17, weight: .bold))
+                .foregroundStyle(DSColor.mainColor)
+                .font(DSFont.bodySemibold1)
             if let description = eventTimer.description {
                 Text(description)
-                    .foregroundStyle(Constants.baseColor).opacity(0.5)
-                    .font(Font.system(size: 13))
+                    .foregroundStyle(DSColor.mainColor).opacity(0.5)
+                    .font(DSFont.body3)
             }
             timerView
         }
@@ -46,40 +45,40 @@ struct EventTimerCellView: View {
         HStack {
             VStack(spacing: 4) {
                 Text("Days")
-                    .foregroundStyle(Constants.baseColor)
-                    .font(Font.system(size: 15))
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.body2)
                 Text("\(days)")
-                    .foregroundStyle(Constants.baseColor)
-                    .font(Font.system(size: 17, weight: .semibold))
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.bodySemibold1)
             }
             Spacer()
             VStack(spacing: 4) {
                 Text("Hours")
-                    .foregroundStyle(Constants.baseColor)
-                    .font(Font.system(size: 15))
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.body2)
                 Text("\(hours)")
-                    .foregroundStyle(Constants.baseColor)
-                    .font(Font.system(size: 17, weight: .semibold))
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.bodySemibold1)
             }
             Spacer()
 
             VStack(spacing: 4) {
                 Text("Minutes")
-                    .foregroundStyle(Constants.baseColor)
-                    .font(Font.system(size: 15))
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.body2)
                 Text("\(minutes)")
-                    .foregroundStyle(Constants.baseColor)
-                    .font(Font.system(size: 17, weight: .semibold))
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.bodySemibold1)
             }
             Spacer()
 
             VStack(spacing: 4) {
                 Text("Seconds")
-                    .foregroundStyle(Constants.baseColor)
-                    .font(Font.system(size: 15))
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.body2)
                 Text("\(seconds)")
-                    .foregroundStyle(Constants.baseColor)
-                    .font(Font.system(size: 17, weight: .semibold))
+                    .foregroundStyle(DSColor.mainColor)
+                    .font(DSFont.bodySemibold1)
             }
         }
         .onReceive(generalTimer.timer, perform: { _ in

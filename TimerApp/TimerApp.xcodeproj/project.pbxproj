@@ -21,6 +21,8 @@
 		F6212FE92AC6092E00BA2600 /* EventTimerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FE82AC6092E00BA2600 /* EventTimerCellView.swift */; };
 		F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FEC2AC6279A00BA2600 /* GeneralTimer.swift */; };
 		F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FEE2AC8A2A600BA2600 /* WarningView.swift */; };
+		F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FF12AC8AD5A00BA2600 /* Design+Font.swift */; };
+		F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FF32AC95C2E00BA2600 /* Design+Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		F6212FE82AC6092E00BA2600 /* EventTimerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimerCellView.swift; sourceTree = "<group>"; };
 		F6212FEC2AC6279A00BA2600 /* GeneralTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTimer.swift; sourceTree = "<group>"; };
 		F6212FEE2AC8A2A600BA2600 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
+		F6212FF12AC8AD5A00BA2600 /* Design+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Font.swift"; sourceTree = "<group>"; };
+		F6212FF32AC95C2E00BA2600 /* Design+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Color.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +75,7 @@
 		F6212FBD2AC4C07B00BA2600 /* TimerApp */ = {
 			isa = PBXGroup;
 			children = (
+				F6212FF02AC8AD4900BA2600 /* Resource */,
 				F6212FE52AC5FC3D00BA2600 /* Extensions */,
 				F6212FE22AC5F3EB00BA2600 /* Models */,
 				F6212FCC2AC4C29000BA2600 /* Modules */,
@@ -153,6 +158,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F6212FF02AC8AD4900BA2600 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F6212FF12AC8AD5A00BA2600 /* Design+Font.swift */,
+				F6212FF32AC95C2E00BA2600 /* Design+Color.swift */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,8 +238,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */,
+				F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */,
 				F6212FDB2AC4CC5600BA2600 /* SettingsEventTimerView.swift in Sources */,
 				F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */,
+				F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */,
 				F6212FE12AC5F33600BA2600 /* UserDefaultsConfigurator.swift in Sources */,
 				F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */,
 				F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */,

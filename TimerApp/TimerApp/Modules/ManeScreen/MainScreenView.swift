@@ -63,7 +63,7 @@ struct MainScreenView: View {
                     generalTimer.endTimer()
                 }, label: {
                     Image(systemName: "trash")
-                        .foregroundStyle(Constants.baseColor)
+                        .foregroundStyle(DSColor.mainColor)
 
                 })
                 .padding(.trailing, Constants.trashButtonTrailingButton)
@@ -79,8 +79,8 @@ struct MainScreenView: View {
             router.navigate(to: .settings(.create, eventTimer: nil))
         }, label: {
             Text("Add timer")
-                .font(Font.system(size: 17, weight: .semibold))
-                .tint(Constants.baseColor)
+                .font(DSFont.bodySemibold1)
+                .foregroundStyle(DSColor.mainColor)
                 .frame(maxWidth: .infinity, minHeight: Constants.buttonWidth)
                 .background(
                     RoundedRectangle(cornerRadius: 8)
@@ -109,6 +109,7 @@ struct MainScreenView: View {
                             HStack {
                                 Image(systemName: "pencil")
                                 Text("Edit")
+                                    .font(DSFont.body2)
                             }
                         })
                         Button(role: .destructive) {
@@ -116,9 +117,8 @@ struct MainScreenView: View {
                         } label: {
                             HStack {
                                 Image(systemName: "trash")
-                                    .foregroundStyle(Color.red)
                                 Text("Delete")
-                                    .foregroundStyle(Color.red)
+                                    .font(DSFont.body2)
                             }
                         }
                     })
