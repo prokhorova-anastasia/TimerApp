@@ -254,12 +254,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hello! It seems all your timers have already expired. Would you like to create a new one?"
+            "value" : "All timers have expired. Create a new one?"
           }
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "\"Привет! Кажется, все твои таймеры уже истекли. Хотешь создать новый?\""
           }
         }

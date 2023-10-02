@@ -44,11 +44,9 @@ struct MainScreenView: View {
                     .padding(.leading, Constants.oneSidePadding)
                     .padding(.trailing, Constants.oneSidePadding)
             } else {
-                ScrollView {
-                    eventTimersListView
-                }
-                .padding(Constants.contentPadding)
-                .scrollIndicators(.hidden)
+                eventTimersListView
+                    .padding(Constants.contentPadding)
+                    .scrollIndicators(.hidden)
             }
             Spacer()
             createNewTimerEventButton
@@ -95,7 +93,7 @@ struct MainScreenView: View {
     }
     
     private var eventTimersListView: some View {
-        VStack {
+        ScrollView {
             ForEach($viewModel.eventTimers, id: \.id) { event in
                 EventTimerCellView(eventTimer: event)
                     .padding(.bottom, Constants.cellBottomPaddong)
