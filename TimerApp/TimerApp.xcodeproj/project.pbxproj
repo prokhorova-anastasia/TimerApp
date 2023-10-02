@@ -27,6 +27,8 @@
 		F6212FF92AC9688F00BA2600 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */; };
 		F6212FFD2AC9B70200BA2600 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */; };
 		F6212FFF2AC9C69B00BA2600 /* ExpiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */; };
+		F6890F7A2ACB5C5C008AF97A /* ChangeEventTimerColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */; };
+		F6890F7C2ACB5E00008AF97A /* ChangeColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +53,8 @@
 		F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAsset.xcassets; sourceTree = "<group>"; };
 		F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiredView.swift; sourceTree = "<group>"; };
+		F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEventTimerColorView.swift; sourceTree = "<group>"; };
+		F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,8 @@
 		F6212FD92AC4CC4500BA2600 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */,
+				F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6890F7A2ACB5C5C008AF97A /* ChangeEventTimerColorView.swift in Sources */,
 				F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */,
 				F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */,
 				F6212FDB2AC4CC5600BA2600 /* SettingsEventTimerView.swift in Sources */,
@@ -269,6 +276,7 @@
 				F6212FE12AC5F33600BA2600 /* UserDefaultsManager.swift in Sources */,
 				F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */,
 				F6212FFF2AC9C69B00BA2600 /* ExpiredView.swift in Sources */,
+				F6890F7C2ACB5E00008AF97A /* ChangeColorViewModel.swift in Sources */,
 				F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */,
 				F6212FE92AC6092E00BA2600 /* EventTimerCellView.swift in Sources */,
 				F6212FDF2AC5E7D000BA2600 /* Router.swift in Sources */,

@@ -9,7 +9,13 @@ import SwiftUI
 
 struct ExpiredView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            Spacer()
+            Text("timerExpired")
+                .font(DSFont.body1)
+                .foregroundStyle(DSColor.mainColor)
+            Spacer()
+        }
     }
 }
 

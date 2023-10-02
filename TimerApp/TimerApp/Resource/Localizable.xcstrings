@@ -41,6 +41,23 @@
         }
       }
     },
+    "chooseColor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose color"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбери цвет"
+          }
+        }
+      }
+    },
     "chooseDate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -159,9 +176,6 @@
           }
         }
       }
-    },
-    "Hello, World!" : {
-
     },
     "hours" : {
       "extractionState" : "manual",

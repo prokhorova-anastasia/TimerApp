@@ -39,6 +39,7 @@ struct SettingsEventTimerView: View {
                     titleView
                     descriptionView
                     chooseDateView
+                    changeColorView
                 }
                 .padding(Constants.itemPadding)
             }
@@ -132,6 +133,14 @@ struct SettingsEventTimerView: View {
             )
     }
     
+    private var changeColorView: some View {
+        ChangeEventTimerColorView()
+            .padding(Constants.itemPadding)
+            .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+                .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
+                )
+    }
+    
     private var createButtonView: some View {
         HStack {
             Button(action: {
@@ -166,7 +175,7 @@ struct SettingsEventTimerView: View {
         .padding(Constants.contentPadding)
     }
     
-    func checkValidation() -> Bool {
+    private func checkValidation() -> Bool {
         isValidate = !titleString.isEmpty
         return isValidate
     }

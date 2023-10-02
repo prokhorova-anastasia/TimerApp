@@ -37,7 +37,7 @@ struct EventTimerCellView: View {
                         .font(DSFont.body3)
                 }
                 if eventTimer.timerWasExpired() {
-                    expiredView
+                    ExpiredView()
                 } else {
                     timerView
                 }
@@ -103,16 +103,6 @@ struct EventTimerCellView: View {
             minutes = eventTimer.getLeftMinutes()
             seconds = eventTimer.getLeftSeconds()
         })
-    }
-    
-    private var expiredView: some View {
-        HStack {
-            Spacer()
-            Text("timerExpired")
-                .font(DSFont.body1)
-                .foregroundStyle(DSColor.mainColor)
-            Spacer()
-        }
     }
 }
 
