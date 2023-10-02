@@ -26,6 +26,7 @@
 		F6212FF72AC95E8100BA2600 /* Design+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FF62AC95E8100BA2600 /* Design+Layout.swift */; };
 		F6212FF92AC9688F00BA2600 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */; };
 		F6212FFD2AC9B70200BA2600 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */; };
+		F6212FFF2AC9C69B00BA2600 /* ExpiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		F6212FF62AC95E8100BA2600 /* Design+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Design+Layout.swift"; sourceTree = "<group>"; };
 		F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAsset.xcassets; sourceTree = "<group>"; };
 		F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiredView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			children = (
 				F6212FE82AC6092E00BA2600 /* EventTimerCellView.swift */,
 				F6212FEE2AC8A2A600BA2600 /* WarningView.swift */,
+				F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */,
 				F6212FE12AC5F33600BA2600 /* UserDefaultsManager.swift in Sources */,
 				F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */,
+				F6212FFF2AC9C69B00BA2600 /* ExpiredView.swift in Sources */,
 				F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */,
 				F6212FE92AC6092E00BA2600 /* EventTimerCellView.swift in Sources */,
 				F6212FDF2AC5E7D000BA2600 /* Router.swift in Sources */,

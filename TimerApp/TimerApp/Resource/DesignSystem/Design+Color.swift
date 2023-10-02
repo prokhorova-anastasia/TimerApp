@@ -16,4 +16,5 @@ public struct DSColor {
     static let modalColorText = Color("modalColorText", bundle: nil)
     static let backgroundColor = Color("backgroundColor", bundle: nil)
     static let disableColor = Color("disableColor", bundle: nil)
+    static let errorColor = Color("errorColor", bundle: nil)
 }

@@ -160,6 +160,9 @@
         }
       }
     },
+    "Hello, World!" : {
+
+    },
     "hours" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -207,6 +210,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Секунд"
+          }
+        }
+      }
+    },
+    "timerExpired" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time's up!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Время вышло!"
           }
         }
       }

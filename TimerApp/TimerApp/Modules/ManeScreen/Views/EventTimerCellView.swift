@@ -31,12 +31,16 @@ struct EventTimerCellView: View {
                 Text(eventTimer.title)
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.bodySemibold1)
-                if let description = eventTimer.description {
+                if let description = eventTimer.description, !description.isEmpty {
                     Text(description)
                         .foregroundStyle(DSColor.mainColor).opacity(Constants.middleOpacity)
                         .font(DSFont.body3)
                 }
-                timerView
+                if eventTimer.timerWasExpired() {
+                    expiredView
+                } else {
+                    timerView
+                }
             }
             .onAppear {
                 days = eventTimer.getLeftDays()
@@ -99,6 +103,16 @@ struct EventTimerCellView: View {
             minutes = eventTimer.getLeftMinutes()
             seconds = eventTimer.getLeftSeconds()
         })
+    }
+    
+    private var expiredView: some View {
+        HStack {
+            Spacer()
+            Text("timerExpired")
+                .font(DSFont.body1)
+                .foregroundStyle(DSColor.mainColor)
+            Spacer()
+        }
     }
 }
 

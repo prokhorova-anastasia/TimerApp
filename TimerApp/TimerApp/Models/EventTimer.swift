@@ -59,4 +59,9 @@ extension EventTimer {
         let allHours = components.second ?? 0
         return allHours % 60
     }
+    
+    func timerWasExpired() -> Bool {
+        guard let date = targetDate else { return true}
+        return date < Date()
+    }
 }

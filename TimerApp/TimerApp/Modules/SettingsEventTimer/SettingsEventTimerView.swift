@@ -30,6 +30,7 @@ struct SettingsEventTimerView: View {
     @State var descriptionString: String = ""
     @State var choosedDate: Date = Date()
     @State var viewModel = SettingsEventTimerViewModel()
+    @State var isValidate: Bool = true
     
     var body: some View {
         VStack {
@@ -88,7 +89,7 @@ struct SettingsEventTimerView: View {
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-            .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
+            .stroke(!isValidate ? DSColor.errorColor : DSColor.mainColor, lineWidth: DSLayout.borderWidth)
             )
     }
     
@@ -134,20 +135,23 @@ struct SettingsEventTimerView: View {
     private var createButtonView: some View {
         HStack {
             Button(action: {
-                switch type {
-                case .create:
-                    viewModel.saveEventTimer(title: titleString, description: descriptionString, targetDate: choosedDate)
-                case .updateType:
+                if checkValidation() {
+                    switch type {
+                    case .create:
+                        viewModel.saveEventTimer(title: titleString, description: descriptionString, targetDate: choosedDate)
+                    case .updateType:
 #warning("Поменять обработку нила для eventTimer. Например: если еventTimer = nil и type == .update, то показывать ошибку")
-                    guard let event = eventTimer else { return}
-                    var newEvent  = event
-                    newEvent.title = titleString
-                    newEvent.description = descriptionString
-                    newEvent.targetDate = choosedDate
-                    viewModel.updateEventTimer(eventTimer: newEvent)
+                        guard let event = eventTimer else { return}
+                        var newEvent  = event
+                        newEvent.title = titleString
+                        newEvent.description = descriptionString
+                        newEvent.targetDate = choosedDate
+                        viewModel.updateEventTimer(eventTimer: newEvent)
+                        router.navigateToBack()
+                    }
+                    router.navigateToBack()
                 }
                 
-                router.navigateToBack()
             }, label: {
                 Text(type == .create ? "create" : "update")
                     .foregroundStyle(DSColor.buttonTextColor)
@@ -160,6 +164,11 @@ struct SettingsEventTimerView: View {
             })
         }
         .padding(Constants.contentPadding)
+    }
+    
+    func checkValidation() -> Bool {
+        isValidate = !titleString.isEmpty
+        return isValidate
     }
 }
 
