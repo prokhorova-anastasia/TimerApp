@@ -29,6 +29,7 @@
 		F6212FFF2AC9C69B00BA2600 /* ExpiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */; };
 		F6890F7A2ACB5C5C008AF97A /* ChangeEventTimerColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */; };
 		F6890F7C2ACB5E00008AF97A /* ChangeColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */; };
+		F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiredView.swift; sourceTree = "<group>"; };
 		F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEventTimerColorView.swift; sourceTree = "<group>"; };
 		F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorViewModel.swift; sourceTree = "<group>"; };
+		F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				F6212FE62AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift */,
+				F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				F6212FF72AC95E8100BA2600 /* Design+Layout.swift in Sources */,
 				F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */,
 				F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */,
+				F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */,
 				F6212FE12AC5F33600BA2600 /* UserDefaultsManager.swift in Sources */,
 				F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */,
 				F6212FFF2AC9C69B00BA2600 /* ExpiredView.swift in Sources */,

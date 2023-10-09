@@ -31,6 +31,7 @@ struct SettingsEventTimerView: View {
     @State var choosedDate: Date = Date()
     @State var viewModel = SettingsEventTimerViewModel()
     @State var isValidate: Bool = true
+    @State var selectedColor: Color = DSColor.backgroundColor
     
     var body: some View {
         VStack {
@@ -115,18 +116,16 @@ struct SettingsEventTimerView: View {
     }
     
     private var chooseDateView: some View {
-        VStack(spacing: Constants.itemSpacing) {
             HStack {
                 Text("chooseDate")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Spacer()
+                DatePicker("", selection: $choosedDate)
+                    .tint(DSColor.mainColor)
+                    .foregroundStyle(DSColor.mainColor)
+                    .datePickerStyle(.compact)
             }
-            DatePicker("", selection: $choosedDate)
-                .tint(DSColor.mainColor)
-                .foregroundStyle(DSColor.mainColor)
-                .datePickerStyle(.graphical)
-        }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
             .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
@@ -134,7 +133,7 @@ struct SettingsEventTimerView: View {
     }
     
     private var changeColorView: some View {
-        ChangeEventTimerColorView()
+        ChangeEventTimerColorView(selectedColor: $selectedColor)
             .padding(Constants.itemPadding)
             .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
                 .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
@@ -147,7 +146,8 @@ struct SettingsEventTimerView: View {
                 if checkValidation() {
                     switch type {
                     case .create:
-                        viewModel.saveEventTimer(title: titleString, description: descriptionString, targetDate: choosedDate)
+                        viewModel.saveEventTimer(title: titleString, description: descriptionString, targetDate: choosedDate,
+                                                 colorBackground: selectedColor.hexString)
                     case .updateType:
 #warning("Поменять обработку нила для eventTimer. Например: если еventTimer = nil и type == .update, то показывать ошибку")
                         guard let event = eventTimer else { return}
@@ -182,5 +182,5 @@ struct SettingsEventTimerView: View {
 }
 
 #Preview {
-    SettingsEventTimerView(type: .create)
+    SettingsEventTimerView(type: .create, selectedColor: DSColor.backgroundColor)
 }

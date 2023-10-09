@@ -6,21 +6,24 @@
 //
 
 import Foundation
+import SwiftUI
 
 struct EventTimer: Codable, Identifiable {
     var id: String = UUID().uuidString
     var title: String
     var description: String?
     var targetDate: Date?
+    var colorBackground: String?
     
     private enum CodingKeys: String, CodingKey {
-        case id, title, description, targetDate
+        case id, title, description, targetDate, colorBackground
     }
     
-    init(title: String, description: String?, targetDate: Date?) {
+    init(title: String, description: String?, targetDate: Date?, colorBackground: String?) {
         self.title = title
         self.description = description
         self.targetDate = targetDate
+        self.colorBackground = colorBackground
     }
     
     init(from decoder: Decoder) throws {
@@ -29,6 +32,7 @@ struct EventTimer: Codable, Identifiable {
         self.title = try container.decode(String.self, forKey: CodingKeys.title)
         self.description = try container.decodeIfPresent(String.self, forKey: CodingKeys.description)
         self.targetDate = try container.decodeDate(forKey: CodingKeys.targetDate)
+        self.colorBackground = try container.decodeIfPresent(String.self, forKey: CodingKeys.colorBackground)
     }
 }
 

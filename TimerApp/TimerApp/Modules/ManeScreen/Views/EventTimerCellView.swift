@@ -54,6 +54,10 @@ struct EventTimerCellView: View {
             RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
                 .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
         )
+        .background(
+            RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+                .fill(Color(eventTimer.colorBackground ?? "D9D9D9"))
+            )
         .padding(Constants.externalContentPadding)
     }
     

@@ -20,7 +20,7 @@ struct MainScreenView: View {
         static let oneSidePadding: CGFloat = 16
         static let createButtonPadding: EdgeInsets = EdgeInsets(top: 8, leading: 16, bottom: 16, trailing: 16)
     }
-    
+        
     @EnvironmentObject var router: Router
     
     @ObservedObject var viewModel = MainScreenViewModel()

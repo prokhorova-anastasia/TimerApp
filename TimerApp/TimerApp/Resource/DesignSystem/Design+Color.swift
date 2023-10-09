@@ -30,4 +30,10 @@ public struct DSColor {
         static let verdigris = Color("verdigris", bundle: nil)
         static let violetBlue = Color("violetBlue", bundle: nil)
     }
+    
+    public enum TechColor {
+        static let lightMainColor = Color("D9D9D9")
+        static let darkMainColor = Color("222222")
+        static let lightTextColorTimer = Color("F2F2F2")
+    }
 }
