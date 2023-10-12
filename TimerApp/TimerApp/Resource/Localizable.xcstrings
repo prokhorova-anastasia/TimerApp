@@ -75,6 +75,23 @@
         }
       }
     },
+    "chooseImage" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Image"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбери картинку"
+          }
+        }
+      }
+    },
     "create" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -273,8 +290,8 @@
         },
         "ru" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "\"Привет! Кажется, все твои таймеры уже истекли. Хотешь создать новый?\""
+            "state" : "translated",
+            "value" : "Привет! Кажется, все твои таймеры уже истекли. Хотешь создать новый?"
           }
         }
       }

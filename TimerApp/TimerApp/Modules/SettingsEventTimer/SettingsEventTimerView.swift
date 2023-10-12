@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct SettingsEventTimerView: View {
     
@@ -41,6 +42,7 @@ struct SettingsEventTimerView: View {
                     descriptionView
                     chooseDateView
                     changeColorView
+                    choosingImageView
                 }
                 .padding(Constants.itemPadding)
             }
@@ -173,6 +175,14 @@ struct SettingsEventTimerView: View {
             })
         }
         .padding(Constants.contentPadding)
+    }
+    
+    private var choosingImageView: some View {
+        CreateEventChoosingImageView()
+            .padding(Constants.itemPadding)
+            .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+                .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
+                )
     }
     
     private func checkValidation() -> Bool {
