@@ -17,13 +17,13 @@ struct WarningView: View {
                 Text("timersExpiredModalMessage")
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
-                    .font(DSFont.bodySemibold1)
+                    .font(DSFont.title1)
                     .foregroundStyle(DSColor.modalColorText)
             } else {
                 Text("firstOpeningModalMessage")
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
-                    .font(DSFont.bodySemibold1)
+                    .font(DSFont.title1)
                     .foregroundColor(DSColor.modalColorText)
             }
         }

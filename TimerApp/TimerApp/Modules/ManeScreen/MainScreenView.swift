@@ -82,7 +82,7 @@ struct MainScreenView: View {
             router.navigate(to: .settings(.create, eventTimer: nil))
         }, label: {
             Text("addTimer")
-                .font(DSFont.bodySemibold1)
+                .font(DSFont.title1)
                 .foregroundStyle(DSColor.buttonTextColor)
                 .frame(maxWidth: .infinity, minHeight: Constants.buttonWidth)
                 .background(

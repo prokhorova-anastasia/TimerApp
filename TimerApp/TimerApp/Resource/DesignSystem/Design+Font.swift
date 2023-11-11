@@ -9,16 +9,12 @@ import Foundation
 import SwiftUI
 
 public struct DSFont {
-    static let largeTitle = Font.system(size: 34, weight: .semibold, design: .rounded)
-    static let title = Font.system(size: 21, weight: .semibold, design: .rounded)
-    static let body1 = Font.system(size: 17, design: .rounded)
-    static let body2 = Font.system(size: 15, design: .rounded)
-    static let body3 = Font.system(size: 13, design: .rounded)
-    static let bodySemibold1 = Font.system(size: 17, weight: .semibold, design: .rounded)
-    static let bodySemibold2 = Font.system(size: 15, weight: .semibold, design: .rounded)
-    static let bodySemibold3 = Font.system(size: 13, weight: .semibold, design: .rounded)
-    static let bodySemibold4 = Font.system(size: 11, weight: .semibold, design: .rounded)
-    static let caption = Font.system(size: 12, design: .rounded)
-    static let caption2 = Font.system(size: 11, design: .rounded)
-    static let caption3 = Font.system(size: 10, design: .rounded)
+    static let headline1 = Font.custom("NunitoSans-Black", size: 24)
+    static let headline2 = Font.custom("NunitoSans-Black", size: 20)
+    static let title1 = Font.custom("NunitoSans-ExtraBold", size: 16)
+    static let title2 = Font.custom("NunitoSans-ExtraBold", size: 14)
+    static let body1 = Font.custom("NunitoSans-Regular", size: 14)
+    static let body2 = Font.custom("NunitoSans-Regular", size: 12)
+    static let body3 = Font.custom("NunitoSans-Bold", size: 12)
+    static let caption = Font.custom("NunitoSans-Bold", size: 10)
 }

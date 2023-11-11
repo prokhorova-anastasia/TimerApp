@@ -171,7 +171,7 @@ struct SettingsEventTimerView: View {
                         RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
                             .fill(DSColor.buttonColor)
                             )
-                    .font(DSFont.bodySemibold1)
+                    .font(DSFont.title1)
             })
         }
         .padding(Constants.contentPadding)

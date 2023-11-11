@@ -30,7 +30,7 @@ struct EventTimerCellView: View {
             VStack(spacing: Constants.contentSpacing) {
                 Text(eventTimer.title)
                     .foregroundStyle(DSColor.mainColor)
-                    .font(DSFont.bodySemibold1)
+                    .font(DSFont.title1)
                 if let description = eventTimer.description, !description.isEmpty {
                     Text(description)
                         .foregroundStyle(DSColor.mainColor).opacity(Constants.middleOpacity)
@@ -69,7 +69,7 @@ struct EventTimerCellView: View {
                     .font(DSFont.body2)
                 Text("\(days)")
                     .foregroundStyle(DSColor.mainColor)
-                    .font(DSFont.bodySemibold1)
+                    .font(DSFont.title1)
             }
             Spacer()
             VStack(spacing: Constants.timesSpacing) {
@@ -78,7 +78,7 @@ struct EventTimerCellView: View {
                     .font(DSFont.body2)
                 Text("\(hours)")
                     .foregroundStyle(DSColor.mainColor)
-                    .font(DSFont.bodySemibold1)
+                    .font(DSFont.title1)
             }
             Spacer()
 
@@ -88,7 +88,7 @@ struct EventTimerCellView: View {
                     .font(DSFont.body2)
                 Text("\(minutes)")
                     .foregroundStyle(DSColor.mainColor)
-                    .font(DSFont.bodySemibold1)
+                    .font(DSFont.title1)
             }
             Spacer()
 
@@ -98,7 +98,7 @@ struct EventTimerCellView: View {
                     .font(DSFont.body2)
                 Text("\(seconds)")
                     .foregroundStyle(DSColor.mainColor)
-                    .font(DSFont.bodySemibold1)
+                    .font(DSFont.title1)
             }
         }
         .onReceive(generalTimer.timer, perform: { _ in

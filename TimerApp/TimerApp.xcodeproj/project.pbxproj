@@ -27,6 +27,10 @@
 		F6212FF92AC9688F00BA2600 /* ColorAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */; };
 		F6212FFD2AC9B70200BA2600 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */; };
 		F6212FFF2AC9C69B00BA2600 /* ExpiredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */; };
+		F626F7872B0005C3005743F3 /* NunitoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F626F7832B0005C3005743F3 /* NunitoSans-Bold.ttf */; };
+		F626F7882B0005C3005743F3 /* NunitoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F626F7842B0005C3005743F3 /* NunitoSans-Regular.ttf */; };
+		F626F7892B0005C3005743F3 /* NunitoSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F626F7852B0005C3005743F3 /* NunitoSans-ExtraBold.ttf */; };
+		F626F78A2B0005C3005743F3 /* NunitoSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F626F7862B0005C3005743F3 /* NunitoSans-Black.ttf */; };
 		F6890F7A2ACB5C5C008AF97A /* ChangeEventTimerColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */; };
 		F6890F7C2ACB5E00008AF97A /* ChangeColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */; };
 		F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */; };
@@ -56,6 +60,11 @@
 		F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ColorAsset.xcassets; sourceTree = "<group>"; };
 		F6212FFC2AC9B70200BA2600 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpiredView.swift; sourceTree = "<group>"; };
+		F626F77B2B000310005743F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F626F7832B0005C3005743F3 /* NunitoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Bold.ttf"; sourceTree = "<group>"; };
+		F626F7842B0005C3005743F3 /* NunitoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Regular.ttf"; sourceTree = "<group>"; };
+		F626F7852B0005C3005743F3 /* NunitoSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		F626F7862B0005C3005743F3 /* NunitoSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Black.ttf"; sourceTree = "<group>"; };
 		F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEventTimerColorView.swift; sourceTree = "<group>"; };
 		F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorViewModel.swift; sourceTree = "<group>"; };
 		F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
@@ -93,6 +102,7 @@
 		F6212FBD2AC4C07B00BA2600 /* TimerApp */ = {
 			isa = PBXGroup;
 			children = (
+				F626F77B2B000310005743F3 /* Info.plist */,
 				F69F7FA92AD87FA1004F586E /* Managers */,
 				F6212FF02AC8AD4900BA2600 /* Resource */,
 				F6212FE52AC5FC3D00BA2600 /* Extensions */,
@@ -183,6 +193,7 @@
 		F6212FF02AC8AD4900BA2600 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F626F77C2B000321005743F3 /* Fonts */,
 				F6212FF82AC9688F00BA2600 /* ColorAsset.xcassets */,
 				F6212FC22AC4C07E00BA2600 /* Assets.xcassets */,
 				F6212FF52AC95E5F00BA2600 /* DesignSystem */,
@@ -199,6 +210,17 @@
 				F6212FF62AC95E8100BA2600 /* Design+Layout.swift */,
 			);
 			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		F626F77C2B000321005743F3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F626F7862B0005C3005743F3 /* NunitoSans-Black.ttf */,
+				F626F7832B0005C3005743F3 /* NunitoSans-Bold.ttf */,
+				F626F7852B0005C3005743F3 /* NunitoSans-ExtraBold.ttf */,
+				F626F7842B0005C3005743F3 /* NunitoSans-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		F69F7FA92AD87FA1004F586E /* Managers */ = {
@@ -270,8 +292,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6212FF92AC9688F00BA2600 /* ColorAsset.xcassets in Resources */,
+				F626F7882B0005C3005743F3 /* NunitoSans-Regular.ttf in Resources */,
 				F6212FC62AC4C07E00BA2600 /* Preview Assets.xcassets in Resources */,
 				F6212FFD2AC9B70200BA2600 /* Localizable.xcstrings in Resources */,
+				F626F78A2B0005C3005743F3 /* NunitoSans-Black.ttf in Resources */,
+				F626F7872B0005C3005743F3 /* NunitoSans-Bold.ttf in Resources */,
+				F626F7892B0005C3005743F3 /* NunitoSans-ExtraBold.ttf in Resources */,
 				F6212FC32AC4C07E00BA2600 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,6 +467,7 @@
 				DEVELOPMENT_TEAM = J2Y63DX36C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerApp/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -477,6 +504,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = J2Y63DX36C;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerApp/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
