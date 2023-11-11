@@ -23,6 +23,8 @@ public struct DSColor {
     static let errorPrimary = Color("FF616D")
     static let successPrimary = Color("5BE896")
     
+    static let white = Color("FFFFFF")
+    
     #warning("Old colors, remove after update to new desing")
     static let mainColor = Color("mainColor", bundle: nil)
     static let buttonColor = Color("buttonColor", bundle: nil)
