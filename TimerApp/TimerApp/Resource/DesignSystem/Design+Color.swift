@@ -9,6 +9,21 @@ import Foundation
 import SwiftUI
 
 public struct DSColor {
+    
+    static let violetPrimary = Color("8972F7")
+    static let violetSecondary = Color("B8AAFA")
+    static let violetTertiary = Color("2C235A")
+    static let violetTransparentPrimary = Color("2C235A").opacity(0.6)
+    static let violetTransparentSecond = Color("8972F7").opacity(0.1)
+    static let darkPrimary = Color("10091C")
+    static let darkSecondary = Color("17102E")
+    static let darkTertiary = Color("606686")
+    static let darkTransparentPrimary = Color("17102E").opacity(0.6)
+    static let darkTransparentSecond = Color("ADA5C8").opacity(0.3)
+    static let errorPrimary = Color("FF616D")
+    static let successPrimary = Color("5BE896")
+    
+    #warning("Old colors, remove after update to new desing")
     static let mainColor = Color("mainColor", bundle: nil)
     static let buttonColor = Color("buttonColor", bundle: nil)
     static let buttonTextColor = Color("buttonTextColor", bundle: nil)
