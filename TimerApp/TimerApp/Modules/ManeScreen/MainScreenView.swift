@@ -9,6 +9,14 @@ import SwiftUI
 
 struct MainScreenView: View {
     
+    private enum Constants {
+        static let timerViewPadding: CGFloat = 16
+        static let contentPadding: CGFloat = 0
+        static let statusBarHeight: CGFloat = 44; #warning("поправить для высчитывания высоты статус бара")
+        static let navigationContentPadding: CGFloat = 16
+        static let timersListBottomPadding: CGFloat = 16
+    }
+    
     @EnvironmentObject var router: Router
     @ObservedObject var viewModel = MainScreenViewModel()
     @ObservedObject var generalTimer = GeneralTimer()
@@ -16,13 +24,14 @@ struct MainScreenView: View {
     var body: some View {
         VStack {
             navigationBar
-            Spacer()
+            timersListView
+                .padding(Constants.timerViewPadding)
         }
-        .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+        .padding(Constants.contentPadding)
         .ignoresSafeArea()
         .background(DSColor.darkPrimary)
         .onAppear {
-            viewModel.getEventTimers()
+            viewModel.getTestTimers()
         }
     }
     
@@ -30,15 +39,23 @@ struct MainScreenView: View {
         VStack {
             HStack {
             }
-            .frame(height: 44)
+            .frame(height: Constants.statusBarHeight)
             HStack {
                 Text("timers")
                     .font(DSFont.headline1)
                     .foregroundStyle(DSColor.white)
                 Spacer()
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 16)
+            .padding(Constants.navigationContentPadding)
+        }
+    }
+    
+    var timersListView: some View {
+        ScrollView {
+            ForEach($viewModel.eventTimers, id: \.id) { event in
+                TimerCellView(eventTimer: event)
+                    .padding(.bottom, Constants.timersListBottomPadding)
+            }
         }
     }
 }

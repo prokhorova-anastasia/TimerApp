@@ -65,7 +65,17 @@ extension EventTimer {
     }
     
     func timerWasExpired() -> Bool {
-        guard let date = targetDate else { return true}
+        guard let date = targetDate else { return true }
         return date < Date()
+    }
+    
+    func targetDateToString() -> String {
+        if let date = targetDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateStyle = .long
+            return dateFormatter.string(from: date)
+        } else {
+            return "error"
+        }
     }
 }

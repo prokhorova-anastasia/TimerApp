@@ -95,7 +95,7 @@ struct MainScreenViewLegacy: View {
     private var eventTimersListView: some View {
         ScrollView {
             ForEach($viewModel.eventTimers, id: \.id) { event in
-                EventTimerCellView(eventTimer: event)
+                EventTimerCellViewLegacy(eventTimer: event)
                     .padding(.bottom, Constants.cellBottomPaddong)
                     .onTapGesture {
                         router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))

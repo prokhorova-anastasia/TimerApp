@@ -1,5 +1,5 @@
 //
-//  EventTimerCellView.swift
+//  EventTimerCellViewLegacy.swift
 //  TimerApp
 //
 //  Created by Anastasia Prokhorova on 28.09.2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EventTimerCellView: View {
+struct EventTimerCellViewLegacy: View {
     
     private enum Constants {
         static let timesSpacing: CGFloat = 4
