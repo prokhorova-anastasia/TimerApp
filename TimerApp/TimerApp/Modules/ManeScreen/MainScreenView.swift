@@ -79,7 +79,7 @@ struct MainScreenView: View {
                 }, editAction: {
                     router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))
                 }, deleteAction: {
-                    print("delete")
+                    viewModel.removeEventTimer(event: event.wrappedValue)
                 })
                     .padding(.bottom, Constants.timersListBottomPadding)
             }
