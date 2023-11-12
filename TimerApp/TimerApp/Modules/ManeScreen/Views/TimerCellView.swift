@@ -26,30 +26,61 @@ struct TimerCellView: View {
     @State var hours = 0
     @State var minutes = 0
     @State var seconds = 0
+    @State var isContestMenuHidden = true
     
     var body: some View {
-        VStack(spacing: Constants.mainSpacing) {
-            titleAndDescriptionView
-            timerView
-            targetDateView
-        }
-        .padding(Constants.mainPadding)
-        .background(
-            RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-                .fill(Color(eventTimer.colorBackground ?? "D9D9D9"))
+        HStack(spacing: 0) {
+            VStack(alignment: isContestMenuHidden ? .center : .leading , spacing: Constants.mainSpacing) {
+                titleAndDescriptionView
+                timerView
+                targetDateView
+            }
+            .padding(Constants.mainPadding)
+            .background(
+                Color(eventTimer.colorBackground ?? "D9D9D9")
             )
+            
+            if !isContestMenuHidden {
+                ContestMenuView {
+                    print("share")
+                } editAction: {
+                    print("edit")
+                } deleteAction: {
+                    print("delete")
+                }
+                .transition(.move(edge: isContestMenuHidden ? .leading : .trailing))
+            }
+                
+        }
+        .clipShape(RoundedRectangle(cornerRadius: Constants.timerContentCornerRadius))
         .onAppear {
             days = eventTimer.getLeftDays()
             hours = eventTimer.getLeftHours()
             minutes = eventTimer.getLeftMinutes()
             seconds = eventTimer.getLeftSeconds()
         }
+        .gesture(DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
+            .onEnded { value in
+                if value.translation.width < 0 {
+                    withAnimation(.linear) {
+                        isContestMenuHidden = false
+                    }
+                }
+                if value.translation.width > 0 {
+                    withAnimation(.linear) {
+                        isContestMenuHidden = true
+                    }
+                }
+            }
+        )
     }
     
     var titleAndDescriptionView: some View {
         VStack {
             HStack(alignment: .center) {
-                Spacer()
+                if isContestMenuHidden {
+                    Spacer()
+                }
                 Text(eventTimer.title)
                     .font(DSFont.headline2)
                     .foregroundStyle(DSColor.darkPrimary)
@@ -57,10 +88,14 @@ struct TimerCellView: View {
             }
             
             if let description = eventTimer.description {
-                HStack(alignment: .center) {
+                HStack {
+                    if isContestMenuHidden {
+                        Spacer()
+                    }
                     Text(description)
                         .font(DSFont.body2)
                         .foregroundStyle(DSColor.darkPrimary)
+                    Spacer()
                 }
             }
         }
@@ -69,62 +104,71 @@ struct TimerCellView: View {
     var timerView: some View {
         VStack(spacing: Constants.timerViewSpacing) {
             HStack {
+                if isContestMenuHidden {
+                    Spacer()
+                }
                 Text("left")
                     .font(DSFont.body3)
                     .foregroundStyle(DSColor.darkPrimary)
+                Spacer()
             }
-            
-            HStack(spacing: Constants.timerContentSpacing) {
-                if days > 0 {
-                    VStack {
-                        Text("\(days)")
-                            .font(DSFont.headline2)
-                            .foregroundStyle(DSColor.darkPrimary)
-                        Text("days")
-                            .font(DSFont.body2)
-                            .foregroundStyle(DSColor.darkPrimary)
+            HStack {
+                if isContestMenuHidden {
+                    Spacer()
+                }
+                HStack(spacing: Constants.timerContentSpacing) {
+                    if days > 0 {
+                        VStack {
+                            Text("\(days)")
+                                .font(DSFont.headline2)
+                                .foregroundStyle(DSColor.darkPrimary)
+                            Text("days")
+                                .font(DSFont.body2)
+                                .foregroundStyle(DSColor.darkPrimary)
+                        }
+                    }
+                    
+                    if hours > 0 || days > 0 {
+                        VStack {
+                            Text("\(hours)")
+                                .font(DSFont.headline2)
+                                .foregroundStyle(DSColor.darkPrimary)
+                            Text("hours")
+                                .font(DSFont.body2)
+                                .foregroundStyle(DSColor.darkPrimary)
+                        }
+                    }
+                    
+                    if minutes > 0 || hours > 0{
+                        VStack {
+                            Text("\(minutes)")
+                                .font(DSFont.headline2)
+                                .foregroundStyle(DSColor.darkPrimary)
+                            Text("minutes")
+                                .font(DSFont.body2)
+                                .foregroundStyle(DSColor.darkPrimary)
+                        }
+                    }
+                    
+                    if seconds > 0 || minutes > 0 {
+                        VStack {
+                            Text("\(seconds)")
+                                .font(DSFont.headline2)
+                                .foregroundStyle(DSColor.darkPrimary)
+                            Text("seconds")
+                                .font(DSFont.body2)
+                                .foregroundStyle(DSColor.darkPrimary)
+                        }
                     }
                 }
-                
-                if hours > 0 || days > 0 {
-                    VStack {
-                        Text("\(hours)")
-                            .font(DSFont.headline2)
-                            .foregroundStyle(DSColor.darkPrimary)
-                        Text("hours")
-                            .font(DSFont.body2)
-                            .foregroundStyle(DSColor.darkPrimary)
-                    }
-                }
-                
-                if minutes > 0 || hours > 0{
-                    VStack {
-                        Text("\(minutes)")
-                            .font(DSFont.headline2)
-                            .foregroundStyle(DSColor.darkPrimary)
-                        Text("minutes")
-                            .font(DSFont.body2)
-                            .foregroundStyle(DSColor.darkPrimary)
-                    }
-                }
-                
-                if seconds > 0 || minutes > 0 {
-                    VStack {
-                        Text("\(seconds)")
-                            .font(DSFont.headline2)
-                            .foregroundStyle(DSColor.darkPrimary)
-                        Text("seconds")
-                            .font(DSFont.body2)
-                            .foregroundStyle(DSColor.darkPrimary)
-                    }
-                }
+                .padding(.horizontal, Constants.timerContentHorizontalPadding)
+                .padding(.vertical, Constants.timerContentVetricalPadding)
+                .background(
+                    RoundedRectangle(cornerRadius: Constants.timerContentCornerRadius)
+                        .fill(DSColor.darkTransparentPrimary)
+                )
+                Spacer()
             }
-            .padding(.horizontal, Constants.timerContentHorizontalPadding)
-            .padding(.vertical, Constants.timerContentVetricalPadding)
-            .background(
-                RoundedRectangle(cornerRadius: Constants.timerContentCornerRadius)
-                .fill(DSColor.darkTransparentPrimary)
-            )
         }
         .onReceive(generalTimer.timer, perform: { _ in
             #warning("изменить, чтобы таймер работал во вьюмоделе")
