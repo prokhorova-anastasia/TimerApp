@@ -17,6 +17,8 @@ struct TimerCellView: View {
         static let timerContentCornerRadius: CGFloat = 24
         static let timerContentHorizontalPadding: CGFloat = 12
         static let timerContentVetricalPadding: CGFloat = 4
+        static let contentSpacing: CGFloat = 0
+        static let minimumDistance: CGFloat = 3.0
     }
     
     @State var viewModel = MainScreenViewModel()
@@ -28,8 +30,12 @@ struct TimerCellView: View {
     @State var seconds = 0
     @State var isContestMenuHidden = true
     
+    var shareAction: (() -> ())
+    var editAction: (() -> ())
+    var deleteAction: (() -> ())
+    
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(spacing: Constants.contentSpacing) {
             VStack(alignment: isContestMenuHidden ? .center : .leading , spacing: Constants.mainSpacing) {
                 titleAndDescriptionView
                 timerView
@@ -42,11 +48,11 @@ struct TimerCellView: View {
             
             if !isContestMenuHidden {
                 ContestMenuView {
-                    print("share")
+                    shareAction()
                 } editAction: {
-                    print("edit")
+                    editAction()
                 } deleteAction: {
-                    print("delete")
+                    deleteAction()
                 }
                 .transition(.move(edge: isContestMenuHidden ? .leading : .trailing))
             }
@@ -59,7 +65,7 @@ struct TimerCellView: View {
             minutes = eventTimer.getLeftMinutes()
             seconds = eventTimer.getLeftSeconds()
         }
-        .gesture(DragGesture(minimumDistance: 3.0, coordinateSpace: .local)
+        .gesture(DragGesture(minimumDistance: Constants.minimumDistance, coordinateSpace: .local)
             .onEnded { value in
                 if value.translation.width < 0 {
                     withAnimation(.linear) {

@@ -64,7 +64,7 @@ struct ContestMenuView: View {
     var deleteView: some View {
         GeometryReader { geometry in
             Button {
-                editAction()
+                deleteAction()
             } label: {
                 VStack {
                     Spacer()
