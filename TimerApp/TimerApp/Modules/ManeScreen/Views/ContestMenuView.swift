@@ -9,6 +9,12 @@ import SwiftUI
 
 struct ContestMenuView: View {
     
+    private enum Constants {
+        static let contentWidth: CGFloat = 80
+        static let imageWidth: CGFloat = 24
+        static let dividerHeight: CGFloat = 1
+    }
+    
     var shareAction: (() -> ())
     var editAction: (() -> ())
     var deleteAction: (() -> ())
@@ -21,7 +27,7 @@ struct ContestMenuView: View {
             dividerView
             deleteView
         }
-        .frame(width: 80)
+        .frame(width: Constants.contentWidth)
         .background(DSColor.darkSecondary)
     }
     
@@ -34,12 +40,11 @@ struct ContestMenuView: View {
                     Spacer()
                     Image("share_icon")
                         .resizable()
-                        .frame(width: 24, height: 24)
+                        .frame(width: Constants.imageWidth, height: Constants.imageWidth)
                     Spacer()
                 }
                 .frame(width: geometry.size.width)
             }
-            .padding(0)
         }
     }
     
@@ -52,12 +57,11 @@ struct ContestMenuView: View {
                     Spacer()
                     Image("edit_icon")
                         .resizable()
-                        .frame(width: 24, height: 24)
+                        .frame(width: Constants.imageWidth, height: Constants.imageWidth)
                     Spacer()
                 }
                 .frame(width: geometry.size.width)
             }
-            .padding(0)
         }
     }
     
@@ -70,19 +74,18 @@ struct ContestMenuView: View {
                     Spacer()
                     Image("delete_icon")
                         .resizable()
-                        .frame(width: 24, height: 24)
+                        .frame(width: Constants.imageWidth, height: Constants.imageWidth)
                     Spacer()
                 }
                 .frame(width: geometry.size.width)
             }
-            .padding(0)
         }
     }
     
     var dividerView: some View {
         Rectangle()
             .fill(DSColor.darkTertiary)
-            .frame(height: 1)
+            .frame(height: Constants.dividerHeight)
     }
 }
 
