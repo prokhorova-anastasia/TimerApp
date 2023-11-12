@@ -21,9 +21,10 @@ struct TimerCellView: View {
         static let minimumDistance: CGFloat = 3.0
     }
     
-    @State var viewModel = MainScreenViewModel()
+    @State var mainViewModel = MainScreenViewModel()
+    @ObservedObject var viewModel: TimerCellViewModel
     @Binding var eventTimer: EventTimer
-    @ObservedObject var generalTimer = GeneralTimer()
+//    @ObservedObject var generalTimer = GeneralTimer()
     @State var days = 0
     @State var hours = 0
     @State var minutes = 0
@@ -125,7 +126,7 @@ struct TimerCellView: View {
                 HStack(spacing: Constants.timerContentSpacing) {
                     if days > 0 {
                         VStack {
-                            Text("\(days)")
+                            Text("\(viewModel.days)")
                                 .font(DSFont.headline2)
                                 .foregroundStyle(DSColor.darkPrimary)
                             Text("days")
@@ -136,7 +137,7 @@ struct TimerCellView: View {
                     
                     if hours > 0 || days > 0 {
                         VStack {
-                            Text("\(hours)")
+                            Text("\(viewModel.hours)")
                                 .font(DSFont.headline2)
                                 .foregroundStyle(DSColor.darkPrimary)
                             Text("hours")
@@ -147,7 +148,7 @@ struct TimerCellView: View {
                     
                     if minutes > 0 || hours > 0{
                         VStack {
-                            Text("\(minutes)")
+                            Text("\(viewModel.minutes)")
                                 .font(DSFont.headline2)
                                 .foregroundStyle(DSColor.darkPrimary)
                             Text("minutes")
@@ -158,7 +159,7 @@ struct TimerCellView: View {
                     
                     if seconds > 0 || minutes > 0 {
                         VStack {
-                            Text("\(seconds)")
+                            Text("\(viewModel.seconds)")
                                     .font(DSFont.headline2)
                                     .foregroundStyle(DSColor.darkPrimary)
                             Text("seconds")
@@ -176,13 +177,13 @@ struct TimerCellView: View {
                 Spacer()
             }
         }
-        .onReceive(generalTimer.timer, perform: { _ in
-            #warning("изменить, чтобы таймер работал во вьюмоделе")
-            days = eventTimer.getLeftDays()
-            hours = eventTimer.getLeftHours()
-            minutes = eventTimer.getLeftMinutes()
-            seconds = eventTimer.getLeftSeconds()
-        })
+//        .onReceive(generalTimer.timer, perform: { _ in
+//            #warning("изменить, чтобы таймер работал во вьюмоделе")
+//            days = eventTimer.getLeftDays()
+//            hours = eventTimer.getLeftHours()
+//            minutes = eventTimer.getLeftMinutes()
+//            seconds = eventTimer.getLeftSeconds()
+//        })
     }
     
     var targetDateView: some View {

@@ -83,7 +83,7 @@ struct MainScreenView: View {
     var timersListView: some View {
         ScrollView {
             ForEach($viewModel.eventTimers, id: \.id) { event in
-                TimerCellView(eventTimer: event, shareAction: {
+                TimerCellView(viewModel: TimerCellViewModel(eventTimer: event.wrappedValue), eventTimer: event, shareAction: {
                     print("share")
                 }, editAction: {
                     router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))

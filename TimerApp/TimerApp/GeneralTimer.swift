@@ -9,19 +9,19 @@ import Foundation
 
 final class GeneralTimer: ObservableObject {
     
-    var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    var timer = Timer.publish(every: 1, on: .main, in: .common)
     
     init() {
         startTimer()
     }
     
     func startTimer() {
-        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+//        timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
         print("timer start")
     }
     
     func endTimer() {
-        timer.upstream.connect().cancel()
+//        timer.upstream.connect().cancel()
         print("timer stopped")
     }
     
