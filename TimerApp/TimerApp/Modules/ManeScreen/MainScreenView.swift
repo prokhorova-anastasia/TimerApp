@@ -15,6 +15,9 @@ struct MainScreenView: View {
         static let statusBarHeight: CGFloat = 44; #warning("поправить для высчитывания высоты статус бара")
         static let navigationContentPadding: CGFloat = 16
         static let timersListBottomPadding: CGFloat = 16
+        static let sortImageWidth: CGFloat = 16
+        static let sortImagePadding: CGFloat = 12
+        static let sortButtonCornerRadius: CGFloat = 25
     }
     
     @EnvironmentObject var router: Router
@@ -31,7 +34,7 @@ struct MainScreenView: View {
         .ignoresSafeArea()
         .background(DSColor.darkPrimary)
         .onAppear {
-            viewModel.getTestTimers()
+            viewModel.getEventTimers()
         }
     }
     
@@ -45,8 +48,26 @@ struct MainScreenView: View {
                     .font(DSFont.headline1)
                     .foregroundStyle(DSColor.white)
                 Spacer()
+                sortButtonView
             }
             .padding(Constants.navigationContentPadding)
+        }
+    }
+    
+    var sortButtonView: some View {
+        Button {
+            viewModel.sortTimers()
+        } label: {
+            ZStack {
+                Image("sort_icon")
+                    .frame(width: Constants.sortImageWidth, height: Constants.sortImageWidth)
+                    .tint(DSColor.white)
+                    .padding(Constants.sortImagePadding)
+            }
+            .background(
+                RoundedRectangle(cornerRadius: Constants.sortButtonCornerRadius)
+                .fill(DSColor.darkTransparentPrimary)
+            )
         }
     }
     

@@ -17,7 +17,11 @@ final class MainScreenViewModel: ObservableObject {
     }
     
     func getEventTimers() {
+        #if DEBUG
+        getTestTimers()
+        #else
         eventTimers = UserDefaultsManager.shared.getObjects(EventTimer.self, forKey: .eventTimer) ?? []
+        #endif
     }
     
     func removeAllEventTimers() {
@@ -39,5 +43,11 @@ final class MainScreenViewModel: ObservableObject {
             EventTimer(title: "Title2", description: "Description2", targetDate: Date().addingTimeInterval(1000), colorBackground: "123456")
         ]
         eventTimers = events
+    }
+    
+    func sortTimers() {
+        eventTimers = eventTimers.sorted { timer1, timer2 in
+            timer2.targetDate > timer1.targetDate
+        }
     }
 }
