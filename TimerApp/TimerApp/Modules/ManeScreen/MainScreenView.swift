@@ -15,14 +15,20 @@ struct MainScreenView: View {
         static let statusBarHeight: CGFloat = 44; #warning("поправить для высчитывания высоты статус бара")
         static let navigationContentPadding: CGFloat = 16
         static let timersListBottomPadding: CGFloat = 16
-        static let sortImageWidth: CGFloat = 16
+        static let imageWidth: CGFloat = 16
         static let sortImagePadding: CGFloat = 12
         static let sortButtonCornerRadius: CGFloat = 25
+        static let searchImagePadding: CGFloat = 16
+        static let largeCornerRadius: CGFloat = 24
+        static let borderWidth: CGFloat = 1
     }
     
     @EnvironmentObject var router: Router
     @ObservedObject var viewModel = MainScreenViewModel()
     @ObservedObject var generalTimer = GeneralTimer()
+    
+    @State var searchText: String = ""
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         VStack {
@@ -39,16 +45,19 @@ struct MainScreenView: View {
     }
     
     var navigationBar: some View {
-        VStack {
+        VStack(spacing: 0) {
             HStack {
             }
             .frame(height: Constants.statusBarHeight)
-            HStack {
-                Text("timers")
-                    .font(DSFont.headline1)
-                    .foregroundStyle(DSColor.white)
-                Spacer()
-                sortButtonView
+            VStack(spacing: 24) {
+                HStack {
+                    Text("timers")
+                        .font(DSFont.headline1)
+                        .foregroundStyle(DSColor.white)
+                    Spacer()
+                    sortButtonView
+                }
+                searchView
             }
             .padding(Constants.navigationContentPadding)
         }
@@ -60,7 +69,7 @@ struct MainScreenView: View {
         } label: {
             ZStack {
                 Image("sort_icon")
-                    .frame(width: Constants.sortImageWidth, height: Constants.sortImageWidth)
+                    .frame(width: Constants.imageWidth, height: Constants.imageWidth)
                     .tint(DSColor.white)
                     .padding(Constants.sortImagePadding)
             }
@@ -84,6 +93,39 @@ struct MainScreenView: View {
                     .padding(.bottom, Constants.timersListBottomPadding)
             }
         }
+    }
+    
+    var searchView: some View {
+        HStack {
+            Image("search_icon")
+                .frame(width: Constants.imageWidth, height: Constants.imageWidth)
+                .padding(Constants.searchImagePadding)
+            
+            TextField("", text: $searchText)
+                .focused($isFocused)
+                .onChange(of: searchText) { text in
+                    if !text.isEmpty {
+                        viewModel.filterTimersByText(text)
+                    } else {
+                        viewModel.getAllTimers()
+                    }
+                }
+                .foregroundStyle(DSColor.white)
+                .font(DSFont.body1)
+                .tint(DSColor.white)
+                .padding(.trailing, 16)
+                .padding(.vertical, 12)
+                
+                
+        }
+        .background(
+            RoundedRectangle(cornerRadius: Constants.largeCornerRadius)
+                .fill(DSColor.darkTransparentPrimary)
+        )
+        .background(
+            RoundedRectangle(cornerRadius: Constants.largeCornerRadius)
+                .stroke(isFocused ? DSColor.violetPrimary : Color.clear, lineWidth: Constants.borderWidth)
+        )
     }
 }
 

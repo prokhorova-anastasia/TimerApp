@@ -159,8 +159,8 @@ struct TimerCellView: View {
                     if seconds > 0 || minutes > 0 {
                         VStack {
                             Text("\(seconds)")
-                                .font(DSFont.headline2)
-                                .foregroundStyle(DSColor.darkPrimary)
+                                    .font(DSFont.headline2)
+                                    .foregroundStyle(DSColor.darkPrimary)
                             Text("seconds")
                                 .font(DSFont.body2)
                                 .foregroundStyle(DSColor.darkPrimary)
