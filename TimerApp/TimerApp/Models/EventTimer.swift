@@ -37,6 +37,21 @@ struct EventTimer: Codable, Identifiable {
 }
 
 extension EventTimer {
+    
+    func getLeftMonths() -> Int {
+        let currentCalendar = Calendar.current
+        let components = currentCalendar.dateComponents([.month], from: Date(), to: targetDate)
+        let months = components.month ?? 0
+        return months
+    }
+    
+    func getLeftWeeks() -> Int {
+        let currentCalendar = Calendar.current
+        let components = currentCalendar.dateComponents([.day], from: Date(), to: targetDate)
+        let allDays = components.day ?? 0
+        return allDays / 7
+    }
+    
     func getLeftDays() -> Int {
         let currentCalendar = Calendar.current
         let components = currentCalendar.dateComponents([.day], from: Date(), to: targetDate)

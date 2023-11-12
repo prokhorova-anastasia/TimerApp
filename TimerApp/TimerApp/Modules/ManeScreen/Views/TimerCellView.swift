@@ -75,40 +75,48 @@ struct TimerCellView: View {
             }
             
             HStack(spacing: Constants.timerContentSpacing) {
-                VStack {
-                    Text("\(days)")
-                        .font(DSFont.headline2)
-                        .foregroundStyle(DSColor.darkPrimary)
-                    Text("days")
-                        .font(DSFont.body2)
-                        .foregroundStyle(DSColor.darkPrimary)
+                if days > 0 {
+                    VStack {
+                        Text("\(days)")
+                            .font(DSFont.headline2)
+                            .foregroundStyle(DSColor.darkPrimary)
+                        Text("days")
+                            .font(DSFont.body2)
+                            .foregroundStyle(DSColor.darkPrimary)
+                    }
                 }
                 
-                VStack {
-                    Text("\(hours)")
-                        .font(DSFont.headline2)
-                        .foregroundStyle(DSColor.darkPrimary)
-                    Text("hours")
-                        .font(DSFont.body2)
-                        .foregroundStyle(DSColor.darkPrimary)
+                if hours > 0 || days > 0 {
+                    VStack {
+                        Text("\(hours)")
+                            .font(DSFont.headline2)
+                            .foregroundStyle(DSColor.darkPrimary)
+                        Text("hours")
+                            .font(DSFont.body2)
+                            .foregroundStyle(DSColor.darkPrimary)
+                    }
                 }
                 
-                VStack {
-                    Text("\(minutes)")
-                        .font(DSFont.headline2)
-                        .foregroundStyle(DSColor.darkPrimary)
-                    Text("minutes")
-                        .font(DSFont.body2)
-                        .foregroundStyle(DSColor.darkPrimary)
+                if minutes > 0 || hours > 0{
+                    VStack {
+                        Text("\(minutes)")
+                            .font(DSFont.headline2)
+                            .foregroundStyle(DSColor.darkPrimary)
+                        Text("minutes")
+                            .font(DSFont.body2)
+                            .foregroundStyle(DSColor.darkPrimary)
+                    }
                 }
                 
-                VStack {
-                    Text("\(seconds)")
-                        .font(DSFont.headline2)
-                        .foregroundStyle(DSColor.darkPrimary)
-                    Text("seconds")
-                        .font(DSFont.body2)
-                        .foregroundStyle(DSColor.darkPrimary)
+                if seconds > 0 || minutes > 0 {
+                    VStack {
+                        Text("\(seconds)")
+                            .font(DSFont.headline2)
+                            .foregroundStyle(DSColor.darkPrimary)
+                        Text("seconds")
+                            .font(DSFont.body2)
+                            .foregroundStyle(DSColor.darkPrimary)
+                    }
                 }
             }
             .padding(.horizontal, Constants.timerContentHorizontalPadding)
