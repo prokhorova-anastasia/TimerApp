@@ -86,7 +86,7 @@ struct SettingsEventTimerView: View {
                     .font(DSFont.body2)
                 Spacer()
             }
-            TextField("", text: $titleString, prompt: Text("typeTitle")
+            TextField("", text: $titleString, prompt: Text("type_title")
                 .foregroundColor(DSColor.mainColor.opacity(Constants.middleOpacity)))
             .foregroundStyle(DSColor.mainColor.opacity(Constants.highOpacity))
             .font(DSFont.body1)
@@ -105,7 +105,7 @@ struct SettingsEventTimerView: View {
                     .font(DSFont.body2)
                 Spacer()
             }
-            TextField("", text: $descriptionString, prompt: Text("typeDescription")
+            TextField("", text: $descriptionString, prompt: Text("type_description")
                 .foregroundColor(DSColor.mainColor.opacity(Constants.middleOpacity)))
             .foregroundStyle(DSColor.mainColor.opacity(Constants.highOpacity))
             .font(DSFont.body1)
@@ -119,7 +119,7 @@ struct SettingsEventTimerView: View {
     
     private var chooseDateView: some View {
             HStack {
-                Text("chooseDate")
+                Text("choose_date")
                     .foregroundStyle(DSColor.mainColor)
                     .font(DSFont.body2)
                 Spacer()

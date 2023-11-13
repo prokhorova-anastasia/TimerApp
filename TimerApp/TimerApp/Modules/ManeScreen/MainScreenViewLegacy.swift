@@ -81,7 +81,7 @@ struct MainScreenViewLegacy: View {
         Button(action: {
             router.navigate(to: .settings(.create, eventTimer: nil))
         }, label: {
-            Text("addTimer")
+            Text("add_timer")
                 .font(DSFont.title1)
                 .foregroundStyle(DSColor.buttonTextColor)
                 .frame(maxWidth: .infinity, minHeight: Constants.buttonWidth)

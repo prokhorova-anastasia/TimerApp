@@ -32,7 +32,7 @@ struct ChangeEventTimerColorView: View {
     
     private var titleView: some View {
         HStack {
-            Text("chooseColor")
+            Text("choose_color")
                 .foregroundStyle(DSColor.mainColor)
                 .font(DSFont.body1)
             Spacer()

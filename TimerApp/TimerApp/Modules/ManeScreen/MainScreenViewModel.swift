@@ -62,7 +62,9 @@ final class MainScreenViewModel: ObservableObject {
     private func getTestTimers() {
         let events = [
             EventTimer(title: "Title1", description: "Description1", targetDate: Date().addingTimeInterval(3600), colorBackground: nil),
-            EventTimer(title: "Title2", description: "Description2", targetDate: Date().addingTimeInterval(1000), colorBackground: "123456")
+            EventTimer(title: "Title2", description: "Description2", targetDate: Date().addingTimeInterval(1000), colorBackground: "123456"),
+            EventTimer(title: "Title3", description: "Description3", targetDate: Date().addingTimeInterval(2000), colorBackground: "1234A6"),
+            EventTimer(title: "Title4", description: "Description4", targetDate: Date().addingTimeInterval(4000), colorBackground: "12E456")
         ]
         eventTimers = events
         allTimers = events

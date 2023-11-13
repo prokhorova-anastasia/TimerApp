@@ -38,6 +38,7 @@
 		F6890F7C2ACB5E00008AF97A /* ChangeColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */; };
 		F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */; };
 		F69F7FAB2AD87FBD004F586E /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F7FAA2AD87FBD004F586E /* PhotoManager.swift */; };
+		F6E3765F2B02A30E00BE098B /* MainTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E3765E2B02A30E00BE098B /* MainTabbedView.swift */; };
 		F6F436B62AD49FD800824B14 /* CreateEventChoosingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F436B52AD49FD800824B14 /* CreateEventChoosingImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorViewModel.swift; sourceTree = "<group>"; };
 		F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		F69F7FAA2AD87FBD004F586E /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		F6E3765E2B02A30E00BE098B /* MainTabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbedView.swift; sourceTree = "<group>"; };
 		F6F436B52AD49FD800824B14 /* CreateEventChoosingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventChoosingImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -132,6 +134,7 @@
 		F6212FCC2AC4C29000BA2600 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F6E3765D2B02A2E500BE098B /* MainTabbar */,
 				F6212FD82AC4CC3300BA2600 /* SettingsEventTimer */,
 				F6212FCD2AC4C2A900BA2600 /* ManeScreen */,
 				F6212FDE2AC5E7D000BA2600 /* Router.swift */,
@@ -241,6 +244,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		F6E3765D2B02A2E500BE098B /* MainTabbar */ = {
+			isa = PBXGroup;
+			children = (
+				F6E3765E2B02A30E00BE098B /* MainTabbedView.swift */,
+			);
+			path = MainTabbar;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,6 +334,7 @@
 				F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */,
 				F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */,
 				F6212FDB2AC4CC5600BA2600 /* SettingsEventTimerView.swift in Sources */,
+				F6E3765F2B02A30E00BE098B /* MainTabbedView.swift in Sources */,
 				F6212FF72AC95E8100BA2600 /* Design+Layout.swift in Sources */,
 				F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */,
 				F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */,

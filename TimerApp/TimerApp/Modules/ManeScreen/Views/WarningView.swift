@@ -14,13 +14,13 @@ struct WarningView: View {
     var body: some View {
         VStack {
             if UserDefaultsManager.shared.getBoolData(forKey: .wasTimerCreated) {
-                Text("timersExpiredModalMessage")
+                Text("timers_expired_modal_message")
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
                     .font(DSFont.title1)
                     .foregroundStyle(DSColor.modalColorText)
             } else {
-                Text("firstOpeningModalMessage")
+                Text("first_opening_modal_message")
                     .padding(Constants.textPadding)
                     .multilineTextAlignment(.center)
                     .font(DSFont.title1)

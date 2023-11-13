@@ -2,15 +2,36 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     "%@" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%lld" : {
-
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
-    "addTimer" : {
+    "add_timer" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -44,7 +65,7 @@
         }
       }
     },
-    "chooseColor" : {
+    "choose_color" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -61,7 +82,7 @@
         }
       }
     },
-    "chooseDate" : {
+    "choose_date" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -78,7 +99,7 @@
         }
       }
     },
-    "chooseImage" : {
+    "choose_image" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -180,7 +201,7 @@
         }
       }
     },
-    "firstOpeningModalMessage" : {
+    "first_opening_modal_message" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -265,7 +286,24 @@
         }
       }
     },
-    "timerExpired" : {
+    "settings_tabbar_item" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        }
+      }
+    },
+    "timer_expired" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -299,7 +337,7 @@
         }
       }
     },
-    "timersExpiredModalMessage" : {
+    "timers_expired_modal_message" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -312,6 +350,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Привет! Кажется, все твои таймеры уже истекли. Хотешь создать новый?"
+          }
+        }
+      }
+    },
+    "timers_tabbar_item" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timers"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймеры"
           }
         }
       }
@@ -333,7 +388,7 @@
         }
       }
     },
-    "typeDescription" : {
+    "type_description" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -350,7 +405,7 @@
         }
       }
     },
-    "typeTitle" : {
+    "type_title" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {

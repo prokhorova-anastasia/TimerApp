@@ -15,7 +15,7 @@ struct TimerAppApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationStack(path: $router.path) {
-                MainScreenView()
+                MainTabbedView()
                     .navigationDestination(for: Router.Destination.self) { destination in
                         switch destination {
                         case .settings(let type, let eventTimer):

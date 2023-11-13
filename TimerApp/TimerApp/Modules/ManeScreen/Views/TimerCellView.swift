@@ -80,12 +80,12 @@ struct TimerCellView: View {
         }
         .gesture(DragGesture(minimumDistance: Constants.minimumDistance, coordinateSpace: .local)
             .onEnded { value in
-                if value.translation.width < 0 {
+                if value.translation.width < -30 {
                     withAnimation(.linear) {
                         isContextMenuHidden = false
                     }
                 }
-                if value.translation.width > 0 {
+                if value.translation.width > 30 {
                     withAnimation(.linear) {
                         isContextMenuHidden = true
                     }

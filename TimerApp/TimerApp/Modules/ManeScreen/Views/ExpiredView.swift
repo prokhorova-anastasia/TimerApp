@@ -11,7 +11,7 @@ struct ExpiredView: View {
     var body: some View {
         HStack {
             Spacer()
-            Text("timerExpired")
+            Text("timer_expired")
                 .font(DSFont.body1)
                 .foregroundStyle(DSColor.mainColor)
             Spacer()

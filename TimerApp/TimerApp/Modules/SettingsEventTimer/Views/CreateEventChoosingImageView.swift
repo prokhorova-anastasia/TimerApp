@@ -38,7 +38,7 @@ struct CreateEventChoosingImageView: View {
     
     var titleView: some View {
         HStack {
-            Text("chooseImage")
+            Text("choose_image")
                 .foregroundStyle(DSColor.mainColor)
                 .font(DSFont.body2)
             Spacer()
