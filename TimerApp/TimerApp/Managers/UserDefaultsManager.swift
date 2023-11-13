@@ -9,7 +9,8 @@ import Foundation
 
 enum UserDefaultsKeys: String {
     case eventTimer = "EventTimers"
-    case wasTimerCreated = "wasTimerCreated" 
+    case wasTimerCreated = "wasTimerCreated"
+    case wasFirstTimerCreated = "wasFirstTimerCreated"
 }
 
 final class UserDefaultsManager {

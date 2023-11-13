@@ -33,7 +33,7 @@
 		F626F78A2B0005C3005743F3 /* NunitoSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F626F7862B0005C3005743F3 /* NunitoSans-Black.ttf */; };
 		F626F78C2B0013BB005743F3 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F626F78B2B0013BB005743F3 /* MainScreenView.swift */; };
 		F626F78E2B003A70005743F3 /* TimerCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F626F78D2B003A70005743F3 /* TimerCellView.swift */; };
-		F626F7902B01056D005743F3 /* ContestMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F626F78F2B01056D005743F3 /* ContestMenuView.swift */; };
+		F626F7902B01056D005743F3 /* ContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F626F78F2B01056D005743F3 /* ContextMenuView.swift */; };
 		F6890F7A2ACB5C5C008AF97A /* ChangeEventTimerColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */; };
 		F6890F7C2ACB5E00008AF97A /* ChangeColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */; };
 		F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */; };
@@ -70,7 +70,7 @@
 		F626F7862B0005C3005743F3 /* NunitoSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-Black.ttf"; sourceTree = "<group>"; };
 		F626F78B2B0013BB005743F3 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		F626F78D2B003A70005743F3 /* TimerCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerCellView.swift; sourceTree = "<group>"; };
-		F626F78F2B01056D005743F3 /* ContestMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContestMenuView.swift; sourceTree = "<group>"; };
+		F626F78F2B01056D005743F3 /* ContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuView.swift; sourceTree = "<group>"; };
 		F6890F792ACB5C5C008AF97A /* ChangeEventTimerColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEventTimerColorView.swift; sourceTree = "<group>"; };
 		F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorViewModel.swift; sourceTree = "<group>"; };
 		F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 				F6212FEE2AC8A2A600BA2600 /* WarningView.swift */,
 				F6212FFE2AC9C69B00BA2600 /* ExpiredView.swift */,
 				F626F78D2B003A70005743F3 /* TimerCellView.swift */,
-				F626F78F2B01056D005743F3 /* ContestMenuView.swift */,
+				F626F78F2B01056D005743F3 /* ContextMenuView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -318,7 +318,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F626F7902B01056D005743F3 /* ContestMenuView.swift in Sources */,
+				F626F7902B01056D005743F3 /* ContextMenuView.swift in Sources */,
 				F6890F7A2ACB5C5C008AF97A /* ChangeEventTimerColorView.swift in Sources */,
 				F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */,
 				F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */,

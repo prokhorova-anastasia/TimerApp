@@ -1,5 +1,5 @@
 //
-//  ContestMenuView.swift
+//  ContextMenuView.swift
 //  TimerApp
 //
 //  Created by Anastasia Prokhorova on 12.11.2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContestMenuView: View {
+struct ContextMenuView: View {
     
     private enum Constants {
         static let contentWidth: CGFloat = 80
@@ -90,7 +90,7 @@ struct ContestMenuView: View {
 }
 
 #Preview {
-    ContestMenuView {
+    ContextMenuView {
         print("share")
     } editAction: {
         print("edit")

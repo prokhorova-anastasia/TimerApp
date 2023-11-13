@@ -28,7 +28,7 @@ struct TimerCellView: View {
     @State var hours = 0
     @State var minutes = 0
     @State var seconds = 0
-    @State var isContestMenuHidden = true
+    @State var isContextMenuHidden = true
     
     var shareAction: (() -> ())
     var editAction: (() -> ())
@@ -36,7 +36,7 @@ struct TimerCellView: View {
     
     var body: some View {
         HStack(spacing: Constants.contentSpacing) {
-            VStack(alignment: isContestMenuHidden ? .center : .leading , spacing: Constants.mainSpacing) {
+            VStack(alignment: isContextMenuHidden ? .center : .leading , spacing: Constants.mainSpacing) {
                 titleAndDescriptionView
                 timerView
                 targetDateView
@@ -46,20 +46,33 @@ struct TimerCellView: View {
                 Color(eventTimer.colorBackground ?? "D9D9D9")
             )
             
-            if !isContestMenuHidden {
-                ContestMenuView {
+            if !isContextMenuHidden {
+                ContextMenuView {
                     shareAction()
                 } editAction: {
                     editAction()
                 } deleteAction: {
                     deleteAction()
                 }
-                .transition(.move(edge: isContestMenuHidden ? .leading : .trailing))
+                .transition(.move(edge: isContextMenuHidden ? .leading : .trailing))
             }
                 
         }
         .clipShape(RoundedRectangle(cornerRadius: Constants.timerContentCornerRadius))
         .onAppear {
+            
+            if UserDefaultsManager.shared.getBoolData(forKey: .wasFirstTimerCreated) {
+                withAnimation(.linear(duration: 0.5)) {
+                    isContextMenuHidden = false
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    withAnimation(.linear(duration: 0.5)) {
+                        isContextMenuHidden = true
+                    }
+                }
+            }
+            
             days = eventTimer.getLeftDays()
             hours = eventTimer.getLeftHours()
             minutes = eventTimer.getLeftMinutes()
@@ -69,12 +82,12 @@ struct TimerCellView: View {
             .onEnded { value in
                 if value.translation.width < 0 {
                     withAnimation(.linear) {
-                        isContestMenuHidden = false
+                        isContextMenuHidden = false
                     }
                 }
                 if value.translation.width > 0 {
                     withAnimation(.linear) {
-                        isContestMenuHidden = true
+                        isContextMenuHidden = true
                     }
                 }
             }
@@ -84,7 +97,7 @@ struct TimerCellView: View {
     var titleAndDescriptionView: some View {
         VStack {
             HStack(alignment: .center) {
-                if isContestMenuHidden {
+                if isContextMenuHidden {
                     Spacer()
                 }
                 Text(eventTimer.title)
@@ -95,7 +108,7 @@ struct TimerCellView: View {
             
             if let description = eventTimer.description {
                 HStack {
-                    if isContestMenuHidden {
+                    if isContextMenuHidden {
                         Spacer()
                     }
                     Text(description)
@@ -110,7 +123,7 @@ struct TimerCellView: View {
     var timerView: some View {
         VStack(spacing: Constants.timerViewSpacing) {
             HStack {
-                if isContestMenuHidden {
+                if isContextMenuHidden {
                     Spacer()
                 }
                 Text("left")
@@ -119,7 +132,7 @@ struct TimerCellView: View {
                 Spacer()
             }
             HStack {
-                if isContestMenuHidden {
+                if isContextMenuHidden {
                     Spacer()
                 }
                 HStack(spacing: Constants.timerContentSpacing) {
