@@ -269,6 +269,23 @@
         }
       }
     },
+    "new_timer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New timer"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новый таймер"
+          }
+        }
+      }
+    },
     "seconds" : {
       "extractionState" : "manual",
       "localizations" : {

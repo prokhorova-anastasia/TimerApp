@@ -12,7 +12,7 @@
 		F6212FC62AC4C07E00BA2600 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6212FC52AC4C07E00BA2600 /* Preview Assets.xcassets */; };
 		F6212FCF2AC4C3A600BA2600 /* MainScreenViewLegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FCE2AC4C3A600BA2600 /* MainScreenViewLegacy.swift */; };
 		F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FD22AC4C3CE00BA2600 /* MainScreenViewModel.swift */; };
-		F6212FDB2AC4CC5600BA2600 /* SettingsEventTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FDA2AC4CC5600BA2600 /* SettingsEventTimerView.swift */; };
+		F6212FDB2AC4CC5600BA2600 /* SettingsEventTimerViewLegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FDA2AC4CC5600BA2600 /* SettingsEventTimerViewLegacy.swift */; };
 		F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FDC2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift */; };
 		F6212FDF2AC5E7D000BA2600 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FDE2AC5E7D000BA2600 /* Router.swift */; };
 		F6212FE12AC5F33600BA2600 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FE02AC5F33600BA2600 /* UserDefaultsManager.swift */; };
@@ -39,6 +39,7 @@
 		F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */; };
 		F69F7FAB2AD87FBD004F586E /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F7FAA2AD87FBD004F586E /* PhotoManager.swift */; };
 		F6E3765F2B02A30E00BE098B /* MainTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E3765E2B02A30E00BE098B /* MainTabbedView.swift */; };
+		F6E376612B02D43800BE098B /* ConfigureTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E376602B02D43800BE098B /* ConfigureTimerView.swift */; };
 		F6F436B62AD49FD800824B14 /* CreateEventChoosingImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6F436B52AD49FD800824B14 /* CreateEventChoosingImageView.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,7 +50,7 @@
 		F6212FC52AC4C07E00BA2600 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F6212FCE2AC4C3A600BA2600 /* MainScreenViewLegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewLegacy.swift; sourceTree = "<group>"; };
 		F6212FD22AC4C3CE00BA2600 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
-		F6212FDA2AC4CC5600BA2600 /* SettingsEventTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEventTimerView.swift; sourceTree = "<group>"; };
+		F6212FDA2AC4CC5600BA2600 /* SettingsEventTimerViewLegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEventTimerViewLegacy.swift; sourceTree = "<group>"; };
 		F6212FDC2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEventTimerViewModel.swift; sourceTree = "<group>"; };
 		F6212FDE2AC5E7D000BA2600 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F6212FE02AC5F33600BA2600 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -77,6 +78,7 @@
 		F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
 		F69F7FAA2AD87FBD004F586E /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
 		F6E3765E2B02A30E00BE098B /* MainTabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbedView.swift; sourceTree = "<group>"; };
+		F6E376602B02D43800BE098B /* ConfigureTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureTimerView.swift; sourceTree = "<group>"; };
 		F6F436B52AD49FD800824B14 /* CreateEventChoosingImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventChoosingImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +112,7 @@
 		F6212FBD2AC4C07B00BA2600 /* TimerApp */ = {
 			isa = PBXGroup;
 			children = (
+				F6E376622B02D49C00BE098B /* UIComponents */,
 				F626F77B2B000310005743F3 /* Info.plist */,
 				F69F7FA92AD87FA1004F586E /* Managers */,
 				F6212FF02AC8AD4900BA2600 /* Resource */,
@@ -135,7 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				F6E3765D2B02A2E500BE098B /* MainTabbar */,
-				F6212FD82AC4CC3300BA2600 /* SettingsEventTimer */,
+				F6212FD82AC4CC3300BA2600 /* ConfigureTimer */,
 				F6212FCD2AC4C2A900BA2600 /* ManeScreen */,
 				F6212FDE2AC5E7D000BA2600 /* Router.swift */,
 			);
@@ -165,14 +168,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		F6212FD82AC4CC3300BA2600 /* SettingsEventTimer */ = {
+		F6212FD82AC4CC3300BA2600 /* ConfigureTimer */ = {
 			isa = PBXGroup;
 			children = (
 				F6212FD92AC4CC4500BA2600 /* Views */,
-				F6212FDA2AC4CC5600BA2600 /* SettingsEventTimerView.swift */,
+				F6E376602B02D43800BE098B /* ConfigureTimerView.swift */,
+				F6212FDA2AC4CC5600BA2600 /* SettingsEventTimerViewLegacy.swift */,
 				F6212FDC2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift */,
 			);
-			path = SettingsEventTimer;
+			path = ConfigureTimer;
 			sourceTree = "<group>";
 		};
 		F6212FD92AC4CC4500BA2600 /* Views */ = {
@@ -250,6 +254,13 @@
 				F6E3765E2B02A30E00BE098B /* MainTabbedView.swift */,
 			);
 			path = MainTabbar;
+			sourceTree = "<group>";
+		};
+		F6E376622B02D49C00BE098B /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UIComponents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,11 +344,12 @@
 				F6890F7A2ACB5C5C008AF97A /* ChangeEventTimerColorView.swift in Sources */,
 				F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */,
 				F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */,
-				F6212FDB2AC4CC5600BA2600 /* SettingsEventTimerView.swift in Sources */,
+				F6212FDB2AC4CC5600BA2600 /* SettingsEventTimerViewLegacy.swift in Sources */,
 				F6E3765F2B02A30E00BE098B /* MainTabbedView.swift in Sources */,
 				F6212FF72AC95E8100BA2600 /* Design+Layout.swift in Sources */,
 				F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */,
 				F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */,
+				F6E376612B02D43800BE098B /* ConfigureTimerView.swift in Sources */,
 				F626F78C2B0013BB005743F3 /* MainScreenView.swift in Sources */,
 				F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */,
 				F6212FE12AC5F33600BA2600 /* UserDefaultsManager.swift in Sources */,

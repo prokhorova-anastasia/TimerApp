@@ -1,5 +1,5 @@
 //
-//  SettingsEventTimerView.swift
+//  SettingsEventTimerViewLegacy.swift
 //  TimerApp
 //
 //  Created by Anastasia Prokhorova on 28.09.2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct SettingsEventTimerView: View {
+struct SettingsEventTimerViewLegacy: View {
     
     private enum Constants {
         static let contentPadding: EdgeInsets = EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
@@ -192,5 +192,5 @@ struct SettingsEventTimerView: View {
 }
 
 #Preview {
-    SettingsEventTimerView(type: .create, selectedColor: DSColor.backgroundColor)
+    SettingsEventTimerViewLegacy(type: .create, selectedColor: DSColor.backgroundColor)
 }
