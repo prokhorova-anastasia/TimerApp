@@ -16,6 +16,7 @@ struct ConfigureTimerView: View {
     }
     
     @EnvironmentObject var router: Router
+    @State var type: SettingsType
     @State var eventTimer: EventTimer?
     @State var titleString: String = ""
     @State var descriptionString: String = ""
@@ -30,6 +31,7 @@ struct ConfigureTimerView: View {
         .padding(Constants.contentPadding)
         .ignoresSafeArea()
         .background(DSColor.darkPrimary)
+        .toolbar(.hidden, for: .navigationBar)
     }
     
     private var navigationBarView: some View {
@@ -66,5 +68,5 @@ struct ConfigureTimerView: View {
 }
 
 #Preview {
-    ConfigureTimerView()
+    ConfigureTimerView(type: .create)
 }
