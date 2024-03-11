@@ -19,6 +19,7 @@ struct TextFieldView: View {
     @State var placeholder: String
     @State var text: String = ""
     @Binding var isError: Bool
+    @State var lineLimit: Int = 1
     
     var body: some View {
         ZStack {
@@ -37,14 +38,15 @@ struct TextFieldView: View {
     
     private var textField: some View {
 
-        TextField("", text: $text, prompt: Text(placeholder).foregroundColor(DSColor.darkTertiary))
+        TextField("", text: $text, prompt: Text(placeholder).foregroundColor(DSColor.darkTertiary), axis: .vertical)
             .focused($isFocused)
             .font(DSFont.body1)
             .foregroundStyle(DSColor.white)
+            .lineLimit(lineLimit)
         
     }
 }
 
 #Preview {
-    TextFieldView(placeholder: "Placeholder", isError: .constant(false))
+    TextFieldView(placeholder: "Placeholder", isError: .constant(false), lineLimit: 5)
 }
