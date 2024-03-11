@@ -11,7 +11,6 @@ struct TextFieldView: View {
     
     private enum Constants {
         static let padding: CGFloat = 16
-        static let height: CGFloat = 48
     }
     
     @FocusState private var isFocused: Bool
@@ -22,13 +21,13 @@ struct TextFieldView: View {
     @State var lineLimit: Int = 1
     
     var body: some View {
-        ZStack {
+        VStack {
             textField
                 .padding(Constants.padding)
         }
         .background(
             RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
-                .stroke(isFocused ? DSColor.violetPrimary : (isError ? DSColor.errorColor : Color.clear), lineWidth: DSLayout.borderWidth)
+                .stroke(isFocused ? DSColor.violetPrimary : (isError ? DSColor.errorPrimary : Color.clear), lineWidth: DSLayout.borderWidth)
         )
         .background(
             RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
@@ -37,13 +36,11 @@ struct TextFieldView: View {
     }
     
     private var textField: some View {
-
         TextField("", text: $text, prompt: Text(placeholder).foregroundColor(DSColor.darkTertiary), axis: .vertical)
             .focused($isFocused)
             .font(DSFont.body1)
             .foregroundStyle(DSColor.white)
             .lineLimit(lineLimit)
-        
     }
 }
 

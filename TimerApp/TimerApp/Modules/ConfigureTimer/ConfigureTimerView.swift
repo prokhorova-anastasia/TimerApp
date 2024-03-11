@@ -13,6 +13,7 @@ struct ConfigureTimerView: View {
         static let contentPadding: CGFloat = 0
         static let statusBarHeight: CGFloat = 44; #warning("поправить для высчитывания высоты статус бара")
         static let navigationContentPadding: CGFloat = 16
+        static let spacingComponent: CGFloat = 8
     }
     
     @EnvironmentObject var router: Router
@@ -22,10 +23,14 @@ struct ConfigureTimerView: View {
     @State var descriptionString: String = ""
     
     var body: some View {
-        ScrollView {
-            VStack {
-                navigationBarView
-                Spacer()
+        VStack {
+            navigationBarView
+            ScrollView {
+                VStack(spacing: 16) {
+                    titleView
+                    descriptionView
+                }
+                .padding(16)
             }
         }
         .padding(Constants.contentPadding)
@@ -64,6 +69,31 @@ struct ConfigureTimerView: View {
             Circle()
                 .fill(DSColor.darkTransparentPrimary)
         )
+    }
+    
+    private var titleView: some View {
+        VStack(spacing: Constants.spacingComponent) {
+            HStack {
+                Text("title")
+                    .font(DSFont.title1)
+                    .foregroundStyle(DSColor.white)
+                Spacer()
+            }
+            TextFieldView(placeholder: String(localized: "title"), isError: .constant(false))
+        }
+    }
+    
+    private var descriptionView: some View {
+        VStack(spacing: Constants.spacingComponent) {
+            HStack {
+                Text("description")
+                    .font(DSFont.title1)
+                    .foregroundStyle(DSColor.white)
+                Spacer()
+            }
+            TextFieldView(placeholder:
+                            String(localized: "description"), isError: .constant(false), lineLimit: 3)
+        }
     }
 }
 
