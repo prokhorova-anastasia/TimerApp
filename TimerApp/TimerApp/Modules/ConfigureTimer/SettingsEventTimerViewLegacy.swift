@@ -118,20 +118,20 @@ struct SettingsEventTimerViewLegacy: View {
     }
     
     private var chooseDateView: some View {
-            HStack {
-                Text("choose_date")
-                    .foregroundStyle(DSColor.mainColor)
-                    .font(DSFont.body2)
-                Spacer()
-                DatePicker("", selection: $choosedDate)
-                    .tint(DSColor.mainColor)
-                    .foregroundStyle(DSColor.mainColor)
-                    .datePickerStyle(.compact)
-            }
+        HStack {
+            Text("choose_date")
+                .foregroundStyle(DSColor.mainColor)
+                .font(DSFont.body2)
+            Spacer()
+            DatePicker("", selection: $choosedDate)
+                .tint(DSColor.mainColor)
+                .foregroundStyle(DSColor.mainColor)
+                .datePickerStyle(.compact)
+        }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
             .stroke(DSColor.mainColor, lineWidth: DSLayout.borderWidth)
-            )
+        )
     }
     
     private var changeColorView: some View {
