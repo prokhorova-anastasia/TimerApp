@@ -9,8 +9,10 @@ import Foundation
 import SwiftUI
 
 public struct DSLayout {
+    static let smallCornerRadius: CGFloat = 4
     static let cornerRadius: CGFloat = 8
     static let largeCornerRadius: CGFloat = 16
+    static let extraLargeCornerRadius: CGFloat = 24
     
     static let smallShadowRadius: CGFloat = 3
     static let largeShadowRadius: CGFloat = 5

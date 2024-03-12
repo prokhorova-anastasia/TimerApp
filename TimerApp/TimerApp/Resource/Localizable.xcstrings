@@ -166,6 +166,23 @@
         }
       }
     },
+    "days_abbreviation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "days"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "дн"
+          }
+        }
+      }
+    },
     "delete" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -240,7 +257,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Быстро перейти  с сегодняшнего дня"
+            "value" : "Fast forward from today"
           }
         },
         "ru" : {
@@ -264,6 +281,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Часов"
+          }
+        }
+      }
+    },
+    "jump_to_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перейти к дате"
           }
         }
       }
@@ -302,6 +330,40 @@
         }
       }
     },
+    "months" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Months"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Месяцы"
+          }
+        }
+      }
+    },
+    "months_abbreviation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "mon"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "мес"
+          }
+        }
+      }
+    },
     "new_timer" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -315,6 +377,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Новый таймер"
+          }
+        }
+      }
+    },
+    "quickly_jump_to_date_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indicate how much to add to today's date"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Укажите сколько прибавить к сегодняшней дате"
+          }
+        }
+      }
+    },
+    "quickly_jump_to_date_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quickly jump to date"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Быстрый переход к дате"
           }
         }
       }
@@ -502,6 +598,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Обновить"
+          }
+        }
+      }
+    },
+    "weeks" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weeks"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Недели"
+          }
+        }
+      }
+    },
+    "weeks_abbreviation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "weeks"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "нед"
           }
         }
       }

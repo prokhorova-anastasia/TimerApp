@@ -9,16 +9,16 @@ import SwiftUI
 
 struct ChoosingDateView: View {
     
+    private enum Constants {
+        static let paddingDatePicker: CGFloat = 8
+        static let spacingContent: CGFloat = 16
+    }
+    
     @Binding var selectedDate: Date
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack {
             datePickerView
-            HStack {
-                setTodayButton
-                Spacer()
-                chooseDate
-            }
         }
     }
     
@@ -28,43 +28,12 @@ struct ChoosingDateView: View {
             .tint(Color.green)
             .colorInvert()
             .colorMultiply(DSColor.violetSecondary)
-            .padding(16)
+            .padding(.horizontal, Constants.paddingDatePicker)
+            .padding(.bottom, Constants.paddingDatePicker)
             .background(
-                RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+                RoundedRectangle(cornerRadius: DSLayout.largeCornerRadius)
                     .fill(DSColor.darkSecondary)
             )
-    }
-    
-    private var setTodayButton: some View {
-        Button(action: {
-            selectedDate = Date()
-        }, label: {
-            Text("set_today")
-                .font(DSFont.body3)
-                .foregroundStyle(DSColor.darkTertiary)
-                .padding(.horizontal, 16)
-                .frame(height: 40)
-                .background(
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(DSColor.darkTertiary, lineWidth: DSLayout.borderWidth)
-                )
-        })
-    }
-    
-    private var chooseDate: some View {
-        Button(action: {
-            selectedDate = Date()
-        }, label: {
-            Text("go_to_date")
-                .font(DSFont.body3)
-                .foregroundStyle(DSColor.darkTertiary)
-                .padding(.horizontal, 16)
-                .frame(height: 40)
-                .background(
-                    RoundedRectangle(cornerRadius: 24)
-                        .stroke(DSColor.darkTertiary, lineWidth: DSLayout.borderWidth)
-                )
-        })
     }
 }
 

@@ -14,6 +14,8 @@ struct ConfigureTimerView: View {
         static let statusBarHeight: CGFloat = 44; #warning("поправить для высчитывания высоты статус бара")
         static let navigationContentPadding: CGFloat = 16
         static let spacingComponent: CGFloat = 8
+        static let horizontalPaddingSpacing: CGFloat = 16
+        static let buttonHeight: CGFloat = 40
     }
     
     @EnvironmentObject var router: Router
@@ -21,24 +23,44 @@ struct ConfigureTimerView: View {
     @State var eventTimer: EventTimer?
     @State var titleString: String = ""
     @State var descriptionString: String = ""
-    @State var selectedDate: Date = Date()
+    @State var selectedDate = Date()
+    
+    @State private var isGoToDateHidden = true
     
     var body: some View {
-        VStack {
-            navigationBarView
-            ScrollView {
-                VStack(spacing: 16) {
-                    titleView
-                    descriptionView
-                    dateView
+        ZStack(alignment: .bottom) {
+            VStack {
+                navigationBarView
+                ScrollView {
+                    VStack(spacing: 16) {
+                        titleView
+                        descriptionView
+                        dateView
+                        HStack(spacing: 16) {
+                            setTodayButton
+                                .frame(width: .infinity)
+                            chooseDateButton
+                                .frame(width: .infinity)
+                        }
+                    }
+                    .padding(16)
                 }
-                .padding(16)
+            }
+            .padding(Constants.contentPadding)
+            .background(DSColor.darkPrimary)
+            .toolbar(.hidden, for: .navigationBar)
+            
+            if !isGoToDateHidden {
+                QuiclyJumpToDateView { model in
+                    isGoToDateHidden = true
+                }
+                .clipShape(
+                    RoundedRectangle(cornerRadius: DSLayout.extraLargeCornerRadius)
+                )
+                .animation(.linear, value: isGoToDateHidden)
             }
         }
-        .padding(Constants.contentPadding)
         .ignoresSafeArea()
-        .background(DSColor.darkPrimary)
-        .toolbar(.hidden, for: .navigationBar)
     }
     
     private var navigationBarView: some View {
@@ -108,6 +130,38 @@ struct ConfigureTimerView: View {
             }
             ChoosingDateView(selectedDate: $selectedDate)
         }
+    }
+    
+    private var setTodayButton: some View {
+        Button(action: {
+            selectedDate = Date()
+        }, label: {
+            Text("set_today")
+                .font(DSFont.body3)
+                .foregroundStyle(DSColor.darkTertiary)
+                .padding(.horizontal, Constants.horizontalPaddingSpacing)
+                .frame(height: Constants.buttonHeight)
+                .background(
+                    RoundedRectangle(cornerRadius: DSLayout.extraLargeCornerRadius)
+                        .stroke(DSColor.darkTertiary, lineWidth: DSLayout.borderWidth)
+                )
+        })
+    }
+    
+    private var chooseDateButton: some View {
+        Button(action: {
+            isGoToDateHidden = false
+        }, label: {
+            Text("go_to_date")
+                .font(DSFont.body3)
+                .foregroundStyle(DSColor.darkTertiary)
+                .padding(.horizontal, Constants.horizontalPaddingSpacing)
+                .frame(height: Constants.buttonHeight)
+                .background(
+                    RoundedRectangle(cornerRadius: DSLayout.extraLargeCornerRadius)
+                        .stroke(DSColor.darkTertiary, lineWidth: DSLayout.borderWidth)
+                )
+        })
     }
 }
 

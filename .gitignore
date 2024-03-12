@@ -25,6 +25,7 @@ DerivedData/
 ## Other
 *.moved-aside
 *.xcuserstate
+*.DS_Store
 
 ## Obj-C/Swift specific
 *.hmap
