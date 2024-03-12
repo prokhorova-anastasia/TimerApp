@@ -17,4 +17,8 @@ public struct DSFont {
     static let body2 = Font.custom("NunitoSans10pt-Regular", size: 12)
     static let body3 = Font.custom("NunitoSans10pt-Bold", size: 12)
     static let caption = Font.custom("NunitoSans10pt-Bold", size: 10)
+    
+    struct UICustomFont {
+        static let body3 = UIFont(name: "NunitoSans10pt-Bold", size: 12)!
+    }
 }

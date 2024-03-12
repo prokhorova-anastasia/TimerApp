@@ -8,17 +8,16 @@
 import Foundation
 import SwiftUI
 
-final class ChangeColorViewModel {
+struct ChangeColor: Hashable {
+    let id = UUID().uuidString
+    let color: Color
+}
+
+final class ChangeColorViewModel: ObservableObject {
     
-    var colors: [Color] = [DSColor.backgroundColor,
-                           DSColor.ChoosingColors.bittersweet,
-                           DSColor.ChoosingColors.blueMunsell,
-                           DSColor.ChoosingColors.celadon,
-                           DSColor.ChoosingColors.cherryBlossomPink,
-                           DSColor.ChoosingColors.chineRose,
-                           DSColor.ChoosingColors.naplesYellow,
-                           DSColor.ChoosingColors.poppy,
-                           DSColor.ChoosingColors.powderBlue,
-                           DSColor.ChoosingColors.verdigris,
-                           DSColor.ChoosingColors.violetBlue]
+    @Published var colors: [ChangeColor] = [ChangeColor(color: Color("8972F7")),
+                                 ChangeColor(color: Color("F5FE8C")),
+                                 ChangeColor(color: Color("71EE7E")),
+                                 ChangeColor(color: Color("EE719E")),
+                                 ChangeColor(color: Color("27DDE9"))]
 }

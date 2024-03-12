@@ -9,6 +9,11 @@ import SwiftUI
 
 struct ConfigureTimerView: View {
     
+    private enum BackgroundType: String, CaseIterable {
+        case photo = "Photo"
+        case color = "Color"
+    }
+    
     private enum Constants {
         static let contentPadding: CGFloat = 16
         static let statusBarHeight: CGFloat = 44; #warning("поправить для высчитывания высоты статус бара")
@@ -16,12 +21,14 @@ struct ConfigureTimerView: View {
         static let spacingComponent: CGFloat = 8
         static let horizontalPaddingSpacing: CGFloat = 16
         static let buttonHeight: CGFloat = 40
-        static let contentSpacing: CGFloat = 16
+        static let contentSpacing: CGFloat = 24
         static let buttonsDateSpacing: CGFloat = 16
         static let minimumDistance: CGFloat = 5
         static let navigationContentSpacing: CGFloat = 16
         static let backIconSize = CGSize(width: 16, height: 16)
         static let backButtonPadding: CGFloat = 12
+        static let colorSize = CGSize(width: 30, height: 30)
+        static let colorSpacing: CGFloat = 24
     }
     
     @EnvironmentObject var router: Router
@@ -31,7 +38,11 @@ struct ConfigureTimerView: View {
     @State var descriptionString: String = ""
     @State var selectedDate = Date()
     
+    @State private var selectedBackground: BackgroundType = .color
     @State private var isGoToDateHidden = true
+    @State private var selectedColorIndex = 0
+    @ObservedObject private var changeColorViewModel = ChangeColorViewModel()
+
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -41,13 +52,15 @@ struct ConfigureTimerView: View {
                     VStack(spacing: Constants.contentSpacing) {
                         titleView
                         descriptionView
-                        dateView
+//                        dateView
                         HStack(spacing: Constants.buttonsDateSpacing) {
                             setTodayButton
                                 .frame(maxWidth: .infinity)
                             chooseDateButton
                                 .frame(maxWidth: .infinity)
                         }
+                        selectorTimerBackground
+                        choosingBackgroundView
                     }
                     .padding(Constants.contentPadding)
                 }
@@ -181,6 +194,59 @@ struct ConfigureTimerView: View {
                         .stroke(DSColor.darkTertiary, lineWidth: DSLayout.borderWidth)
                 )
         })
+    }
+    
+    private var selectorTimerBackground: some View {
+        Picker("", selection: $selectedBackground) {
+            ForEach(BackgroundType.allCases, id: \.self) {
+                Text($0.rawValue)
+                    .foregroundStyle(DSColor.white)
+            }
+        }
+        .pickerStyle(.segmented)
+        .onAppear {
+            UISegmentedControl.appearance().selectedSegmentTintColor = UIColor(DSColor.violetPrimary)
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(DSColor.white), .font: DSFont.UICustomFont.body3], for: .selected)
+            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(DSColor.darkTertiary), .font: DSFont.UICustomFont.body3], for: .normal)
+
+        }
+    }
+    
+    private var choosingBackgroundView: some View {
+        VStack {
+            switch selectedBackground {
+            case .photo:
+                choosingPhotoView
+            case .color:
+                choosingColorView
+            }
+        }
+    }
+    
+    private var choosingPhotoView: some View {
+        RoundedRectangle(cornerRadius: 1)
+        .fill(Color.red)
+        .frame(width: 100, height: 100)
+        
+    }
+    
+    private var choosingColorView: some View {
+        
+        HStack(spacing: Constants.colorSpacing) {
+            ForEach(Array(changeColorViewModel.colors.enumerated()), id: \.element.id) { ind, color in
+                Circle()
+                    .fill(color.color)
+                    .frame(Constants.colorSize)
+                    .padding(3)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(selectedColorIndex == ind ? color.color : Color.clear, lineWidth: 2)
+                    )
+                    .onTapGesture {
+                        selectedColorIndex = ind
+                    }
+            }
+        }
     }
     
     private func goToDate(dateModel: GoToDateModel) {

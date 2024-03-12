@@ -25,8 +25,8 @@ struct ChangeEventTimerColorView: View {
     var body: some View {
         VStack(spacing: Constants.contentSpacing) {
             titleView
-            colorListView
-                .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
+//            colorListView
+//                .padding(EdgeInsets(top: 4, leading: 4, bottom: 4, trailing: 4))
         }
     }
     
@@ -39,29 +39,29 @@ struct ChangeEventTimerColorView: View {
         }
     }
     
-    private var colorListView: some View {
-        HStack {
-            ForEach($changeColorViewModel.colors, id: \.self) { color in
-                ZStack {
-                    Image(systemName: "a.square.fill")
-                        .resizable()
-                        .foregroundStyle(color.wrappedValue)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 4)
-                                .strokeBorder(color.wrappedValue == $selectedColor.wrappedValue ? DSColor.mainColor :  DSColor.modalColor, lineWidth: color.wrappedValue == $selectedColor.wrappedValue ? 1 : 0.5)
-                        }
-                }
-                .frame(width: 24, height: 24)
-                .background(
-                    RoundedRectangle(cornerRadius: 4)
-                        .fill(getTextColorFor(color.wrappedValue))
-                )
-                .onTapGesture {
-                    selectedColor = color.wrappedValue
-                }
-            }
-        }
-    }
+//    private var colorListView: some View {
+//        HStack {
+//            ForEach(ChangeColorViewModel().colors, id: \.self) { color in
+//                ZStack {
+//                    Image(systemName: "a.square.fill")
+//                        .resizable()
+//                        .foregroundStyle(color.wrappedValue)
+//                        .overlay {
+//                            RoundedRectangle(cornerRadius: 4)
+//                                .strokeBorder(color.wrappedValue == $selectedColor.wrappedValue ? DSColor.mainColor :  DSColor.modalColor, lineWidth: color.wrappedValue == $selectedColor.wrappedValue ? 1 : 0.5)
+//                        }
+//                }
+//                .frame(width: 24, height: 24)
+//                .background(
+//                    RoundedRectangle(cornerRadius: 4)
+//                        .fill(getTextColorFor(color.wrappedValue))
+//                )
+//                .onTapGesture {
+//                    selectedColor = color.wrappedValue
+//                }
+//            }
+//        }
+//    }
     
     func getTextColorFor(_ color: Color) -> Color {
         if color == DSColor.backgroundColor {
