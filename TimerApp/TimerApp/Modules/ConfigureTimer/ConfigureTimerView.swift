@@ -29,6 +29,7 @@ struct ConfigureTimerView: View {
         static let backButtonPadding: CGFloat = 12
         static let colorSize = CGSize(width: 30, height: 30)
         static let colorSpacing: CGFloat = 24
+        static let colorPadding: CGFloat = 4
     }
     
     @EnvironmentObject var router: Router
@@ -237,10 +238,10 @@ struct ConfigureTimerView: View {
                 Circle()
                     .fill(color.color)
                     .frame(Constants.colorSize)
-                    .padding(3)
+                    .padding(Constants.colorPadding)
                     .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(selectedColorIndex == ind ? color.color : Color.clear, lineWidth: 2)
+                        RoundedRectangle(cornerRadius: DSLayout.extraLargeCornerRadius)
+                            .stroke(selectedColorIndex == ind ? color.color : Color.clear, lineWidth: DSLayout.bigBorderWidth)
                     )
                     .onTapGesture {
                         selectedColorIndex = ind
