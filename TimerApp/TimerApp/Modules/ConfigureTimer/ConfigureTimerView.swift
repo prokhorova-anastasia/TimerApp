@@ -10,12 +10,18 @@ import SwiftUI
 struct ConfigureTimerView: View {
     
     private enum Constants {
-        static let contentPadding: CGFloat = 0
+        static let contentPadding: CGFloat = 16
         static let statusBarHeight: CGFloat = 44; #warning("поправить для высчитывания высоты статус бара")
         static let navigationContentPadding: CGFloat = 16
         static let spacingComponent: CGFloat = 8
         static let horizontalPaddingSpacing: CGFloat = 16
         static let buttonHeight: CGFloat = 40
+        static let contentSpacing: CGFloat = 16
+        static let buttonsDateSpacing: CGFloat = 16
+        static let minimumDistance: CGFloat = 5
+        static let navigationContentSpacing: CGFloat = 16
+        static let backIconSize = CGSize(width: 16, height: 16)
+        static let backButtonPadding: CGFloat = 12
     }
     
     @EnvironmentObject var router: Router
@@ -32,44 +38,55 @@ struct ConfigureTimerView: View {
             VStack {
                 navigationBarView
                 ScrollView {
-                    VStack(spacing: 16) {
+                    VStack(spacing: Constants.contentSpacing) {
                         titleView
                         descriptionView
                         dateView
-                        HStack(spacing: 16) {
+                        HStack(spacing: Constants.buttonsDateSpacing) {
                             setTodayButton
-                                .frame(width: .infinity)
+                                .frame(maxWidth: .infinity)
                             chooseDateButton
-                                .frame(width: .infinity)
+                                .frame(maxWidth: .infinity)
                         }
                     }
-                    .padding(16)
+                    .padding(Constants.contentPadding)
                 }
             }
-            .padding(Constants.contentPadding)
             .background(DSColor.darkPrimary)
             .toolbar(.hidden, for: .navigationBar)
             
             if !isGoToDateHidden {
                 QuiclyJumpToDateView { model in
-                    isGoToDateHidden = true
+                    withAnimation {
+                        goToDate(dateModel: model)
+                        isGoToDateHidden.toggle()
+                    }
                 }
                 .clipShape(
                     RoundedRectangle(cornerRadius: DSLayout.extraLargeCornerRadius)
                 )
-                .animation(.linear, value: isGoToDateHidden)
+                .zIndex(1)
+                .transition(.move(edge: isGoToDateHidden ? .top : .bottom))
+                .gesture(DragGesture(minimumDistance: Constants.minimumDistance, coordinateSpace: .local)
+                    .onEnded({ value in
+                        if value.translation.height > 0 {
+                            withAnimation {
+                                isGoToDateHidden.toggle()
+                            }
+                        }
+                    }))
             }
         }
         .ignoresSafeArea()
     }
     
     private var navigationBarView: some View {
-        VStack(spacing: 0) {
+        VStack {
             HStack {
             }
             .frame(height: Constants.statusBarHeight)
-            VStack(spacing: 24) {
-                HStack(spacing: 16) {
+            VStack {
+                HStack(spacing: Constants.navigationContentSpacing) {
                     backButtonView
                     Text("new_timer")
                         .font(DSFont.headline1)
@@ -86,8 +103,8 @@ struct ConfigureTimerView: View {
             router.navigateToBack()
         } label: {
             Image("back_icon")
-                .frame(width: 16, height: 16)
-                .padding(12)
+                .frame(Constants.backIconSize)
+                .padding(Constants.backButtonPadding)
         }
         .background(
             Circle()
@@ -150,7 +167,9 @@ struct ConfigureTimerView: View {
     
     private var chooseDateButton: some View {
         Button(action: {
-            isGoToDateHidden = false
+            withAnimation {
+                isGoToDateHidden.toggle()
+            }
         }, label: {
             Text("go_to_date")
                 .font(DSFont.body3)
@@ -162,6 +181,13 @@ struct ConfigureTimerView: View {
                         .stroke(DSColor.darkTertiary, lineWidth: DSLayout.borderWidth)
                 )
         })
+    }
+    
+    private func goToDate(dateModel: GoToDateModel) {
+        let dateDays = Calendar.current.date(byAdding: .day, value: dateModel.days, to: Date())
+        let dateWeeks = Calendar.current.date(byAdding: .weekOfMonth, value: dateModel.weeks, to: dateDays ?? Date())
+        let dateMonths = Calendar.current.date(byAdding: .month, value: dateModel.months, to: dateWeeks ?? Date())
+        selectedDate = dateMonths ?? Date()
     }
 }
 
