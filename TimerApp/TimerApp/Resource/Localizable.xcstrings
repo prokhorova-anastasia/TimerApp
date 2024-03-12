@@ -133,6 +133,22 @@
         }
       }
     },
+    "date" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
+          }
+        }
+      }
+    },
     "days" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -218,6 +234,23 @@
         }
       }
     },
+    "go_to_date" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Быстро перейти  с сегодняшнего дня"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Быстро перейти  с сегодняшнего дня"
+          }
+        }
+      }
+    },
     "hours" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -286,9 +319,6 @@
         }
       }
     },
-    "Placeholder" : {
-
-    },
     "seconds" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -302,6 +332,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Секунд"
+          }
+        }
+      }
+    },
+    "set_today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set today"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить сегодня"
           }
         }
       }

@@ -21,6 +21,7 @@ struct ConfigureTimerView: View {
     @State var eventTimer: EventTimer?
     @State var titleString: String = ""
     @State var descriptionString: String = ""
+    @State var selectedDate: Date = Date()
     
     var body: some View {
         VStack {
@@ -29,6 +30,7 @@ struct ConfigureTimerView: View {
                 VStack(spacing: 16) {
                     titleView
                     descriptionView
+                    dateView
                 }
                 .padding(16)
             }
@@ -93,6 +95,18 @@ struct ConfigureTimerView: View {
             }
             TextFieldView(placeholder:
                             String(localized: "description"), isError: .constant(false), lineLimit: 3)
+        }
+    }
+    
+    private var dateView: some View {
+        VStack(spacing: Constants.spacingComponent) {
+            HStack {
+                Text("date")
+                    .font(DSFont.title1)
+                    .foregroundStyle(DSColor.white)
+                Spacer()
+            }
+            ChoosingDateView(selectedDate: $selectedDate)
         }
     }
 }

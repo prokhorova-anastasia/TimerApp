@@ -126,7 +126,7 @@ struct SettingsEventTimerViewLegacy: View {
             DatePicker("", selection: $choosedDate)
                 .tint(DSColor.mainColor)
                 .foregroundStyle(DSColor.mainColor)
-                .datePickerStyle(.compact)
+                .datePickerStyle(.graphical)
         }
         .padding(Constants.itemPadding)
         .background(RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
