@@ -39,11 +39,12 @@ struct ConfigureTimerView: View {
     @State var descriptionString: String = ""
     @State var selectedDate = Date()
     
-    @State private var selectedBackground: BackgroundType = .color
+    @State private var selectedBackground: BackgroundType = .photo
     @State private var isGoToDateHidden = true
     @State private var selectedColorIndex = 0
     @ObservedObject private var changeColorViewModel = ChangeColorViewModel()
-
+    @ObservedObject private var photoManager = PhotoManager.shared
+    @State private var selectedAsset: UIImage? = nil
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -225,14 +226,20 @@ struct ConfigureTimerView: View {
     }
     
     private var choosingPhotoView: some View {
-        RoundedRectangle(cornerRadius: 1)
-        .fill(Color.red)
-        .frame(width: 100, height: 100)
-        
+        VStack {
+            if !$photoManager.accessGranted.wrappedValue {
+                notGrandedView
+            } else {
+                HorizontalPhotoLibraryView(selectedImage: $selectedAsset)
+            }
+        }
+    }
+    
+    private var notGrandedView: some View {
+        PhotoLibraryNotGrantedView()
     }
     
     private var choosingColorView: some View {
-        
         HStack(spacing: Constants.colorSpacing) {
             ForEach(Array(changeColorViewModel.colors.enumerated()), id: \.element.id) { ind, color in
                 Circle()
@@ -241,7 +248,7 @@ struct ConfigureTimerView: View {
                     .padding(Constants.colorPadding)
                     .overlay(
                         RoundedRectangle(cornerRadius: DSLayout.extraLargeCornerRadius)
-                            .stroke(selectedColorIndex == ind ? color.color : Color.clear, lineWidth: DSLayout.bigBorderWidth)
+                            .stroke(selectedColorIndex == ind ? color.color : Color.clear, lineWidth: DSLayout.largeBorderWidth)
                     )
                     .onTapGesture {
                         selectedColorIndex = ind
@@ -261,3 +268,25 @@ struct ConfigureTimerView: View {
 #Preview {
     ConfigureTimerView(type: .create)
 }
+
+
+struct StaticHorizontalScrollView: View {
+    var body: some View {
+        ScrollView(.horizontal, showsIndicators: true) {
+            HStack(spacing: 10) {
+                ForEach(0..<10) { index in
+                    Rectangle()
+                        .fill(Color.blue)
+                        .frame(width: 100, height: 100)
+                        .cornerRadius(10)
+                        .overlay(Text("\(index)"))
+                }
+            }
+            // Пример явного задания ширины для HStack, если требуется
+            // .frame(minWidth: 1000)
+        }
+    }
+}
+
+
+

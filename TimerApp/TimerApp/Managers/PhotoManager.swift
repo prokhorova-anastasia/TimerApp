@@ -11,7 +11,7 @@ import Photos
 final class PhotoManager: ObservableObject {
     static let shared = PhotoManager()
     
-    @Published var accessGranted: Bool = false
+    @Published var accessGranted: Bool = PHPhotoLibrary.authorizationStatus() == .authorized
     
     private init() {}
     
@@ -21,15 +21,15 @@ final class PhotoManager: ObservableObject {
         switch status {
         case .authorized:
             accessGranted = true
-        case .denied, .restricted :
+        case .denied, .restricted:
             accessGranted = false
         case .notDetermined:
-            PHPhotoLibrary.requestAuthorization { status in
+            PHPhotoLibrary.requestAuthorization { [weak self] status in
                 DispatchQueue.main.async {
                     if status == .authorized {
-                        self.accessGranted = true
+                        self?.accessGranted = true
                     } else {
-                        self.accessGranted = false
+                        self?.accessGranted = false
                     }
                 }
             }
