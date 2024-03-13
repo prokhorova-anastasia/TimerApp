@@ -15,8 +15,7 @@ struct AsyncImageView: View {
         static let loadingImageSize = CGSize(width: 200, height: 200)
     }
     
-    let asset: PHAsset
-    @State private var image: UIImage? = nil
+    @State var image: UIImage?
     @ObservedObject var photoLibrary = PhotoLibrary()
 
     var body: some View {
@@ -35,22 +34,6 @@ struct AsyncImageView: View {
         }
         .frame(Constants.imageSize)
         .cornerRadius(DSLayout.smallCornerRadius)
-        .onAppear {
-//            image = photoLibrary.loadAssetImage(asset: asset)
-            loadAssetImage()
-        }
-    }
-
-    private func loadAssetImage() {
-        let options = PHImageRequestOptions()
-        options.deliveryMode = .highQualityFormat
-        options.isSynchronous = false
-
-        PHImageManager.default().requestImage(for: asset, targetSize: Constants.loadingImageSize, contentMode: .aspectFill, options: options) { image, _ in
-            DispatchQueue.main.async {
-                self.image = image
-            }
-        }
     }
 }
 
@@ -70,31 +53,18 @@ struct HorizontalPhotoLibraryView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: Constants.spacing) {
-                ForEach(photoLibrary.photos, id: \.self) { asset in
-                    AsyncImageView(asset: asset)
+                ForEach(photoLibrary.images, id: \.self) { image in
+                    AsyncImageView(image: image)
                         .background(
                             RoundedRectangle(cornerRadius: DSLayout.smallCornerRadius)
-                                .stroke(selectedAsset == asset ? DSColor.violetPrimary : .clear, lineWidth: DSLayout.extraLargeBorderWidth)
+                                .stroke(selectedImage == image ? DSColor.violetPrimary : .clear, lineWidth: DSLayout.extraLargeBorderWidth)
                         )
                         .onTapGesture {
-                            loadAssetImage(asset: asset)
-                            selectedAsset = asset
+                            selectedImage = image
                         }
                 }
             }
             .padding(Constants.padding)
-        }
-    }
-    
-    private func loadAssetImage(asset: PHAsset) {
-        let options = PHImageRequestOptions()
-        options.deliveryMode = .highQualityFormat
-        options.isSynchronous = false
-
-        PHImageManager.default().requestImage(for: asset, targetSize: Constants.loadingImageSize, contentMode: .aspectFill, options: options) { image, _ in
-            DispatchQueue.main.async {
-                selectedImage = image
-            }
         }
     }
 }
