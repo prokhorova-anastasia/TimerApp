@@ -14,25 +14,28 @@ struct EventTimer: Codable, Identifiable {
     var description: String?
     var targetDate: Date
     var colorBackground: String?
+    var photoName: String?
     
     private enum CodingKeys: String, CodingKey {
-        case id, title, description, targetDate, colorBackground
+        case id, title, description, targetDate, colorBackground, photoName
     }
     
-    init(title: String, description: String?, targetDate: Date, colorBackground: String?) {
+    init(title: String, description: String?, targetDate: Date, colorBackground: String?, photoName: String?) {
         self.title = title
         self.description = description
         self.targetDate = targetDate
         self.colorBackground = colorBackground
+        self.photoName = photoName
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: CodingKeys.id)
-        self.title = try container.decode(String.self, forKey: CodingKeys.title)
-        self.description = try container.decodeIfPresent(String.self, forKey: CodingKeys.description)
-        self.targetDate = try container.decodeDate(forKey: CodingKeys.targetDate) ?? Date()
-        self.colorBackground = try container.decodeIfPresent(String.self, forKey: CodingKeys.colorBackground)
+        self.id = try container.decode(String.self, forKey: .id)
+        self.title = try container.decode(String.self, forKey: .title)
+        self.description = try container.decodeIfPresent(String.self, forKey: .description)
+        self.targetDate = try container.decodeDate(forKey: .targetDate) ?? Date()
+        self.colorBackground = try container.decodeIfPresent(String.self, forKey: .colorBackground)
+        self.photoName = try container.decodeIfPresent(String.self, forKey: .photoName)
     }
 }
 

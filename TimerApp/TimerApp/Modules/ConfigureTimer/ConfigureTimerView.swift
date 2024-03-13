@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct ConfigureTimerView: View {
     
@@ -38,13 +39,19 @@ struct ConfigureTimerView: View {
     @State var titleString: String = ""
     @State var descriptionString: String = ""
     @State var selectedDate = Date()
+    @ObservedObject var viewModel = SettingsEventTimerViewModel()
     
     @State private var selectedBackground: BackgroundType = .photo
     @State private var isGoToDateHidden = true
     @State private var selectedColorIndex = 0
+    @State private var selectedColorHex: String = DSColor.violetSecondary.hexString
     @ObservedObject private var changeColorViewModel = ChangeColorViewModel()
     @ObservedObject private var photoManager = PhotoManager.shared
     @State private var selectedAsset: UIImage? = nil
+    @State private var backgroundImageItem: PhotosPickerItem?
+    @State private var backgroundImage: UIImage?
+    @State private var selectedImage: UIImage?
+    @State private var selectedNameImage: String?
     
     var body: some View {
         ZStack(alignment: .bottom) {
@@ -54,7 +61,7 @@ struct ConfigureTimerView: View {
                     VStack(spacing: Constants.contentSpacing) {
                         titleView
                         descriptionView
-//                        dateView
+                        dateView
                         HStack(spacing: Constants.buttonsDateSpacing) {
                             setTodayButton
                                 .frame(maxWidth: .infinity)
@@ -63,6 +70,8 @@ struct ConfigureTimerView: View {
                         }
                         selectorTimerBackground
                         choosingBackgroundView
+                        Spacer()
+                        createButtonView
                     }
                     .padding(Constants.contentPadding)
                 }
@@ -93,6 +102,9 @@ struct ConfigureTimerView: View {
             }
         }
         .ignoresSafeArea()
+        .onAppear {
+            photoManager.loadImages()
+        }
     }
     
     private var navigationBarView: some View {
@@ -135,7 +147,7 @@ struct ConfigureTimerView: View {
                     .foregroundStyle(DSColor.white)
                 Spacer()
             }
-            TextFieldView(placeholder: String(localized: "title"), isError: .constant(false))
+            TextFieldView(placeholder: String(localized: "title"), text: $titleString, isError: .constant(false))
         }
     }
     
@@ -148,7 +160,7 @@ struct ConfigureTimerView: View {
                 Spacer()
             }
             TextFieldView(placeholder:
-                            String(localized: "description"), isError: .constant(false), lineLimit: 3)
+                            String(localized: "description"), text: $descriptionString, isError: .constant(false), lineLimit: 3)
         }
     }
     
@@ -227,10 +239,58 @@ struct ConfigureTimerView: View {
     
     private var choosingPhotoView: some View {
         VStack {
-            if !$photoManager.accessGranted.wrappedValue {
-                notGrandedView
-            } else {
-                HorizontalPhotoLibraryView(selectedImage: $selectedAsset)
+//            if !$photoManager.accessGranted.wrappedValue {
+//                notGrandedView
+//            } else {
+            if !photoManager.photos.isEmpty {
+                photosView
+            }
+            openGaleryButton
+
+//            }
+        }
+    }
+    
+    private var photosView: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 8) {
+                ForEach(photoManager.photos, id: \.id) { imageModel in
+                    if let image = imageModel.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .frame(width: 90, height: 100)
+                            .cornerRadius(DSLayout.cornerRadius)
+                            .background(
+                                RoundedRectangle(cornerRadius: DSLayout.cornerRadius)
+                                    .stroke(selectedImage == image ? DSColor.violetPrimary : .clear, lineWidth: DSLayout.extraLargeBorderWidth)
+                            )
+                            .onTapGesture {
+                                selectedImage = image
+                                selectedNameImage = imageModel.id
+                            }
+                    }
+                }
+            }
+            .padding(4)
+        }
+    }
+    
+    private var openGaleryButton: some View {
+        PhotosPicker(selection: $backgroundImageItem, matching: .images) {
+            ZStack {
+                Text("open_galery")
+                    .foregroundStyle(DSColor.white)
+                    .font(DSFont.body3)
+                    .frame(width: 164, height: 40)
+                    .background(
+                        RoundedRectangle(cornerRadius: DSLayout.extraLargeCornerRadius)
+                            .fill(DSColor.violetPrimary)
+                    )
+            }
+        }
+        .onChange(of: backgroundImageItem) { newItem in
+            photoManager.saveImage(idString: UUID().uuidString, imageItem: newItem) { isLoaded in
+                print("item is saved \(isLoaded)")
             }
         }
     }
@@ -252,9 +312,27 @@ struct ConfigureTimerView: View {
                     )
                     .onTapGesture {
                         selectedColorIndex = ind
+                        selectedColorHex = color.color.hexString
                     }
             }
         }
+    }
+    
+    private var createButtonView: some View {
+        Button {
+            viewModel.saveEventTimer(title: titleString, description: descriptionString, targetDate: selectedDate, colorBackground: selectedColorHex, imageName: selectedNameImage)
+            router.navigateToBack()
+        } label: {
+            Text("create")
+                .font(DSFont.body3)
+                .foregroundStyle(DSColor.white)
+                .frame(maxWidth: .infinity, minHeight: 40, maxHeight: 40)
+                .background(
+                    RoundedRectangle(cornerRadius: DSLayout.extraLargeCornerRadius)
+                        .fill(DSColor.violetPrimary)
+                )
+        }
+
     }
     
     private func goToDate(dateModel: GoToDateModel) {
@@ -267,25 +345,6 @@ struct ConfigureTimerView: View {
 
 #Preview {
     ConfigureTimerView(type: .create)
-}
-
-
-struct StaticHorizontalScrollView: View {
-    var body: some View {
-        ScrollView(.horizontal, showsIndicators: true) {
-            HStack(spacing: 10) {
-                ForEach(0..<10) { index in
-                    Rectangle()
-                        .fill(Color.blue)
-                        .frame(width: 100, height: 100)
-                        .cornerRadius(10)
-                        .overlay(Text("\(index)"))
-                }
-            }
-            // Пример явного задания ширины для HStack, если требуется
-            // .frame(minWidth: 1000)
-        }
-    }
 }
 
 

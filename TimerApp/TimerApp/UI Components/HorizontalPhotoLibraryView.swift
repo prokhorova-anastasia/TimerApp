@@ -16,7 +16,6 @@ struct AsyncImageView: View {
     }
     
     @State var image: UIImage?
-    @ObservedObject var photoLibrary = PhotoLibrary()
 
     var body: some View {
         Group {
@@ -46,23 +45,22 @@ struct HorizontalPhotoLibraryView: View {
         static let padding: CGFloat = 4
     }
     
-    @ObservedObject var photoLibrary = PhotoLibrary()
     @Binding var selectedImage: UIImage?
     @State var selectedAsset: PHAsset?
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: Constants.spacing) {
-                ForEach(photoLibrary.images, id: \.self) { image in
-                    AsyncImageView(image: image)
-                        .background(
-                            RoundedRectangle(cornerRadius: DSLayout.smallCornerRadius)
-                                .stroke(selectedImage == image ? DSColor.violetPrimary : .clear, lineWidth: DSLayout.extraLargeBorderWidth)
-                        )
-                        .onTapGesture {
-                            selectedImage = image
-                        }
-                }
+//                ForEach(photoLibrary.images, id: \.self) { image in
+//                    AsyncImageView(image: image)
+//                        .background(
+//                            RoundedRectangle(cornerRadius: DSLayout.smallCornerRadius)
+//                                .stroke(selectedImage == image ? DSColor.violetPrimary : .clear, lineWidth: DSLayout.extraLargeBorderWidth)
+//                        )
+//                        .onTapGesture {
+//                            selectedImage = image
+//                        }
+//                }
             }
             .padding(Constants.padding)
         }

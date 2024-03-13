@@ -149,7 +149,7 @@ struct SettingsEventTimerViewLegacy: View {
                     switch type {
                     case .create:
                         viewModel.saveEventTimer(title: titleString, description: descriptionString, targetDate: choosedDate,
-                                                 colorBackground: selectedColor.hexString)
+                                                 colorBackground: selectedColor.hexString, imageName: nil)
                     case .updateType:
 #warning("Поменять обработку нила для eventTimer. Например: если еventTimer = nil и type == .update, то показывать ошибку")
                         guard let event = eventTimer else { return}

@@ -11,6 +11,7 @@ enum UserDefaultsKeys: String {
     case eventTimer = "EventTimers"
     case wasTimerCreated = "wasTimerCreated"
     case wasFirstTimerCreated = "wasFirstTimerCreated"
+    case savedImages = "SavedImages"
 }
 
 final class UserDefaultsManager {

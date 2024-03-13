@@ -9,9 +9,9 @@ import Foundation
 
 final class SettingsEventTimerViewModel: ObservableObject {
     
-    func saveEventTimer(title: String, description: String?, targetDate: Date, colorBackground: String?) {
+    func saveEventTimer(title: String, description: String?, targetDate: Date, colorBackground: String?, imageName: String?) {
         UserDefaultsManager.shared.saveBoolData(true, forKey: .wasTimerCreated)
-        let newEventTimer = EventTimer(title: title, description: description, targetDate: targetDate, colorBackground: colorBackground)
+        let newEventTimer = EventTimer(title: title, description: description, targetDate: targetDate, colorBackground: colorBackground, photoName: imageName)
         if var array = UserDefaultsManager.shared.getObjects(EventTimer.self, forKey: .eventTimer), !array.isEmpty {
             array.append(newEventTimer)
             UserDefaultsManager.shared.saveObjects(array, forKey: .eventTimer)

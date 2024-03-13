@@ -16,7 +16,7 @@ struct TextFieldView: View {
     @FocusState private var isFocused: Bool
 
     @State var placeholder: String
-    @State var text: String = ""
+    @Binding var text: String
     @Binding var isError: Bool
     @State var lineLimit: Int = 1
     
@@ -45,5 +45,5 @@ struct TextFieldView: View {
 }
 
 #Preview {
-    TextFieldView(placeholder: "Placeholder", isError: .constant(false), lineLimit: 5)
+    TextFieldView(placeholder: "Placeholder", text: .constant("dsljsldk"), isError: .constant(false), lineLimit: 5)
 }

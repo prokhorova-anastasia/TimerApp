@@ -438,6 +438,23 @@
         }
       }
     },
+    "open_galery" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open galery"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть галерею"
+          }
+        }
+      }
+    },
     "quickly_jump_to_date_description" : {
       "extractionState" : "manual",
       "localizations" : {
