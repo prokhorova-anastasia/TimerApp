@@ -15,13 +15,14 @@ struct TimerCellView: View {
         static let timerViewSpacing: CGFloat = 8
         static let timerContentSpacing: CGFloat = 12
         static let timerContentCornerRadius: CGFloat = 24
-        static let timerContentHorizontalPadding: CGFloat = 12
+        static let timerContentHorizontalPadding: CGFloat = 16
         static let timerContentVetricalPadding: CGFloat = 4
         static let contentSpacing: CGFloat = 0
         static let minimumDistance: CGFloat = 3.0
     }
     
     @State var viewModel = MainScreenViewModel()
+    @State var photosManager = PhotoManager()
     @Binding var eventTimer: EventTimer
     @ObservedObject var generalTimer = GeneralTimer()
     @State var days = 0
@@ -35,48 +36,59 @@ struct TimerCellView: View {
     var deleteAction: (() -> ())
     
     var body: some View {
-        HStack(spacing: Constants.contentSpacing) {
-            VStack(alignment: isContextMenuHidden ? .center : .leading , spacing: Constants.mainSpacing) {
-                titleAndDescriptionView
-                timerView
-                targetDateView
-            }
-            .padding(Constants.mainPadding)
-            .background(
-                Color(eventTimer.colorBackground ?? "D9D9D9")
-            )
+        ZStack {
             
-            if !isContextMenuHidden {
-                ContextMenuView {
-                    shareAction()
-                } editAction: {
-                    editAction()
-                } deleteAction: {
-                    deleteAction()
-                }
-                .transition(.move(edge: isContextMenuHidden ? .leading : .trailing))
+            if let image = $photosManager.image.wrappedValue {
+                Image(uiImage: image)
+                    .resizable()
+            } else {
+                Color(eventTimer.colorBackground ?? "D9D9D9")
             }
+            
+            HStack(spacing: Constants.contentSpacing) {
+                VStack(alignment: isContextMenuHidden ? .center : .leading , spacing: Constants.mainSpacing) {
+                    titleAndDescriptionView
+                    timerView
+                    targetDateView
+                }
+                .padding(Constants.mainPadding)
                 
+                if !isContextMenuHidden {
+                    ContextMenuView {
+                        shareAction()
+                    } editAction: {
+                        editAction()
+                    } deleteAction: {
+                        deleteAction()
+                    }
+                    .transition(.move(edge: isContextMenuHidden ? .leading : .trailing))
+                }
+                
+            }
+            .onAppear {
+                if UserDefaultsManager.shared.getBoolData(forKey: .wasFirstTimerCreated) {
+                    withAnimation(.linear(duration: 0.5)) {
+                        isContextMenuHidden = false
+                    }
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        withAnimation(.linear(duration: 0.5)) {
+                            isContextMenuHidden = true
+                        }
+                    }
+                }
+                
+                days = eventTimer.getLeftDays()
+                hours = eventTimer.getLeftHours()
+                minutes = eventTimer.getLeftMinutes()
+                seconds = eventTimer.getLeftSeconds()
+            }
         }
         .clipShape(RoundedRectangle(cornerRadius: Constants.timerContentCornerRadius))
         .onAppear {
-            
-            if UserDefaultsManager.shared.getBoolData(forKey: .wasFirstTimerCreated) {
-                withAnimation(.linear(duration: 0.5)) {
-                    isContextMenuHidden = false
-                }
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    withAnimation(.linear(duration: 0.5)) {
-                        isContextMenuHidden = true
-                    }
-                }
+            if let photoName = eventTimer.photoName {
+                photosManager.loadSwiftUIImage(idPhoto: photoName)
             }
-            
-            days = eventTimer.getLeftDays()
-            hours = eventTimer.getLeftHours()
-            minutes = eventTimer.getLeftMinutes()
-            seconds = eventTimer.getLeftSeconds()
         }
         .gesture(DragGesture(minimumDistance: Constants.minimumDistance, coordinateSpace: .local)
             .onEnded { value in
@@ -102,7 +114,7 @@ struct TimerCellView: View {
                 }
                 Text(eventTimer.title)
                     .font(DSFont.headline2)
-                    .foregroundStyle(DSColor.darkPrimary)
+                    .foregroundStyle(DSColor.white)
                 Spacer()
             }
             
@@ -113,7 +125,7 @@ struct TimerCellView: View {
                     }
                     Text(description)
                         .font(DSFont.body2)
-                        .foregroundStyle(DSColor.darkPrimary)
+                        .foregroundStyle(DSColor.white)
                     Spacer()
                 }
             }
@@ -128,7 +140,7 @@ struct TimerCellView: View {
                 }
                 Text("left")
                     .font(DSFont.body3)
-                    .foregroundStyle(DSColor.darkPrimary)
+                    .foregroundStyle(DSColor.white)
                 Spacer()
             }
             HStack {
@@ -140,10 +152,10 @@ struct TimerCellView: View {
                         VStack {
                             Text("\(days)")
                                 .font(DSFont.headline2)
-                                .foregroundStyle(DSColor.darkPrimary)
+                                .foregroundStyle(DSColor.white)
                             Text("days")
                                 .font(DSFont.body2)
-                                .foregroundStyle(DSColor.darkPrimary)
+                                .foregroundStyle(DSColor.white)
                         }
                     }
                     
@@ -151,21 +163,21 @@ struct TimerCellView: View {
                         VStack {
                             Text("\(hours)")
                                 .font(DSFont.headline2)
-                                .foregroundStyle(DSColor.darkPrimary)
+                                .foregroundStyle(DSColor.white)
                             Text("hours")
                                 .font(DSFont.body2)
-                                .foregroundStyle(DSColor.darkPrimary)
+                                .foregroundStyle(DSColor.white)
                         }
                     }
                     
-                    if minutes > 0 || hours > 0{
+                    if minutes > 0 || hours > 0 {
                         VStack {
                             Text("\(minutes)")
                                 .font(DSFont.headline2)
-                                .foregroundStyle(DSColor.darkPrimary)
+                                .foregroundStyle(DSColor.white)
                             Text("minutes")
                                 .font(DSFont.body2)
-                                .foregroundStyle(DSColor.darkPrimary)
+                                .foregroundStyle(DSColor.white)
                         }
                     }
                     
@@ -173,10 +185,10 @@ struct TimerCellView: View {
                         VStack {
                             Text("\(seconds)")
                                     .font(DSFont.headline2)
-                                    .foregroundStyle(DSColor.darkPrimary)
+                                    .foregroundStyle(DSColor.white)
                             Text("seconds")
                                 .font(DSFont.body2)
-                                .foregroundStyle(DSColor.darkPrimary)
+                                .foregroundStyle(DSColor.white)
                         }
                     }
                 }
@@ -184,7 +196,7 @@ struct TimerCellView: View {
                 .padding(.vertical, Constants.timerContentVetricalPadding)
                 .background(
                     RoundedRectangle(cornerRadius: Constants.timerContentCornerRadius)
-                        .fill(DSColor.darkTransparentPrimary)
+                        .fill(DSColor.darkSecondary.opacity(0.8))
                 )
                 Spacer()
             }
@@ -202,7 +214,7 @@ struct TimerCellView: View {
         HStack(alignment: .center) {
             Text("\(eventTimer.targetDateToString())")
                 .font(DSFont.body3)
-                .foregroundStyle(DSColor.darkPrimary)
+                .foregroundStyle(DSColor.white)
         }
     }
 }

@@ -81,16 +81,18 @@ struct MainScreenView: View {
     }
     
     var timersListView: some View {
-        ScrollView {
-            ForEach($viewModel.eventTimers, id: \.id) { event in
-                TimerCellView(eventTimer: event, shareAction: {
-                    print("share")
-                }, editAction: {
-                    router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))
-                }, deleteAction: {
-                    viewModel.removeEventTimer(event: event.wrappedValue)
-                })
-                    .padding(.bottom, Constants.timersListBottomPadding)
+        ScrollView(showsIndicators: false) {
+            VStack(spacing: Constants.timersListBottomPadding) {
+                ForEach($viewModel.eventTimers, id: \.id) { event in
+                    TimerCellView(eventTimer: event, shareAction: {
+                        print("share")
+                    }, editAction: {
+                        router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))
+                    }, deleteAction: {
+                        viewModel.removeEventTimer(event: event.wrappedValue)
+                    })
+                    .frame(height: 200)
+                }
             }
         }
     }

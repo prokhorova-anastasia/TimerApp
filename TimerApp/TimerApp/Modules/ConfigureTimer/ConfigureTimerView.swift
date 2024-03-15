@@ -46,7 +46,7 @@ struct ConfigureTimerView: View {
     @State private var selectedColorIndex = 0
     @State private var selectedColorHex: String = DSColor.violetSecondary.hexString
     @ObservedObject private var changeColorViewModel = ChangeColorViewModel()
-    @ObservedObject private var photoManager = PhotoManager.shared
+    @ObservedObject private var photoManager = PhotoManager()
     @State private var selectedAsset: UIImage? = nil
     @State private var backgroundImageItem: PhotosPickerItem?
     @State private var backgroundImage: UIImage?

@@ -29,7 +29,7 @@ struct ChoosingDateView: View {
             .colorInvert()
             .colorMultiply(DSColor.violetSecondary)
             .padding(.horizontal, Constants.paddingDatePicker)
-            .padding(.bottom, Constants.paddingDatePicker)
+            .padding(.vertical, Constants.paddingDatePicker)
             .background(
                 RoundedRectangle(cornerRadius: DSLayout.largeCornerRadius)
                     .fill(DSColor.darkSecondary)

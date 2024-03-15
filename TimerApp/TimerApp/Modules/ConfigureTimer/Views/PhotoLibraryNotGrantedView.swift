@@ -16,7 +16,7 @@ struct PhotoLibraryNotGrantedView: View {
         static let buttonSize = CGSize(width: 164, height: 40)
     }
     
-    @ObservedObject var photoManager = PhotoManager.shared
+    @ObservedObject var photoManager = PhotoManager()
     
     var body: some View {
         VStack(spacing: 8) {

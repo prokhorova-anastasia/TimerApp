@@ -10,15 +10,13 @@ import Photos
 import PhotosUI
 
 final class PhotoManager: ObservableObject {
-    static let shared = PhotoManager()
     
     @Published var accessGranted: Bool = PHPhotoLibrary.authorizationStatus() == .authorized
     @Published var photos: [PhotoModel] = []
+    @Published var image: UIImage?
     
     var namePhotos: [String] = []
-    
-    private init() {}
-    
+        
     func requestPhotoLibraryAccess() {
         let status = PHPhotoLibrary.authorizationStatus()
         
@@ -85,6 +83,15 @@ final class PhotoManager: ObservableObject {
             }
         }
         return nil
+    }
+    
+    func loadSwiftUIImage(idPhoto: String) {
+        if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            let fileURL = directory.appendingPathComponent("\(idPhoto).png")
+            if let imageData = try? Data(contentsOf: fileURL) {
+                image = UIImage(data: imageData)
+            }
+        }
     }
     
     func loadImages() {

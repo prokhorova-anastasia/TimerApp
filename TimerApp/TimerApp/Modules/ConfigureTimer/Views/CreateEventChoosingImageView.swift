@@ -13,7 +13,7 @@ struct CreateEventChoosingImageView: View {
     @State var viewModel = MainScreenViewModel()
     @State var backgroundImageItem: PhotosPickerItem?
     @State var backgroundImage: UIImage?
-    @ObservedObject var photoManager = PhotoManager.shared
+    @ObservedObject var photoManager = PhotoManager()
     
     var body: some View {
         ZStack {
