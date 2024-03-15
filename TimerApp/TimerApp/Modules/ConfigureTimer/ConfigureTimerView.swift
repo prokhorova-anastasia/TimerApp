@@ -239,15 +239,14 @@ struct ConfigureTimerView: View {
     
     private var choosingPhotoView: some View {
         VStack {
-//            if !$photoManager.accessGranted.wrappedValue {
-//                notGrandedView
-//            } else {
-            if !photoManager.photos.isEmpty {
-                photosView
+            if !$photoManager.accessGranted.wrappedValue {
+                notGrandedView
+            } else {
+                if !photoManager.photos.isEmpty {
+                    photosView
+                }
+                openGaleryButton
             }
-            openGaleryButton
-
-//            }
         }
     }
     
