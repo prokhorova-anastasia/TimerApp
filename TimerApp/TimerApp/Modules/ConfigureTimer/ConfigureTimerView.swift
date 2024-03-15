@@ -253,8 +253,8 @@ struct ConfigureTimerView: View {
     private var photosView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                ForEach(photoManager.photos, id: \.id) { imageModel in
-                    if let image = imageModel.image {
+                ForEach($photoManager.photos, id: \.id) { imageModel in
+                    if let image = imageModel.image.wrappedValue {
                         Image(uiImage: image)
                             .resizable()
                             .frame(width: 90, height: 100)

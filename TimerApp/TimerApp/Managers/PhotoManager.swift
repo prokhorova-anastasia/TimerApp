@@ -65,6 +65,7 @@ final class PhotoManager: ObservableObject {
                     try data.write(to: fileURL)
                     self.namePhotos.append(idString)
                     self.photos.append(PhotoModel(id: idString, image: image))
+                    self.saveNamePhotos()
                     completion(true)
                 } catch {
                     print(error.localizedDescription)
@@ -98,6 +99,7 @@ final class PhotoManager: ObservableObject {
         guard let nameImages = UserDefaultsManager.shared.getData(forKey: .savedImages) as? [String] else { return }
         nameImages.forEach { name in
             let image = self.loadImage(idPhoto: name)
+            self.namePhotos.append(name)
             self.photos.append(PhotoModel(id: name, image: image))
         }
     }
@@ -117,5 +119,5 @@ final class PhotoManager: ObservableObject {
 
 struct PhotoModel: Identifiable {
     let id: String
-    let image: UIImage?
+    var image: UIImage?
 }
