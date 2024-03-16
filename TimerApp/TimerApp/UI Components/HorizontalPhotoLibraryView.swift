@@ -16,13 +16,14 @@ struct AsyncImageView: View {
     }
     
     @State var image: UIImage?
+    @State var photoName: String?
+    @State var photoManager = PhotoManagerLegacy()
 
     var body: some View {
         Group {
             if let image = image {
                 Image(uiImage: image)
                     .resizable()
-                    .scaledToFill()
             } else {
                 Rectangle()
                     .fill(DSColor.violetTransparentSecond)
@@ -31,8 +32,12 @@ struct AsyncImageView: View {
                     )
             }
         }
-        .frame(Constants.imageSize)
         .cornerRadius(DSLayout.smallCornerRadius)
+        .onAppear {
+            if let name = photoName {
+                image = photoManager.loadAssetImage(photoName: name)
+            }
+        }
     }
 }
 

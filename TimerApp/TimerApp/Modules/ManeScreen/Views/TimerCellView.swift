@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct TimerCellView: View {
     
@@ -22,8 +23,8 @@ struct TimerCellView: View {
     }
     
     @State var viewModel = MainScreenViewModel()
-    @State var photosManager = PhotoManager()
-    @Binding var eventTimer: EventTimer
+    @State var photosManager = PhotoManagerLegacy()
+    @Binding var timerData: TimerData
     @ObservedObject var generalTimer = GeneralTimer()
     @State var days = 0
     @State var hours = 0
@@ -37,14 +38,9 @@ struct TimerCellView: View {
     
     var body: some View {
         ZStack {
-            
-            if let image = $photosManager.image.wrappedValue {
-                Image(uiImage: image)
-                    .resizable()
-            } else {
-                Color(eventTimer.colorBackground ?? "D9D9D9")
+            if let photoName = timerData.photoName {
+                AsyncImageView(photoName: photoName)
             }
-            
             HStack(spacing: Constants.contentSpacing) {
                 VStack(alignment: isContextMenuHidden ? .center : .leading , spacing: Constants.mainSpacing) {
                     titleAndDescriptionView
@@ -78,18 +74,13 @@ struct TimerCellView: View {
                     }
                 }
                 
-                days = eventTimer.getLeftDays()
-                hours = eventTimer.getLeftHours()
-                minutes = eventTimer.getLeftMinutes()
-                seconds = eventTimer.getLeftSeconds()
+                days = timerData.getLeftDays()
+                hours = timerData.getLeftHours()
+                minutes = timerData.getLeftMinutes()
+                seconds = timerData.getLeftSeconds()
             }
         }
         .clipShape(RoundedRectangle(cornerRadius: Constants.timerContentCornerRadius))
-        .onAppear {
-            if let photoName = eventTimer.photoName {
-                photosManager.loadSwiftUIImage(idPhoto: photoName)
-            }
-        }
         .gesture(DragGesture(minimumDistance: Constants.minimumDistance, coordinateSpace: .local)
             .onEnded { value in
                 if value.translation.width < -30 {
@@ -112,13 +103,13 @@ struct TimerCellView: View {
                 if isContextMenuHidden {
                     Spacer()
                 }
-                Text(eventTimer.title)
+                Text(timerData.title)
                     .font(DSFont.headline2)
                     .foregroundStyle(DSColor.white)
                 Spacer()
             }
             
-            if let description = eventTimer.description {
+            if let description = timerData.description {
                 HStack {
                     if isContextMenuHidden {
                         Spacer()
@@ -203,16 +194,16 @@ struct TimerCellView: View {
         }
         .onReceive(generalTimer.timer, perform: { _ in
             #warning("изменить, чтобы таймер работал во вьюмоделе")
-            days = eventTimer.getLeftDays()
-            hours = eventTimer.getLeftHours()
-            minutes = eventTimer.getLeftMinutes()
-            seconds = eventTimer.getLeftSeconds()
+            days = timerData.getLeftDays()
+            hours = timerData.getLeftHours()
+            minutes = timerData.getLeftMinutes()
+            seconds = timerData.getLeftSeconds()
         })
     }
     
     var targetDateView: some View {
         HStack(alignment: .center) {
-            Text("\(eventTimer.targetDateToString())")
+            Text("\(timerData.targetDateToString())")
                 .font(DSFont.body3)
                 .foregroundStyle(DSColor.white)
         }
@@ -221,5 +212,6 @@ struct TimerCellView: View {
 
 #Preview {
     MainScreenView()
-//    TimerCellView(eventTimer:.constant(EventTimer(title: "Title", description: "Description", targetDate: Date().addingTimeInterval(3600), colorBackground: "11FF22")))
+//    TimerCellView(timerData:.constant(TimerData(title: "Title", description: "Description", targetDate: Date().addingTimeInterval(3600), colorBackground: "11FF22")))
 }
+

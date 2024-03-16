@@ -87,7 +87,7 @@ struct MainTabbedView: View {
             
             ZStack {
                 Button {
-                    router.navigate(to: .settings(.create, eventTimer: nil))
+                    router.navigate(to: .settings(.create, timerData: nil))
                 } label: {
                     Image("add_timer_icon")
                         .frame(width: Constants.buttonWidth, height: Constants.buttonWidth)

@@ -35,18 +35,18 @@ struct ConfigureTimerView: View {
     
     @EnvironmentObject var router: Router
     @State var type: SettingsType
-    @State var eventTimer: EventTimer?
+    @State var timerData: TimerData?
     @State var titleString: String = ""
     @State var descriptionString: String = ""
     @State var selectedDate = Date()
-    @ObservedObject var viewModel = SettingsEventTimerViewModel()
+    @ObservedObject var viewModel = TimerEditorViewModel()
     
     @State private var selectedBackground: BackgroundType = .photo
     @State private var isGoToDateHidden = true
     @State private var selectedColorIndex = 0
     @State private var selectedColorHex: String = DSColor.violetSecondary.hexString
     @ObservedObject private var changeColorViewModel = ChangeColorViewModel()
-    @ObservedObject private var photoManager = PhotoManager()
+    @ObservedObject private var photoManager = PhotoManagerLegacy()
     @State private var selectedAsset: UIImage? = nil
     @State private var backgroundImageItem: PhotosPickerItem?
     @State private var backgroundImage: UIImage?
@@ -103,7 +103,7 @@ struct ConfigureTimerView: View {
         }
         .ignoresSafeArea()
         .onAppear {
-            photoManager.loadImages()
+            viewModel.loadImages()
         }
     }
     
@@ -253,7 +253,7 @@ struct ConfigureTimerView: View {
     private var photosView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 8) {
-                ForEach($photoManager.photos, id: \.id) { imageModel in
+                ForEach($viewModel.images, id: \.id) { imageModel in
                     if let image = imageModel.image.wrappedValue {
                         Image(uiImage: image)
                             .resizable()
@@ -288,7 +288,7 @@ struct ConfigureTimerView: View {
             }
         }
         .onChange(of: backgroundImageItem) { newItem in
-            photoManager.saveImage(idString: UUID().uuidString, imageItem: newItem) { isLoaded in
+            photoManager.saveImage(photoName: UUID().uuidString, imageItem: newItem) { isLoaded in
                 print("item is saved \(isLoaded)")
             }
         }
@@ -319,7 +319,7 @@ struct ConfigureTimerView: View {
     
     private var createButtonView: some View {
         Button {
-            viewModel.saveEventTimer(title: titleString, description: descriptionString, targetDate: selectedDate, colorBackground: selectedColorHex, imageName: selectedNameImage)
+            viewModel.saveTimer(title: titleString, description: descriptionString, targetDate: selectedDate, colorBackground: selectedColorHex, imageName: selectedNameImage)
             router.navigateToBack()
         } label: {
             Text("create")

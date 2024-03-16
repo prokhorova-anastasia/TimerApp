@@ -13,14 +13,18 @@
 		B287A7F92BA0E28000971342 /* View+Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = B287A7F82BA0E28000971342 /* View+Size.swift */; };
 		B287A7FB2BA10C7700971342 /* PhotoLibraryNotGrantedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B287A7FA2BA10C7700971342 /* PhotoLibraryNotGrantedView.swift */; };
 		B287A7FF2BA11ED600971342 /* HorizontalPhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B287A7FE2BA11ED600971342 /* HorizontalPhotoLibraryView.swift */; };
+		B287A8012BA5F75300971342 /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B287A8002BA5F75300971342 /* PhotoManager.swift */; };
+		B287A8032BA5F9DF00971342 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B287A8022BA5F9DF00971342 /* ImageCache.swift */; };
+		B287A8052BA5FA2700971342 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B287A8042BA5FA2700971342 /* ImageModel.swift */; };
+		B287A8072BA5FC4800971342 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B287A8062BA5FC4800971342 /* AppError.swift */; };
 		F6212FBF2AC4C07B00BA2600 /* TimerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FBE2AC4C07B00BA2600 /* TimerAppApp.swift */; };
 		F6212FC32AC4C07E00BA2600 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6212FC22AC4C07E00BA2600 /* Assets.xcassets */; };
 		F6212FC62AC4C07E00BA2600 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6212FC52AC4C07E00BA2600 /* Preview Assets.xcassets */; };
 		F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FD22AC4C3CE00BA2600 /* MainScreenViewModel.swift */; };
-		F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FDC2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift */; };
+		F6212FDD2AC4CC6E00BA2600 /* TimerEditorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FDC2AC4CC6E00BA2600 /* TimerEditorViewModel.swift */; };
 		F6212FDF2AC5E7D000BA2600 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FDE2AC5E7D000BA2600 /* Router.swift */; };
 		F6212FE12AC5F33600BA2600 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FE02AC5F33600BA2600 /* UserDefaultsManager.swift */; };
-		F6212FE42AC5F3FC00BA2600 /* EventTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FE32AC5F3FC00BA2600 /* EventTimer.swift */; };
+		F6212FE42AC5F3FC00BA2600 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FE32AC5F3FC00BA2600 /* TimerData.swift */; };
 		F6212FE72AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FE62AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift */; };
 		F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FEC2AC6279A00BA2600 /* GeneralTimer.swift */; };
 		F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6212FEE2AC8A2A600BA2600 /* WarningView.swift */; };
@@ -39,7 +43,7 @@
 		F626F7902B01056D005743F3 /* ContextMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F626F78F2B01056D005743F3 /* ContextMenuView.swift */; };
 		F6890F7C2ACB5E00008AF97A /* ChangeColorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */; };
 		F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */; };
-		F69F7FAB2AD87FBD004F586E /* PhotoManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F7FAA2AD87FBD004F586E /* PhotoManager.swift */; };
+		F69F7FAB2AD87FBD004F586E /* PhotoManagerLegacy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69F7FAA2AD87FBD004F586E /* PhotoManagerLegacy.swift */; };
 		F6E3765F2B02A30E00BE098B /* MainTabbedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E3765E2B02A30E00BE098B /* MainTabbedView.swift */; };
 		F6E376612B02D43800BE098B /* ConfigureTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E376602B02D43800BE098B /* ConfigureTimerView.swift */; };
 /* End PBXBuildFile section */
@@ -51,15 +55,19 @@
 		B287A7F82BA0E28000971342 /* View+Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Size.swift"; sourceTree = "<group>"; };
 		B287A7FA2BA10C7700971342 /* PhotoLibraryNotGrantedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryNotGrantedView.swift; sourceTree = "<group>"; };
 		B287A7FE2BA11ED600971342 /* HorizontalPhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPhotoLibraryView.swift; sourceTree = "<group>"; };
+		B287A8002BA5F75300971342 /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		B287A8022BA5F9DF00971342 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		B287A8042BA5FA2700971342 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		B287A8062BA5FC4800971342 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		F6212FBB2AC4C07B00BA2600 /* TimerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TimerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6212FBE2AC4C07B00BA2600 /* TimerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerAppApp.swift; sourceTree = "<group>"; };
 		F6212FC22AC4C07E00BA2600 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6212FC52AC4C07E00BA2600 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F6212FD22AC4C3CE00BA2600 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
-		F6212FDC2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEventTimerViewModel.swift; sourceTree = "<group>"; };
+		F6212FDC2AC4CC6E00BA2600 /* TimerEditorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerEditorViewModel.swift; sourceTree = "<group>"; };
 		F6212FDE2AC5E7D000BA2600 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		F6212FE02AC5F33600BA2600 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
-		F6212FE32AC5F3FC00BA2600 /* EventTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTimer.swift; sourceTree = "<group>"; };
+		F6212FE32AC5F3FC00BA2600 /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
 		F6212FE62AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyedDecodingContainer+Extension.swift"; sourceTree = "<group>"; };
 		F6212FEC2AC6279A00BA2600 /* GeneralTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTimer.swift; sourceTree = "<group>"; };
 		F6212FEE2AC8A2A600BA2600 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
@@ -79,7 +87,7 @@
 		F626F78F2B01056D005743F3 /* ContextMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuView.swift; sourceTree = "<group>"; };
 		F6890F7B2ACB5E00008AF97A /* ChangeColorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeColorViewModel.swift; sourceTree = "<group>"; };
 		F6890F7D2ACDF55B008AF97A /* Color+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Hex.swift"; sourceTree = "<group>"; };
-		F69F7FAA2AD87FBD004F586E /* PhotoManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManager.swift; sourceTree = "<group>"; };
+		F69F7FAA2AD87FBD004F586E /* PhotoManagerLegacy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoManagerLegacy.swift; sourceTree = "<group>"; };
 		F6E3765E2B02A30E00BE098B /* MainTabbedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabbedView.swift; sourceTree = "<group>"; };
 		F6E376602B02D43800BE098B /* ConfigureTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigureTimerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,7 +190,7 @@
 			children = (
 				F6212FD92AC4CC4500BA2600 /* Views */,
 				F6E376602B02D43800BE098B /* ConfigureTimerView.swift */,
-				F6212FDC2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift */,
+				F6212FDC2AC4CC6E00BA2600 /* TimerEditorViewModel.swift */,
 			);
 			path = ConfigureTimer;
 			sourceTree = "<group>";
@@ -201,7 +209,8 @@
 		F6212FE22AC5F3EB00BA2600 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F6212FE32AC5F3FC00BA2600 /* EventTimer.swift */,
+				F6212FE32AC5F3FC00BA2600 /* TimerData.swift */,
+				B287A8042BA5FA2700971342 /* ImageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,7 +262,10 @@
 			isa = PBXGroup;
 			children = (
 				F6212FE02AC5F33600BA2600 /* UserDefaultsManager.swift */,
-				F69F7FAA2AD87FBD004F586E /* PhotoManager.swift */,
+				F69F7FAA2AD87FBD004F586E /* PhotoManagerLegacy.swift */,
+				B287A8002BA5F75300971342 /* PhotoManager.swift */,
+				B287A8022BA5F9DF00971342 /* ImageCache.swift */,
+				B287A8062BA5FC4800971342 /* AppError.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -345,31 +357,35 @@
 			files = (
 				F626F7902B01056D005743F3 /* ContextMenuView.swift in Sources */,
 				F6212FD32AC4C3CE00BA2600 /* MainScreenViewModel.swift in Sources */,
+				B287A8012BA5F75300971342 /* PhotoManager.swift in Sources */,
 				F6212FF42AC95C2E00BA2600 /* Design+Color.swift in Sources */,
 				F6E3765F2B02A30E00BE098B /* MainTabbedView.swift in Sources */,
 				F6212FF72AC95E8100BA2600 /* Design+Layout.swift in Sources */,
-				F6212FDD2AC4CC6E00BA2600 /* SettingsEventTimerViewModel.swift in Sources */,
+				F6212FDD2AC4CC6E00BA2600 /* TimerEditorViewModel.swift in Sources */,
 				B21054052B9FAB8C00996914 /* TextFieldView.swift in Sources */,
 				F6212FF22AC8AD5A00BA2600 /* Design+Font.swift in Sources */,
 				F6E376612B02D43800BE098B /* ConfigureTimerView.swift in Sources */,
 				B287A7F72BA0D86900971342 /* QuiclyJumpToDateView.swift in Sources */,
 				F626F78C2B0013BB005743F3 /* MainScreenView.swift in Sources */,
 				F6890F7E2ACDF55B008AF97A /* Color+Hex.swift in Sources */,
+				B287A8072BA5FC4800971342 /* AppError.swift in Sources */,
 				F6212FE12AC5F33600BA2600 /* UserDefaultsManager.swift in Sources */,
-				F69F7FAB2AD87FBD004F586E /* PhotoManager.swift in Sources */,
+				F69F7FAB2AD87FBD004F586E /* PhotoManagerLegacy.swift in Sources */,
 				F6212FED2AC6279A00BA2600 /* GeneralTimer.swift in Sources */,
 				F6212FFF2AC9C69B00BA2600 /* ExpiredView.swift in Sources */,
 				F6890F7C2ACB5E00008AF97A /* ChangeColorViewModel.swift in Sources */,
+				B287A8052BA5FA2700971342 /* ImageModel.swift in Sources */,
 				F6212FEF2AC8A2A600BA2600 /* WarningView.swift in Sources */,
 				F6212FDF2AC5E7D000BA2600 /* Router.swift in Sources */,
 				F626F78E2B003A70005743F3 /* TimerCellView.swift in Sources */,
 				F6212FE72AC5FC5D00BA2600 /* KeyedDecodingContainer+Extension.swift in Sources */,
 				B21054092B9FCE1500996914 /* ChoosingDateView.swift in Sources */,
 				F6212FBF2AC4C07B00BA2600 /* TimerAppApp.swift in Sources */,
-				F6212FE42AC5F3FC00BA2600 /* EventTimer.swift in Sources */,
+				F6212FE42AC5F3FC00BA2600 /* TimerData.swift in Sources */,
 				B287A7FF2BA11ED600971342 /* HorizontalPhotoLibraryView.swift in Sources */,
 				B287A7FB2BA10C7700971342 /* PhotoLibraryNotGrantedView.swift in Sources */,
 				B287A7F92BA0E28000971342 /* View+Size.swift in Sources */,
+				B287A8032BA5F9DF00971342 /* ImageCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -28,7 +28,7 @@ final class Router: ObservableObject {
             return lhs.identifier == rhs.identifier
         }
         
-        case settings(_ type: SettingsType = .create, eventTimer: EventTimer?)
+        case settings(_ type: SettingsType = .create, timerData: TimerData?)
     }
     
     @Published var path = NavigationPath()

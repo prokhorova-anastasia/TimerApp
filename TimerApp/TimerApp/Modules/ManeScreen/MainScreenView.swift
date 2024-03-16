@@ -40,7 +40,7 @@ struct MainScreenView: View {
         .ignoresSafeArea()
         .background(DSColor.darkPrimary)
         .onAppear {
-            viewModel.getEventTimers()
+            viewModel.getTimerDataList()
         }
     }
     
@@ -83,13 +83,13 @@ struct MainScreenView: View {
     var timersListView: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: Constants.timersListBottomPadding) {
-                ForEach($viewModel.eventTimers, id: \.id) { event in
-                    TimerCellView(eventTimer: event, shareAction: {
+                ForEach($viewModel.timerDataList, id: \.id) { timer in
+                    TimerCellView(timerData: timer, shareAction: {
                         print("share")
                     }, editAction: {
-                        router.navigate(to: .settings(.updateType, eventTimer: event.wrappedValue))
+                        router.navigate(to: .settings(.updateType, timerData: timer.wrappedValue))
                     }, deleteAction: {
-                        viewModel.removeEventTimer(event: event.wrappedValue)
+                        viewModel.removeTimerData(timer.wrappedValue)
                     })
                     .frame(height: 200)
                 }

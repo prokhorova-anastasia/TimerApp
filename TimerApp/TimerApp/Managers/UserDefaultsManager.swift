@@ -8,7 +8,7 @@
 import Foundation
 
 enum UserDefaultsKeys: String {
-    case eventTimer = "EventTimers"
+    case timersData = "TimersData"
     case wasTimerCreated = "wasTimerCreated"
     case wasFirstTimerCreated = "wasFirstTimerCreated"
     case savedImages = "SavedImages"

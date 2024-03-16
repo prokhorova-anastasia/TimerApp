@@ -2,21 +2,124 @@
 //  PhotoManager.swift
 //  TimerApp
 //
-//  Created by Anastasia Prokhorova on 12.10.2023.
+//  Created by Анастасия Прохорова on 16.03.24.
 //
 
+import Foundation
 import SwiftUI
-import Photos
 import PhotosUI
 
-final class PhotoManager: ObservableObject {
+final class PhotoManager {
     
-    @Published var accessGranted: Bool = PHPhotoLibrary.authorizationStatus() == .authorized
-    @Published var photos: [PhotoModel] = []
-    @Published var image: UIImage?
+    var accessGranted: Bool = PHPhotoLibrary.authorizationStatus() == .authorized
+    var photos: [ImageModel] = []
+    var image: UIImage?
     
     var namePhotos: [String] = []
+    
+    func saveImage(photoName: String, item: PhotosPickerItem?, completion: @escaping((Error?) -> ())) {
+        guard let item else {
+            completion(AppError.imageSavedError)
+            return
+        }
         
+        getImage(from: item) { [weak self] image, error in
+            guard error == nil else { 
+                completion(error)
+                return
+            }
+            guard let self else {
+                completion(AppError.imageSavedError)
+                return
+            }
+            guard let data = image?.jpegData(compressionQuality: 1) ?? image?.pngData() else {
+                completion(AppError.imageSavedError)
+                return
+            }
+            
+            if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let fileURL = directory.appendingPathComponent("\(photoName).png")
+                do {
+                    try data.write(to: fileURL)
+                    self.namePhotos.append(photoName)
+                    self.photos.append(ImageModel(id: photoName, image: image))
+                    self.saveNamePhotos()
+                    completion(nil)
+                } catch {
+                    completion(error)
+                }
+            }
+            completion(AppError.imageSavedError)
+        }
+    }
+    
+    func loadImage(photoName: String, completion: @escaping((UIImage?, Error?) -> ())) {
+        guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            completion(nil, AppError.imageLoadedError)
+            return
+        }
+        let fileURL = directory.appendingPathComponent("\(photoName).png")
+        guard let imageData = try? Data(contentsOf: fileURL) else {
+            completion(nil, AppError.imageLoadedError)
+            return
+        }
+        guard let image = UIImage(data: imageData) else {
+            completion(nil, AppError.imageLoadedError)
+            return
+        }
+        ImageCache.setImage(image, forKey: photoName)
+        completion(image, nil)
+    }
+    
+    func loadAssetImage(photoName: String, completion: @escaping((UIImage?, Error?) -> ())) {
+        if let cachedImage = ImageCache.getImage(forKey: photoName) {
+            completion(cachedImage, nil)
+        }
+        
+        loadImage(photoName: photoName) { image, error in
+            completion(image, error)
+        }
+    }
+    
+    func loadImages(completion: @escaping(([ImageModel], Error?) -> ())) {
+        guard let nameImages = UserDefaultsManager.shared.getData(forKey: .savedImages) as? [String] else {
+            completion([], AppError.imageLoadedError)
+            return
+        }
+        
+        var images: [ImageModel] = []
+        
+        nameImages.forEach { [weak self] name in
+            guard let self else { return }
+            self.loadAssetImage(photoName: name) { image, error in
+                guard let image = image else { return }
+                images.append(ImageModel(id: name, image: image))
+                self.namePhotos.append(name)
+                self.photos.append(ImageModel(id: name, image: image))
+            }
+        }
+        completion(images, nil)
+    }
+    
+    private func saveNamePhotos() {
+        UserDefaultsManager.shared.saveData(namePhotos, forKey: .savedImages)
+    }
+    
+    private func getImage(from imageItem: PhotosPickerItem, completion: @escaping((UIImage?, Error?) ->())) {
+        Task {
+            guard let imageData = try? await imageItem.loadTransferable(type: Data.self) else {
+                completion(nil, AppError.imageGettingError)
+                return
+            }
+            let image = UIImage(data: imageData)
+            completion(image, nil)
+        }
+    }
+}
+
+// MARK: Access granted
+extension PhotoManager {
+    
     func requestPhotoLibraryAccess() {
         let status = PHPhotoLibrary.authorizationStatus()
         
@@ -49,75 +152,4 @@ final class PhotoManager: ObservableObject {
             })
         }
     }
-    
-    func saveImage(idString: String, imageItem: PhotosPickerItem?, completion: @escaping((Bool) -> ())) {
-        guard let imageItem else { return }
-        getImage(from: imageItem) { [weak self] image in
-            guard let self else { return }
-            guard let data = image?.jpegData(compressionQuality: 1) ?? image?.pngData() else {
-                completion(false)
-                return
-            }
-            
-            if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-                let fileURL = directory.appendingPathComponent("\(idString).png")
-                do {
-                    try data.write(to: fileURL)
-                    self.namePhotos.append(idString)
-                    self.photos.append(PhotoModel(id: idString, image: image))
-                    self.saveNamePhotos()
-                    completion(true)
-                } catch {
-                    print(error.localizedDescription)
-                    completion(false)
-                }
-            }
-            completion(false)
-        }
-    }
-    
-    func loadImage(idPhoto: String) -> UIImage? {
-        if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = directory.appendingPathComponent("\(idPhoto).png")
-            if let imageData = try? Data(contentsOf: fileURL) {
-                return UIImage(data: imageData)
-            }
-        }
-        return nil
-    }
-    
-    func loadSwiftUIImage(idPhoto: String) {
-        if let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            let fileURL = directory.appendingPathComponent("\(idPhoto).png")
-            if let imageData = try? Data(contentsOf: fileURL) {
-                image = UIImage(data: imageData)
-            }
-        }
-    }
-    
-    func loadImages() {
-        guard let nameImages = UserDefaultsManager.shared.getData(forKey: .savedImages) as? [String] else { return }
-        nameImages.forEach { name in
-            let image = self.loadImage(idPhoto: name)
-            self.namePhotos.append(name)
-            self.photos.append(PhotoModel(id: name, image: image))
-        }
-    }
-    
-    private func saveNamePhotos() {
-        UserDefaultsManager.shared.saveData(namePhotos, forKey: .savedImages)
-    }
-    
-    private func getImage(from imageItem: PhotosPickerItem, completion: @escaping((UIImage?) ->())) {
-        Task {
-            guard let imageData = try? await imageItem.loadTransferable(type: Data.self) else { return }
-            let image = UIImage(data: imageData)
-            completion(image)
-        }
-    }
-}
-
-struct PhotoModel: Identifiable {
-    let id: String
-    var image: UIImage?
 }

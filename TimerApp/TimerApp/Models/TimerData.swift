@@ -1,5 +1,5 @@
 //
-//  EventTimer.swift
+//  TimerData.swift
 //  TimerApp
 //
 //  Created by Anastasia Prokhorova on 28.09.2023.
@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct EventTimer: Codable, Identifiable {
+struct TimerData: Codable, Identifiable {
     var id: String = UUID().uuidString
     var title: String
     var description: String?
@@ -39,7 +39,7 @@ struct EventTimer: Codable, Identifiable {
     }
 }
 
-extension EventTimer {
+extension TimerData {
     
     func getLeftMonths() -> Int {
         let currentCalendar = Calendar.current
