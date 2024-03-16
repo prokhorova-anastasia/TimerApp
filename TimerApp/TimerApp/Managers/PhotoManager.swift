@@ -8,12 +8,14 @@
 import Foundation
 import SwiftUI
 import PhotosUI
+import Combine
 
-final class PhotoManager {
+final class PhotoManager: ObservableObject {
     
     var accessGranted: Bool = PHPhotoLibrary.authorizationStatus() == .authorized
-    var photos: [ImageModel] = []
+//    var photos: [ImageModel] = []
     var image: UIImage?
+    var photos = CurrentValueSubject<[ImageModel], Never>([])
     
     var namePhotos: [String] = []
     
@@ -23,8 +25,13 @@ final class PhotoManager {
             return
         }
         
+        let photosName = photos.value.map({ $0.id })
+        
+        guard !photosName.contains(photoName) else { return }
+        
         getImage(from: item) { [weak self] image, error in
-            guard error == nil else { 
+            
+            guard error == nil else {
                 completion(error)
                 return
             }
@@ -42,7 +49,7 @@ final class PhotoManager {
                 do {
                     try data.write(to: fileURL)
                     self.namePhotos.append(photoName)
-                    self.photos.append(ImageModel(id: photoName, image: image))
+                    self.photos.value.append(ImageModel(id: photoName, image: image))
                     self.saveNamePhotos()
                     completion(nil)
                 } catch {
@@ -51,24 +58,6 @@ final class PhotoManager {
             }
             completion(AppError.imageSavedError)
         }
-    }
-    
-    func loadImage(photoName: String, completion: @escaping((UIImage?, Error?) -> ())) {
-        guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            completion(nil, AppError.imageLoadedError)
-            return
-        }
-        let fileURL = directory.appendingPathComponent("\(photoName).png")
-        guard let imageData = try? Data(contentsOf: fileURL) else {
-            completion(nil, AppError.imageLoadedError)
-            return
-        }
-        guard let image = UIImage(data: imageData) else {
-            completion(nil, AppError.imageLoadedError)
-            return
-        }
-        ImageCache.setImage(image, forKey: photoName)
-        completion(image, nil)
     }
     
     func loadAssetImage(photoName: String, completion: @escaping((UIImage?, Error?) -> ())) {
@@ -95,10 +84,28 @@ final class PhotoManager {
                 guard let image = image else { return }
                 images.append(ImageModel(id: name, image: image))
                 self.namePhotos.append(name)
-                self.photos.append(ImageModel(id: name, image: image))
+                self.photos.value.append(ImageModel(id: name, image: image))
             }
         }
         completion(images, nil)
+    }
+    
+    private func loadImage(photoName: String, completion: @escaping((UIImage?, Error?) -> ())) {
+        guard let directory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            completion(nil, AppError.imageLoadedError)
+            return
+        }
+        let fileURL = directory.appendingPathComponent("\(photoName).png")
+        guard let imageData = try? Data(contentsOf: fileURL) else {
+            completion(nil, AppError.imageLoadedError)
+            return
+        }
+        guard let image = UIImage(data: imageData) else {
+            completion(nil, AppError.imageLoadedError)
+            return
+        }
+        ImageCache.setImage(image, forKey: photoName)
+        completion(image, nil)
     }
     
     private func saveNamePhotos() {

@@ -23,7 +23,6 @@ struct TimerCellView: View {
     }
     
     @State var viewModel = MainScreenViewModel()
-    @State var photosManager = PhotoManagerLegacy()
     @Binding var timerData: TimerData
     @ObservedObject var generalTimer = GeneralTimer()
     @State var days = 0

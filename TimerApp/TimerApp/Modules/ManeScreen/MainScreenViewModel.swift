@@ -12,8 +12,10 @@ import PhotosUI
 final class MainScreenViewModel: ObservableObject {
     
     @Published var timerDataList: [TimerData] = []
+    @Published var image: UIImage?
     
     private var allTimers: [TimerData] = []
+    private var photoManager = PhotoManager()
     
     init() {
         getTimerDataList()
@@ -58,6 +60,12 @@ final class MainScreenViewModel: ObservableObject {
     
     func getAllTimers() {
         timerDataList = allTimers
+    }
+    
+    func loadImage(photoName: String) {
+        photoManager.loadAssetImage(photoName: photoName) { [weak self] image, error in
+            self?.image = image
+        }
     }
     
     private func getTestTimers() {

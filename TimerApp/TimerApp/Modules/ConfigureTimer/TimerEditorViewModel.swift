@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import SwiftUI
+import PhotosUI
 
 final class TimerEditorViewModel: ObservableObject {
     
@@ -39,5 +40,15 @@ final class TimerEditorViewModel: ObservableObject {
         photoManager.loadImages { [weak self] images, error in
             self?.images = images
         }
+    }
+    
+    func saveImage(photoName: String, item: PhotosPickerItem, completion: @escaping((Error?) -> ())) {
+        photoManager.saveImage(photoName: photoName, item: item) { error in
+            completion(error)
+        }
+    }
+    
+    func getPhotoGranded() -> Bool {
+        return photoManager.accessGranted
     }
 }

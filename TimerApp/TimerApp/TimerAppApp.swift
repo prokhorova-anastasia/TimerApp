@@ -19,7 +19,7 @@ struct TimerAppApp: App {
                     .navigationDestination(for: Router.Destination.self) { destination in
                         switch destination {
                         case .settings(let type, let timer):
-                            ConfigureTimerView(type: type, timerData: timer)
+                            TimerEditorView(type: type, timerData: timer)
                         }
                     }
             }

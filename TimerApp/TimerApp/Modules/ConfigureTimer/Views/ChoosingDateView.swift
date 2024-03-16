@@ -38,6 +38,6 @@ struct ChoosingDateView: View {
 }
 
 #Preview {
-    ConfigureTimerView(type: .create)
+    TimerEditorView(type: .create)
 //    ChoosingDateView(selectedDate: .constant(Date()))
 }

@@ -1,5 +1,5 @@
 //
-//  ConfigureTimerView.swift
+//  TimerEditorView.swift
 //  TimerApp
 //
 //  Created by Anastasia Prokhorova on 14.11.2023.
@@ -8,7 +8,7 @@
 import SwiftUI
 import PhotosUI
 
-struct ConfigureTimerView: View {
+struct TimerEditorView: View {
     
     private enum BackgroundType: String, CaseIterable {
         case photo = "Photo"
@@ -46,7 +46,6 @@ struct ConfigureTimerView: View {
     @State private var selectedColorIndex = 0
     @State private var selectedColorHex: String = DSColor.violetSecondary.hexString
     @ObservedObject private var changeColorViewModel = ChangeColorViewModel()
-    @ObservedObject private var photoManager = PhotoManagerLegacy()
     @State private var selectedAsset: UIImage? = nil
     @State private var backgroundImageItem: PhotosPickerItem?
     @State private var backgroundImage: UIImage?
@@ -239,10 +238,10 @@ struct ConfigureTimerView: View {
     
     private var choosingPhotoView: some View {
         VStack {
-            if !$photoManager.accessGranted.wrappedValue {
+            if !viewModel.getPhotoGranded() {
                 notGrandedView
             } else {
-                if !photoManager.photos.isEmpty {
+                if !viewModel.images.isEmpty {
                     photosView
                 }
                 openGaleryButton
@@ -288,8 +287,14 @@ struct ConfigureTimerView: View {
             }
         }
         .onChange(of: backgroundImageItem) { newItem in
-            photoManager.saveImage(photoName: UUID().uuidString, imageItem: newItem) { isLoaded in
-                print("item is saved \(isLoaded)")
+            if let item = newItem {
+                viewModel.saveImage(photoName: UUID().uuidString, item: item) { error in
+                    if let error {
+                        print("Error \(error)")
+                    } else {
+                        print("Image saved")
+                    }
+                }
             }
         }
     }
@@ -343,7 +348,7 @@ struct ConfigureTimerView: View {
 }
 
 #Preview {
-    ConfigureTimerView(type: .create)
+    TimerEditorView(type: .create)
 }
 
 
